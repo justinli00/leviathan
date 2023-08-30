@@ -15,10 +15,7 @@ jobs:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
-        run: |
-          mkdir svn-repo
-          svn checkout --username "$SVN_USERNAME" --password "$SVN_PASSWORD" $SVN_URL svn-repo
-          dir 
+        run: svn checkout --username "$SVN_USERNAME" --password "$SVN_PASSWORD" $SVN_URL svn-repo
 
       #note -- test will need to be moved with specific name into test log folder
       - name: run-tests
