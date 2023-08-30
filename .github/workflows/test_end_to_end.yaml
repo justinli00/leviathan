@@ -29,7 +29,7 @@ jobs:
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
           echo $env:TEST_RESULTS
-          echo "TEST_OUTPUT=$(cat test_log.txt)" $ Out-File -FilePath $env:GITHUB_ENV
+          echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
       - name: check-value
         run: echo "${{ env.TEST_OUTPUT }}"
 
