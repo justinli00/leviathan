@@ -16,10 +16,7 @@ jobs:
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
         run: |
-          echo $SVN_USERNAME
-          echo $SVN_PASSWORD
-          echo $SVN_URL
-          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
+          svn checkout --username $secrets:SVN_USERNAME --password $secrets:SVN_PASSWORD $secrets:SVN_URL svn-repo
 
       #note -- test will need to be moved with specific name into test log folder
       - name: run-tests
