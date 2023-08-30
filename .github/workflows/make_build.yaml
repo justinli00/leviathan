@@ -4,8 +4,8 @@ name: Make Build
 on:
   schedule:
     - cron: '59 23 * * 4' #runs at 11:59 on Thursday
-  #repository_dispatch:
-  #  types: build
+  repository_dispatch:
+    types: build
 
 env:
   BUILD_NAME: Basil and the Isles of Spice
@@ -18,19 +18,21 @@ jobs:
   build:
     runs-on: windows-latest #possible issue with OS?
     steps:
-    - name: make-build
-      uses: game-ci/unity-builder@v2
-      env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-      with:
-        targetPlatform: Universal Windows Platform
-        unityVersion: 2021.3.1 #update if incorrect/changes
-    
-    - name: upload-build
-      uses: actions/upload-artifact@v3
-      with:
-        name: Build
-        path: build
+      - name: make build (TESTING)
+        run: echo "MAKING THE BUILD!"
+    #- name: make-build
+    #  uses: game-ci/unity-builder@v2
+    #  env:
+    #    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    #    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    #    UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    #  with:
+    #    targetPlatform: Universal Windows Platform
+    #    unityVersion: 2021.3.1 #update if incorrect/changes
+    #
+    #- name: upload-build
+    #  uses: actions/upload-artifact@v3
+    #  with:
+    #    name: Build
+    #    path: build
         
