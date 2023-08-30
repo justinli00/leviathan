@@ -4,7 +4,6 @@ permissions:
   contents: write
 on: 
   repository_dispatch:
-    types: end2end
   #push:
   #  branches:
   #    - "*"
