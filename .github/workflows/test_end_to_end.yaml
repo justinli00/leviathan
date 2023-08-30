@@ -35,6 +35,8 @@ jobs:
       #ideally we're able to get the version for the revision to add to the comment
       - name: push-log
         run: |
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
           git add .
           git commit -m "Automated Testing for Revision"
           git push
