@@ -21,28 +21,22 @@ jobs:
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
 
-      #note -- test will need to be moved with specific name into test log folder
-      #this will probably just be done in the testing script
       - name: run-tests
         run: |
-          mkdir sillius_soddius
-          cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
           echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
 
-      #clean up
+      #clean up and check out
       - uses: JesseTG/rm@v1.0.3
         with:
           path: /svn-repo
-      - run: dir
       - uses: actions/checkout@v3
 
-      #ideally we're able to get the version for the revision to add to the comment
+      #TODO -- add version for the revision to add to the commit message
+      #create the log and then push change to commit
       - name: push-log
         run: |
-          cd test_logs
           echo "${{ env.TEST_OUTPUT }}" > test_log.txt
-          dir
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
           git add .
