@@ -16,22 +16,23 @@ jobs:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
-      - run: |
+        run: |
           mkdir svn-repo
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
           dir 
 
       #note -- test will need to be moved with specific name into test log folder
       - name: run-tests
-      - run: |
+        run: |
           cd test_logs
           echo 'Tests run successfully!' > test_log.txt
           cd ..
           rmdir svn-repo -r
           dir
 
+      #ideally we're able to get the version for the revision to add to the comment
       - name: push-log
-      - run: |
+        run: |
           git add .
           git commit -m "Automated Testing for Revision"
           git push
