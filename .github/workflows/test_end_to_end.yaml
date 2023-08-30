@@ -32,7 +32,7 @@ jobs:
           echo "TEST_RESULTS=$(cat test_log.txt)" >> "$env:GITHUB_OUTPUT"
           echo ::set-output name=TEST_OUTPUT::$(cat test_log.txt)
       - name: check-value
-        run: echo ${{ steps.vars.outputs.TEST_OUTPUT }}
+        run: echo ${{ env:steps.vars.outputs.TEST_OUTPUT }}
 
       #clean up
       - uses: JesseTG/rm@v1.0.3
@@ -49,7 +49,6 @@ jobs:
           dir
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
-          echo test_log.txt > $env:TEST_RESULTS 
           git add .
           git commit -m "Automated Testing for Revision"
           git push
