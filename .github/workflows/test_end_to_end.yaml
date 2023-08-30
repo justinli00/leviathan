@@ -31,7 +31,7 @@ jobs:
           echo $env:TEST_RESULTS
           echo "TEST_OUTPUT=$(cat test_log.txt)" $ Out-File -FilePath $env:GITHUB_ENV
       - name: check-value
-        run: echo ${{ env.TEST_OUTPUT }}
+        run: echo "${{ env.TEST_OUTPUT }}""
 
       #clean up
       - uses: JesseTG/rm@v1.0.3
