@@ -3,8 +3,11 @@ run-name: Run more expensive tests that would take too long to run before commit
 permissions:
   contents: write
 on: 
-  repository_dispatch:
-    types: end2end
+  #repository_dispatch:
+  #  types: end2end
+  push:
+    branches:
+      - "*"
 
 jobs:
   run_tests:
