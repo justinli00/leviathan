@@ -7,7 +7,7 @@ on: push
   #  types: end2end
 
 env:
-  TEST_RESULTS: ""
+  TEST_RESULTS: "joe mama"
 
 jobs:
   run_tests:
@@ -28,6 +28,8 @@ jobs:
           mkdir sillius_soddius
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
+          echo $env:TEST_RESULTS
+          echo $(cat test_log.txt)
           env:TEST_RESULTS=$(cat test_log.txt)
           cd ..
 
