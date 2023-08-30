@@ -19,12 +19,13 @@ jobs:
       #note -- test will need to be moved with specific name into test log folder
       - name: run-tests
         run: |
+          mkdir test_logs
           cd test_logs
           echo 'Tests run successfully!' > test_log.txt
           cd ..
           rmdir svn-repo -r
           dir
-          
+
       - uses: actions/checkout@v3
 
       #ideally we're able to get the version for the revision to add to the comment
