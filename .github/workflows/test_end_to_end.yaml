@@ -36,6 +36,7 @@ jobs:
       #create the log and then push change to commit
       - name: push-log
         run: |
+          cd test_logs
           echo "${{ env.TEST_OUTPUT }}" > test_log.txt
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
