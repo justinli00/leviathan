@@ -28,10 +28,7 @@ jobs:
           mkdir sillius_soddius
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
-          echo $env:TEST_RESULTS
           echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
-      - name: check-value
-        run: echo "${{ env.TEST_OUTPUT }}"
 
       #clean up
       - uses: JesseTG/rm@v1.0.3
@@ -43,8 +40,8 @@ jobs:
       #ideally we're able to get the version for the revision to add to the comment
       - name: push-log
         run: |
-          dir
           cd test_logs
+          echo "${{ env.TEST_OUTPUT }}" > test_log.txt
           dir
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
