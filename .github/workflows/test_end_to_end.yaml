@@ -32,12 +32,9 @@ jobs:
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
           echo $env:TEST_RESULTS
-          set env:TEST_RESULTS=
-          SETLOCAL EnableDelayedExpansion
-          for /f "Tokens=* Delims=" %%x in (test_log.txt) do set env:TEST_RESULTS=!env:TEST_RESULTS!%%x
-          echo %env:TEST_RESULTS% 
+          dir
+          cat test_log.txt
 
-          get-content test_log.txt | out-file env:TEST_RESULTS
           
           echo $(cat test_log.txt) > $env:TEST_RESULTS
           
