@@ -2,7 +2,7 @@ name: Run end to end tests
 run-name: Run more expensive tests that would take too long to run before commits
 permissions:
   contents: write
-on: push
+on: [push]
   #repository_dispatch:
   #  types: end2end
 
@@ -29,9 +29,11 @@ jobs:
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
           echo $env:TEST_RESULTS
-          echo $(cat test_log.txt)
+          echo $(cat test_log.txt) | Out-File -FilePath $env:TEST_RESULTS
           env:TEST_RESULTS=$(cat test_log.txt)
           cd ..
+      - name: check-value
+        run: echo $env:TEST_RESULTS
 
       #clean up
       - uses: JesseTG/rm@v1.0.3
