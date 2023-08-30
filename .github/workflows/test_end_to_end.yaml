@@ -9,9 +9,6 @@ on:
   #repository_dispatch:
   #  types: end2end
 
-env:
-  TEST_RESULTS: "joe mama"
-
 jobs:
   run_tests:
     runs-on:  windows-latest
@@ -34,9 +31,7 @@ jobs:
           echo $env:TEST_RESULTS
           dir
           cat test_log.txt
-          echo $(cat test_log.txt) > env:TEST_RESULTS
-          
-          cd ..
+          echo "TEST_RESULTS=$(cat test_log.txt)" >> "$env:GITHUB_OUTPUT"
       - name: check-value
         run: echo $env:TEST_RESULTS
 
