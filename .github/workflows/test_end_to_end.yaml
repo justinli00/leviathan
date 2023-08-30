@@ -34,11 +34,7 @@ jobs:
           echo $env:TEST_RESULTS
           dir
           cat test_log.txt
-          echo $(cat test_log.txt) > test_log2.txt
-          cat test_log2.txt
-
-          
-          echo $(cat test_log.txt) > $env:TEST_RESULTS
+          echo $(cat test_log.txt) > env:TEST_RESULTS
           
           cd ..
       - name: check-value
