@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: checkout-svn
         run: |
+          cd ..
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
         env:
           SVN_USERNAME: ${{ secrets.svn_username }}
@@ -17,6 +18,7 @@ jobs:
           SVN_URL: ${{ secrets.svn_url }}
 
       #note -- test will need to be moved with specific name into test log folder
+      #this will probably just be done in the testing script
       - name: run-tests
         run: |
           mkdir test_logs
