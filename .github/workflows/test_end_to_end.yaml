@@ -1,5 +1,7 @@
 name: Run end to end tests
 run-name: Run more expensive tests that would take too long to run before commits
+permissions:
+  [ write ]
 on: [push]
   #repository_dispatch:
   #  types: end2end
@@ -11,7 +13,6 @@ jobs:
       - name: checkout-svn
         run: |
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-          dir
         env:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
@@ -29,7 +30,8 @@ jobs:
       #clean up
       - uses: JesseTG/rm@v1.0.3
         with:
-          path: svn-repo
+          path: /svn-repo
+      - run: dir
       - uses: actions/checkout@v3
 
       #ideally we're able to get the version for the revision to add to the comment
