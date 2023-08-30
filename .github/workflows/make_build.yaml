@@ -4,8 +4,8 @@ name: Make Build
 on:
   schedule:
     - cron: '59 23 * * 4' #runs at 11:59 on Thursday
-  repository_dispatch:
-    types: build
+  #repository_dispatch:
+  #  types: build
 
 env:
   BUILD_NAME: Basil and the Isles of Spice
@@ -13,6 +13,7 @@ env:
 #TODO: run tests and generate a spreadsheet of passing/failing tests -- but don't stop build
 #TODO: log svn versions, git shas between previous and current release and include in build notes
 #TODO: compile commit messages to make build notes
+#TODO: NEED DIFFERENT NAMES FOR DIFFERENT BUILDS
 jobs:
   build:
     runs-on: windows-latest #possible issue with OS?
