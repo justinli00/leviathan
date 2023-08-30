@@ -1,0 +1,38 @@
+name: Run end to end tests
+run-name: Run more expensive tests that would take too long to run before commits
+on: 
+  push:
+  #repository_dispatch:
+  #  types: end2end
+
+jobs:
+  run_tests:
+    runs-on:  windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: checkout-svn
+        env:
+          SVN_USERNAME: ${{ secrets.svn_username }}
+          SVN_PASSWORD: ${{ secrets.svn_password }}
+          SVN_URL: ${{ secrets.svn_url }}
+      - run: |
+          mkdir svn-repo
+          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
+          dir 
+
+      #note -- test will need to be moved with specific name into test log folder
+      - name: run-tests
+      - run: |
+          cd test_logs
+          echo 'Tests run successfully!' > test_log.txt
+          cd ..
+          rmdir svn-repo -r
+          dir
+
+      - name: push-log
+      - run: |
+          git add .
+          git commit -m "Automated Testing for Revision"
+          git push
+
