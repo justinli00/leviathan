@@ -2,9 +2,12 @@ name: Run end to end tests
 run-name: Run more expensive tests that would take too long to run before commits
 permissions:
   contents: write
-on: [push]
+on: push
   #repository_dispatch:
   #  types: end2end
+
+env:
+  TEST_RESULTS: ""
 
 jobs:
   run_tests:
@@ -22,9 +25,10 @@ jobs:
       #this will probably just be done in the testing script
       - name: run-tests
         run: |
-          mkdir test_logs
-          cd test_logs
+          mkdir sillius_soddius
+          cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
+          env:TEST_RESULTS=$(cat test_log.txt)
           cd ..
 
       #clean up
@@ -42,6 +46,7 @@ jobs:
           dir
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
+          echo test_log.txt > $env:TEST_RESULTS 
           git add .
           git commit -m "Automated Testing for Revision"
           git push
