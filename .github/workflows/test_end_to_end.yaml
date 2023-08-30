@@ -29,10 +29,9 @@ jobs:
           cd sillius_soddius
           echo 'Tests run successfully!' > test_log.txt
           echo $env:TEST_RESULTS
-          echo "TEST_RESULTS=$(cat test_log.txt)" >> "$env:GITHUB_OUTPUT"
-          echo ::set-output name=TEST_OUTPUT::$(cat test_log.txt)
+          echo "TEST_OUTPUT=$(cat test_log.txt)" $ Out-File -FilePath $env:GITHUB_ENV
       - name: check-value
-        run: echo ${{ env:steps.vars.outputs.TEST_OUTPUT }}
+        run: echo ${{ env.TEST_OUTPUT }}
 
       #clean up
       - uses: JesseTG/rm@v1.0.3
