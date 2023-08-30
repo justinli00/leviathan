@@ -1,7 +1,7 @@
 name: Run end to end tests
 run-name: Run more expensive tests that would take too long to run before commits
 permissions:
-  - contents: write
+  contents: write
 on: [push]
   #repository_dispatch:
   #  types: end2end
