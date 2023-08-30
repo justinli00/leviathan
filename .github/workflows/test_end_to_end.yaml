@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: checkout-svn
-        env:
+        with:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
         run: |
-          svn checkout --username $secrets:SVN_USERNAME --password $secrets:SVN_PASSWORD $secrets:SVN_URL svn-repo
+          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
 
       #note -- test will need to be moved with specific name into test log folder
       - name: run-tests
