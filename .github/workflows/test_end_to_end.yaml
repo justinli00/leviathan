@@ -1,5 +1,5 @@
 name: Run end to end tests
-run-name: Run more expensive tests that would take too long to run before commits
+run-name: Run end to end tests
 permissions:
   contents: write
 on: 
@@ -14,8 +14,7 @@ jobs:
     runs-on:  windows-latest
     steps:
       - name: checkout-svn
-        run: |
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+        run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
         env:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
