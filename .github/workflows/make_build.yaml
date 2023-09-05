@@ -3,7 +3,7 @@ name: Make Build
 
 on:
   schedule:
-    - cron: '59 23 * * 4' #runs at 11:59 on Thursday
+    - cron: '59 23 * * 1' #runs at 11:59 on Thursday
   repository_dispatch:
     types: build
   #push:
