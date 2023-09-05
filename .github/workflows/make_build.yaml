@@ -22,11 +22,11 @@ jobs:
     runs-on: windows-latest #possible issue with OS?
     steps:
     - name: checkout-svn
-        run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-        env:
-          SVN_USERNAME: ${{ secrets.svn_username }}
-          SVN_PASSWORD: ${{ secrets.svn_password }}
-          SVN_URL: ${{ secrets.svn_url }}
+      run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+      env:
+        SVN_USERNAME: ${{ secrets.svn_username }}
+        SVN_PASSWORD: ${{ secrets.svn_password }}
+        SVN_URL: ${{ secrets.svn_url }}
       
     - name: make-build
       uses: game-ci/unity-builder@v2
