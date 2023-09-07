@@ -25,9 +25,9 @@ jobs:
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
         else
           echo "svn-repo found. Updating git repo's copy."
-          svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
-          echo "Update successful. Resolving any conflicts."
           cd svn-repo
+          svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
+          echo "Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full
           cd ..
         fi
