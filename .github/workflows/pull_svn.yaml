@@ -18,10 +18,7 @@ jobs:
       uses: actions/checkout@v3
 
     #check out or update svn
-    #- name: checkout-svn
-    #  run: ./.github/scripts/update-git-svn.sh
-    #  shell: bash
-    - name: maybe-this?
+    - name: checkout-svn
       run: |
         if [ ! -d svn-repo ];
         then
@@ -31,13 +28,14 @@ jobs:
             svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL
             cd ..
         fi
-        dir
       shell: bash
 
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
       run: |
+        git config user.name "$(git log -n 1 --pretty=format:%an)"
+        git config user.email "$(git log -n 1 --pretty=format:%ae)"
         git add .
         git commit -m "Update from commit"
         git push
