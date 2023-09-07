@@ -46,7 +46,7 @@ jobs:
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
         targetPlatform: Universal Windows Platform
-        unityVersion: 2021.3.1 #update if incorrect/changes
+        unityVersion: 2021.3.1f1 #update if incorrect/changes
         projectPath: svn-repo
         allowDirtyBuild: true
     
