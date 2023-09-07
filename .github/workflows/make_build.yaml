@@ -6,9 +6,9 @@ on:
     - cron: '59 23 * * 1' #runs at 11:59 on Thursday
   repository_dispatch:
     types: build
-  push:
-    branches:
-      - "*"
+  #push:
+  #  branches:
+  #    - "*"
 
 env:
   BUILD_NAME: Basil and the Isles of Spice
