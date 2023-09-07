@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v3
 
     #check out or update svn
+    #TODO -- not sure if conflicts will actually get resolved -- only time will tell i guess?
     - name: checkout-svn
       run: |
         if [ ! -d svn-repo ];
@@ -23,6 +24,7 @@ jobs:
         else
             cd svn-repo
             svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL
+            svn resolve --accept theirs-full
             cd ..
         fi
       shell: bash

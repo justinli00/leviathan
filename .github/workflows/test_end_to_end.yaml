@@ -5,9 +5,6 @@ permissions:
 on: 
   repository_dispatch:
     types: 'end2end'
-  #push:
-  #  branches:
-  #    - "*"
 
 jobs:
   run_tests:

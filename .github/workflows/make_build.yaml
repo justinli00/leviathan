@@ -3,20 +3,13 @@ name: Make Build
 
 on:
   schedule:
-    - cron: '59 23 * * 1' #runs at 11:59 on Thursday
+    - cron: '59 23 * * 1' #runs at 11:59 on Monday
   repository_dispatch:
     types: build
-  #push:
-  #  branches:
-  #    - "*"
 
 env:
   BUILD_NAME: Basil and the Isles of Spice
 
-#TODO: run tests and generate a spreadsheet of passing/failing tests -- but don't stop build
-#TODO: log svn versions, git shas between previous and current release and include in build notes
-#TODO: compile commit messages to make build notes
-#TODO: NEED DIFFERENT NAMES FOR DIFFERENT BUILDS
 jobs:
   build:
     runs-on: windows-2019 #possible issue with OS?
@@ -28,9 +21,7 @@ jobs:
         SVN_USERNAME: ${{ secrets.svn_username }}
         SVN_PASSWORD: ${{ secrets.svn_password }}
         SVN_URL: ${{ secrets.svn_url }}
-    #svn info -r HEAD
-    #- name: get-version
-    #    run: svn info -r HEAD
+
     #check the repo structure
     - run: | 
         dir
@@ -50,9 +41,10 @@ jobs:
         projectPath: svn-repo
         allowDirtyBuild: true
     
+    #TODO -- add version for the revision to add to the commit message
     - name: upload-build
       uses: actions/upload-artifact@v3
       with:
         name: Build
-        path: build
+        path: build #TODO -- might need to update build path to reflect actual path
         
