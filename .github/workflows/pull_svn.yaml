@@ -20,12 +20,14 @@ jobs:
       run: |
         if [ ! -d svn-repo ];
         then
-            svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
+          echo 'svn-repo not found. Checking out new copy.'
+          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
         else
-            cd svn-repo
-            svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL
-            svn resolve --accept theirs-full
-            cd ..
+          echo 'svn-repo found. Updating repo copy'
+          cd svn-repo
+          svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL .
+          svn resolve --accept theirs-full
+          cd ..
         fi
       shell: bash
       env:
