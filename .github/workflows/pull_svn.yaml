@@ -1,0 +1,41 @@
+#updates git repo's versions of svn repo files
+name: Pull SVN
+
+on:
+  repository_dispatch:
+    types: pull-svn
+
+env:
+  SVN_USERNAME: ${{ secrets.svn_username }}
+  SVN_PASSWORD: ${{ secrets.svn_password }}
+  SVN_URL: ${{ secrets.svn_url }}
+
+
+jobs:
+  pull-svn-files:
+    runs-on: windows-latest
+    steps:
+    - name: checkout-git
+      uses: actions/checkout@v3
+    
+    #check out or update svn
+    #TODO -- delete the dir
+    - name: checkout-svn
+      run: |
+        dir 
+        if [ ! -d svn-repo ]
+        then
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+        else
+          cd svn-repo
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL
+          cd ..
+        fi
+
+    #TODO -- add version for the revision to add to the commit message
+    #push changes to github
+    - name: push-changes
+      run: |
+        git add .
+        git commit -m "Update from commit"
+        git push
