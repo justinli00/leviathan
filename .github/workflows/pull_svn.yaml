@@ -19,7 +19,7 @@ jobs:
 
     #check out or update svn
     - name: checkout-svn
-      run: chmod +x .github/scripts/update-git-svn.sh
+      run: ./.github/scripts/update-git-svn.sh
       shell: bash
 
     #TODO -- add version for the revision to add to the commit message
