@@ -18,19 +18,19 @@ jobs:
     #TODO -- not sure if conflicts will actually get resolved -- only time will tell i guess?
     - name: checkout-svn
       run: |
-        dir
         if [ ! -d svn-repo ];
         then
-          echo "svn-repo not found. Checking out new copy."
+          echo ">> svn-repo not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
         else
           echo "svn-repo found. Updating git repo's copy."
           cd svn-repo
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
-          echo "Update successful. Resolving any conflicts."
+          echo ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full
           cd ..
         fi
+        echo ">> git repo's copy of svn files is now up-to-date."
       shell: bash
       env:
         SVN_USERNAME: ${{ secrets.svn_username }}
