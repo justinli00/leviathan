@@ -28,8 +28,8 @@ jobs:
           SVN_PASSWORD: ${{ secrets.svn_password }}
           SVN_URL: ${{ secrets.svn_url }}
     #svn info -r HEAD
-    - name: get-version
-        run: svn info -r HEAD
+    #- name: get-version
+    #    run: svn info -r HEAD
         
     - name: make-build
       uses: game-ci/unity-builder@v2
