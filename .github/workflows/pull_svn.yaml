@@ -4,7 +4,7 @@ name: Pull SVN
 on:
   repository_dispatch:
     types: pull-svn
-    
+
 env:
   SVN_USERNAME: ${{ secrets.svn_username }}
   SVN_PASSWORD: ${{ secrets.svn_password }}
@@ -15,17 +15,13 @@ jobs:
   pull-svn-files:
     runs-on: ubuntu-latest
     steps:
-    - name: can-this-use-svn
-      run: svn --version
-    
     - name: checkout-git
       uses: actions/checkout@v3
-    - run: dir
+
     #check out or update svn
-    #TODO -- delete the dir
-    #- name: checkout-svn
-    #  run: 
-    #  shell: bash
+    - name: checkout-svn
+      run: ./.github/scripts/update-git-svn.sh
+      shell: bash
 
     #TODO -- add version for the revision to add to the commit message
     #push changes to github

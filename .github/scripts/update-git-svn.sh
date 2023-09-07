@@ -1,8 +1,9 @@
+#! /usr/bin/sh
 if [ ! -d svn-repo ];
 then
-    svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+    svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
 else
     cd svn-repo
-    svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL
+    svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL
     cd ..
 fi
