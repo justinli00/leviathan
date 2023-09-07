@@ -45,7 +45,7 @@ jobs:
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
-        targetPlatform: Universal Windows Platform
+        targetPlatform: StandaloneWindows
         unityVersion: 2021.3.1f1 #update if incorrect/changes
         projectPath: svn-repo
         allowDirtyBuild: true
