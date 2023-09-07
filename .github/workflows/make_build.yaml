@@ -19,7 +19,7 @@ env:
 #TODO: NEED DIFFERENT NAMES FOR DIFFERENT BUILDS
 jobs:
   build:
-    runs-on: windows-latest #possible issue with OS?
+    runs-on: windows-2019 #possible issue with OS?
     steps:
     - uses: actions/checkout@v3
     - name: checkout-svn
