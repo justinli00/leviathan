@@ -10,7 +10,6 @@ env:
   SVN_PASSWORD: ${{ secrets.svn_password }}
   SVN_URL: ${{ secrets.svn_url }}
 
-
 jobs:
   pull-svn-files:
     runs-on: ubuntu-latest

@@ -7,3 +7,5 @@ else
     svn update --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL
     cd ..
 fi
+
+dir
