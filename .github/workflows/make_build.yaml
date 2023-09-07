@@ -30,7 +30,9 @@ jobs:
     #svn info -r HEAD
     #- name: get-version
     #    run: svn info -r HEAD
-        
+    #check the repo structure
+    - run: dir
+
     - name: make-build
       uses: game-ci/unity-builder@v2
       env:
@@ -40,7 +42,7 @@ jobs:
       with:
         targetPlatform: Universal Windows Platform
         unityVersion: 2021.3.1 #update if incorrect/changes
-        projectPath: trunk/TestProject3D
+        projectPath: /TestProject3D
     
     - name: upload-build
       uses: actions/upload-artifact@v3
