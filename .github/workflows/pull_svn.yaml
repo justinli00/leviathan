@@ -4,11 +4,8 @@ name: Pull SVN
 on:
   repository_dispatch:
     types: pull-svn
-
-env:
-  SVN_USERNAME: ${{ secrets.svn_username }}
-  SVN_PASSWORD: ${{ secrets.svn_password }}
-  SVN_URL: ${{ secrets.svn_url }}
+permissions:
+  contents: write
 
 jobs:
   pull-svn-files:
@@ -29,6 +26,10 @@ jobs:
             cd ..
         fi
       shell: bash
+      env:
+        SVN_USERNAME: ${{ secrets.svn_username }}
+        SVN_PASSWORD: ${{ secrets.svn_password }}
+        SVN_URL: ${{ secrets.svn_url }}
 
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
