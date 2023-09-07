@@ -21,6 +21,7 @@ jobs:
   build:
     runs-on: windows-latest #possible issue with OS?
     steps:
+    - uses: actions/checkout@v3
     - name: checkout-svn
       run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
       env:
