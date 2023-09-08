@@ -57,7 +57,7 @@ jobs:
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
-      if: $need_update == 'true'
+      if: ${{ env.need_update }} == 'true'
       run: |
         git config user.name "$(git log -n 1 --pretty=format:%an)"
         git config user.email "$(git log -n 1 --pretty=format:%ae)"
