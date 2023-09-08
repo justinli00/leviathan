@@ -17,6 +17,7 @@ jobs:
     runs-on: windows-2019 #possible issue with OS?
     env:
       BUILD_NAME: Basil and the Isles of Spice
+      TARGET_PLATFORM: StandaloneWindows64
     steps:
     - uses: actions/checkout@v3
     
@@ -47,14 +48,16 @@ jobs:
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
-        targetPlatform: StandaloneWindows
+        targetPlatform: ${{ env.TARGET_PLATFORM }}
         unityVersion: 2021.3.1f1 
         projectPath: svn-repo
         allowDirtyBuild: true        
 
+    #TODO -- need to clean the repo somehow so that the entire repo doesn't get uploaded as an artifact...?
+    #if that even happens lol
     - name: upload-build
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.BUILD_NAME }}
-        path: build
+        path: build/${{ env.TARGET_PLATFORM }}
         
