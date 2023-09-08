@@ -30,7 +30,9 @@ jobs:
           echo ">> svn-repo found. Checking if update is necessary."
 
           cd svn-repo
-          env.SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)
+          svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision
+          echo "hahahaha----"
+          echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
           echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
           echo "Working revision is ${{ env.SVN_WORKING_REVISION }}. Head revision is ${{ env.SVN_HEAD_REVISION}}."
           
@@ -59,7 +61,7 @@ jobs:
     #push changes to github
     - name: push-changes
       run: |
-        if [ ${{ env.NEED_UPDATE }} == 'true' ];
+        if [ 1 == 2 ]; #[ ${{ env.NEED_UPDATE }} == 'true' ];
         then
           git config user.name '$(git log -n 1 --pretty=format:%an)'
           git config user.email '$(git log -n 1 --pretty=format:%ae)'
