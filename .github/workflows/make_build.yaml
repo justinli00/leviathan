@@ -14,7 +14,8 @@ jobs:
   pull-svn:
     uses: ./.github/workflows/pull_svn.yaml
     secrets: inherit
-    permissions: inherit
+    permissions: 
+      contents: write
   build:
     runs-on: windows-2019 #possible issue with OS?
     steps:
