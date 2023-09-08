@@ -7,9 +7,9 @@ on:
     types: 'end2end'
 
 jobs:
-  run_tests:
+  pull-svn:
     uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main
-
+  run_tests:
     runs-on:  windows-latest
     steps:
       - name: checkout-git
