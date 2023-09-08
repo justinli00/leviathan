@@ -69,6 +69,8 @@ jobs:
     - name: push-changes
       if: ${{ env.UPDATED }}
       run: |
+        echo ${{ env.UPDATED }}
+        echo $UPDATED
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
