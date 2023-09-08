@@ -10,6 +10,9 @@ jobs:
   run_tests:
     runs-on:  windows-latest
     steps:
+      - name: checkout-git
+      - uses: actions/checkout@v3
+      
       - name: pull-svn
         uses: ./.github/workflows/pull_svn.yaml
 
@@ -22,7 +25,6 @@ jobs:
       - uses: JesseTG/rm@v1.0.3
         with:
           path: /svn-repo
-      - uses: actions/checkout@v3
 
       #TODO -- add version for the revision to add to the commit message
       #create the log and then push change to commit
