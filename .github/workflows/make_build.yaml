@@ -20,14 +20,19 @@ jobs:
     runs-on: windows-2019 #possible issue with OS?
     steps:
     - uses: actions/checkout@v3
-
-    #check the repo structure
-    - run: | 
-        dir
+    
+    - name: make_build_name
+      run: |
         cd svn-repo
-        dir
+        echo "BUILD_NAME=Build r.$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
         cd ..
-        
+      env:
+        SVN_USERNAME: ${{ secrets.svn_username }}
+        SVN_PASSWORD: ${{ secrets.svn_password }}
+
+    #TODO -- caching --> https://game.ci/docs/github/builder/#caching
+    #how will we deal with thing?
+
     - name: make-build
       uses: game-ci/unity-builder@v3
       env:
@@ -38,12 +43,11 @@ jobs:
         targetPlatform: StandaloneWindows64
         unityVersion: 2021.3.1f1 
         projectPath: svn-repo
-        allowDirtyBuild: true
-    
-    #TODO -- add version for the revision to add to the commit message (or build name)
+        allowDirtyBuild: true        
+
     - name: upload-build
       uses: actions/upload-artifact@v3
       with:
-        name: Build
+        name: ${{ env.BUILD_NAME }}
         path: build #TODO -- might need to update build path to reflect actual path
         
