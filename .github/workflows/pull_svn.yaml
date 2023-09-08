@@ -7,6 +7,9 @@ on:
 permissions:
   contents: write
 
+env:
+  need_update: 'false'
+
 jobs:
   pull-svn-files:
     runs-on: ubuntu-latest
@@ -23,7 +26,20 @@ jobs:
           echo ">> svn-repo not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
         else
-          echo ">> svn-repo found. Updating git repo's copy."
+          echo ">> svn-repo found. Checking if update is necessary."
+          
+          working_revision=$(svn info --show-item revision)
+          head_revision=$(svn info --revision HEAD --show-item revision)
+          echo 'Working revision is $working_revision. Head revision is $head_revision.'
+          
+          if [ working_revision == head_revision ];
+          then
+            echo ">> Update is not necessary."
+            exit
+          else 
+            echo ">> Update is necessary."
+          fi
+
           cd svn-repo
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
@@ -40,6 +56,7 @@ jobs:
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
+      if: 
       run: |
         git config user.name "$(git log -n 1 --pretty=format:%an)"
         git config user.email "$(git log -n 1 --pretty=format:%ae)"
