@@ -10,7 +10,6 @@ jobs:
   pull-svn:
     uses: ./.github/workflows/pull_svn.yaml
     secrets: inherit
-    permissions: inherit
   run_tests:
     runs-on:  windows-latest
     steps:
