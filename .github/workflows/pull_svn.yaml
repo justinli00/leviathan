@@ -35,7 +35,7 @@ jobs:
     
     #check version to see if checkout is needed
     - name: get-working-and-head-revisions
-      if: ${{ env.NEED_UPDATE }
+      if: ${{ env.NEED_UPDATE }}
       run: |
         echo ">> svn-repo found. Checking if update is necessary."
         cd svn-repo
