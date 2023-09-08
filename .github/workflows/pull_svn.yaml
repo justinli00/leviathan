@@ -9,10 +9,6 @@ permissions:
 
 jobs:
   pull-svn-files:
-    env:
-      NEED_UPDATE: 'true'
-      SVN_WORKING_REVISION: '[Working Revision]'
-      SVN_HEAD_REVISION: '[Head Revision]'
     runs-on: ubuntu-latest
     steps:
     - name: checkout-git
