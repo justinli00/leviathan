@@ -29,8 +29,9 @@ jobs:
           svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision
           echo "hahahaha----"
           echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
+          echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
           echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
-          echo "Working revision is ${{ env.SVN_WORKING_REVISION }}. Head revision is ${{ env.SVN_HEAD_REVISION}}."
+          echo "Head revision is ${{ env.SVN_HEAD_REVISION}}"
           
           if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
           then
