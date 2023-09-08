@@ -30,7 +30,7 @@ jobs:
           echo ">> svn-repo found. Checking if update is necessary."
 
           cd svn-repo
-          echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
+          env.SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)
           echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
           echo "Working revision is ${{ env.SVN_WORKING_REVISION }}. Head revision is ${{ env.SVN_HEAD_REVISION}}."
           
