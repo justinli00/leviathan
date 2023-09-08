@@ -59,7 +59,7 @@ jobs:
           echo ">> Update is necessary."
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
-          svn resolve --accept theirs-full
+          svn resolve --accept theirs-full --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo "UPDATED=true" >> $GITHUB_ENV
           cd ..
         fi
