@@ -8,14 +8,13 @@ on:
 
 jobs:
   run_tests:
+    uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main
+
     runs-on:  windows-latest
     steps:
       - name: checkout-git
         uses: actions/checkout@v3
-
-      - name: pull-svn
-        uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main
-
+      
       - name: run-tests
         run: |
           echo 'End to end tests run successfully!' > test_log.txt
