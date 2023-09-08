@@ -30,24 +30,32 @@ jobs:
         SVN_USERNAME: ${{ secrets.svn_username }}
         SVN_PASSWORD: ${{ secrets.svn_password }}
 
+    - name: check-scenes
+      run: |
+        cd svn-repo/projectsettings
+        cat editorbuildsettings.asset
+        cd ..
+        cd ..
+
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
-    #how will we deal with thing?
+    #how can we version the library while keeping it unversioned in svn?
+      #...hooks?
 
-    - name: make-build
-      uses: game-ci/unity-builder@v3
-      env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-      with:
-        targetPlatform: StandaloneWindows64
-        unityVersion: 2021.3.1f1 
-        projectPath: svn-repo
-        allowDirtyBuild: true        
-
-    - name: upload-build
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.BUILD_NAME }}
-        path: build #TODO -- might need to update build path to reflect actual path
+    #- name: make-build
+    #  uses: game-ci/unity-builder@v3
+    #  env:
+    #    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    #    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    #    UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    #  with:
+    #    targetPlatform: StandaloneWindows64
+    #    unityVersion: 2021.3.1f1 
+    #    projectPath: svn-repo
+    #    allowDirtyBuild: true        
+#
+    #- name: upload-build
+    #  uses: actions/upload-artifact@v3
+    #  with:
+    #    name: ${{ env.BUILD_NAME }}
+    #    path: build #TODO -- might need to update build path to reflect actual path
         
