@@ -23,7 +23,7 @@ jobs:
     - name: make_build_name
       run: |
         cd svn-repo
-        echo "BUILD_NAME=${{ env.BUILD }} r.$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+        echo "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
         cd ..
       env:
         SVN_USERNAME: ${{ secrets.svn_username }}
@@ -56,5 +56,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.BUILD_NAME }}
-        path: build #TODO -- might need to update build path to reflect actual path
+        path: build
         
