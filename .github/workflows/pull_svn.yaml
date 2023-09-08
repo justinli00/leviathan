@@ -9,6 +9,12 @@ permissions:
 
 jobs:
   pull-svn-files:
+    env:
+      SVN_USERNAME: ${{ secrets.svn_username }}
+      SVN_PASSWORD: ${{ secrets.svn_password }}
+      SVN_URL: ${{ secrets.svn_url }}
+      NEED_UPDATE: 'true'
+      UPDATED: 'true'
     runs-on: ubuntu-latest
     steps:
     - name: checkout-git
@@ -16,47 +22,54 @@ jobs:
 
     #check out or update svn
     #TODO -- not sure if conflicts will actually get resolved -- only time will tell i guess?
-    - name: checkout-svn
+    - name: check-if-checkout-needed
       run: |
         if [ ! -d svn-repo ];
         then
           echo ">> svn-repo not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
+          echo "NEED_UPDATE='false'" >> $GITHUB_ENV
+          ehco "UPDATED='true'" >> $GITHUB_ENV
+        fi
+      shell: bash
+    
+    #check version to see if checkout is needed
+    - name: get-working-and-head-revisions
+      if: ${{ env.NEED_UPDATE }} == 'true'
+      run: |
+        echo ">> svn-repo found. Checking if update is necessary."
+        cd svn-repo
+        echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
+        echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
+        cd ..
+      shell: bash
+
+    - name: update-if-needed
+      if: ${{ env.NEED_UPDATE }} == 'true'
+      run: |
+        cd svn-repo
+        echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
+        echo "Head revision is ${{ env.SVN_HEAD_REVISION}}"
+        if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
+        then
+          echo ">> Update is not necessary."
+          exit
         else
-          echo ">> svn-repo found. Checking if update is necessary."
-
-          cd svn-repo
-          svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision
-          echo "hahahaha----"
-          echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
-          echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
-          echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
-          echo "Head revision is ${{ env.SVN_HEAD_REVISION}}"
-          
-          if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
-          then
-            echo ">> Update is not necessary."
-            echo "NEED_UPDATE='false'" >> $GITHUB_ENV
-            exit
-          fi
-
           echo ">> Update is necessary."
-
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full
+          echo "UPDATED='true'"
           cd ..
         fi
         echo ">> git repo's copy of svn files is now up-to-date."
       shell: bash
-      env:
-        SVN_USERNAME: ${{ secrets.svn_username }}
-        SVN_PASSWORD: ${{ secrets.svn_password }}
-        SVN_URL: ${{ secrets.svn_url }}
+      
 
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
+      if: ${{ env.UPDATED == 'true' }}
       run: |
         if [ 1 == 2 ]; #[ ${{ env.NEED_UPDATE }} == 'true' ];
         then
