@@ -71,12 +71,9 @@ jobs:
     - name: push-changes
       if: ${{ env.UPDATED == 'true' }}
       run: |
-        if [ 1 == 2 ]; #[ ${{ env.NEED_UPDATE }} == 'true' ];
-        then
-          git config user.name '$(git log -n 1 --pretty=format:%an)'
-          git config user.email '$(git log -n 1 --pretty=format:%ae)'
-          git add .
-          git commit -m 'Updating svn to r.$HEAD_REVISION'
-          git push
-        fi
+        git config user.name '$(git log -n 1 --pretty=format:%an)'
+        git config user.email '$(git log -n 1 --pretty=format:%ae)'
+        git add .
+        git commit -m 'Updating svn to r.$HEAD_REVISION'
+        git push
       shell: bash
