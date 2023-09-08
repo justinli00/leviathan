@@ -28,6 +28,7 @@ jobs:
         else
           echo ">> svn-repo found. Checking if update is necessary."
           
+          cd svn-repo
           working_revision=$(svn info --show-item revision)
           head_revision=$(svn info --revision HEAD --show-item revision)
           echo 'Working revision is $working_revision. Head revision is $head_revision.'
@@ -41,7 +42,6 @@ jobs:
             echo ">> Update is necessary."
           fi
 
-          cd svn-repo
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full
