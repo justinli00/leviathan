@@ -58,10 +58,13 @@ jobs:
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
-      if: ${{ NEED_UPDATE }} == 'true'
       run: |
-        git config user.name "$(git log -n 1 --pretty=format:%an)"
-        git config user.email "$(git log -n 1 --pretty=format:%ae)"
-        git add .
-        git commit -m "Updating svn to r.$HEAD_REVISION"
-        git push
+        if [ $NEED_UPDATE == 'true' ];
+        then
+          git config user.name '$(git log -n 1 --pretty=format:%an)'
+          git config user.email '$(git log -n 1 --pretty=format:%ae)'
+          git add .
+          git commit -m 'Updating svn to r.$HEAD_REVISION'
+          git push
+        fi
+      shell: bash
