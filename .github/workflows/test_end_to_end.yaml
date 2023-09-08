@@ -11,7 +11,7 @@ jobs:
     runs-on:  windows-latest
     steps:
       - name: pull-svn
-        uses: ./.github/workflows/tests.yml
+        uses: ./.github/workflows/pull_svn.yaml
 
       - name: run-tests
         run: |
