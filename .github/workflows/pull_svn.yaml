@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 env:
-  need_update: 'false'
+  need_update: 'true'
 
 jobs:
   pull-svn-files:
@@ -35,6 +35,7 @@ jobs:
           if [ working_revision == head_revision ];
           then
             echo ">> Update is not necessary."
+            need_update='false'
             exit
           else 
             echo ">> Update is necessary."
@@ -56,7 +57,7 @@ jobs:
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
-      if: 
+      if: $need_update == 'true'
       run: |
         git config user.name "$(git log -n 1 --pretty=format:%an)"
         git config user.email "$(git log -n 1 --pretty=format:%ae)"
