@@ -11,7 +11,7 @@ jobs:
     runs-on:  windows-latest
     steps:
       - name: checkout-git
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: pull-svn
         uses: ./.github/workflows/pull_svn.yaml
