@@ -10,12 +10,8 @@ jobs:
   run_tests:
     runs-on:  windows-latest
     steps:
-      - name: checkout-svn
-        run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-        env:
-          SVN_USERNAME: ${{ secrets.svn_username }}
-          SVN_PASSWORD: ${{ secrets.svn_password }}
-          SVN_URL: ${{ secrets.svn_url }}
+      - name: pull-svn
+        uses: ./.github/workflows/tests.yml
 
       - name: run-tests
         run: |

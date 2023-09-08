@@ -4,6 +4,7 @@ name: Pull SVN
 on:
   repository_dispatch:
     types: pull-svn
+  workflow_call
 permissions:
   contents: write
 
@@ -35,7 +36,7 @@ jobs:
     
     #check version to see if checkout is needed
     - name: get-working-and-head-revisions
-      if: ${{ env.CHECK_UPDATE }}
+      if: ${{ env.CHECK_UPDATE == 'true' }}
       run: |
         cd svn-repo
         echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
@@ -44,7 +45,7 @@ jobs:
       shell: bash
 
     - name: update-if-needed
-      if: ${{ env.CHECK_UPDATE }} 
+      if: ${{ env.CHECK_UPDATE == 'true' }} 
       run: |
         cd svn-repo
         echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
