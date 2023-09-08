@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: checkout-git
       - uses: actions/checkout@v3
-      
+
       - name: pull-svn
         uses: ./.github/workflows/pull_svn.yaml
 
@@ -20,11 +20,6 @@ jobs:
         run: |
           echo 'End to end tests run successfully!' > test_log.txt
           echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
-
-      #clean up and check out
-      - uses: JesseTG/rm@v1.0.3
-        with:
-          path: /svn-repo
 
       #TODO -- add version for the revision to add to the commit message
       #create the log and then push change to commit
