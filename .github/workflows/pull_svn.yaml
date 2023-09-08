@@ -31,7 +31,7 @@ jobs:
           cd svn-repo
           working_revision=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)
           head_revision=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)
-          echo 'Working revision is $working_revision. Head revision is $head_revision.'
+          echo 'Working revision is ${{ env.working_revision }}. Head revision is ${{ env.head_revision }}.'
           
           if [ working_revision == head_revision ];
           then
