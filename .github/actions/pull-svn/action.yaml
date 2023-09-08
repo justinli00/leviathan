@@ -10,12 +10,12 @@ permissions:
 
 jobs:
   pull-svn-files:
-    env:
-      SVN_USERNAME: ${{ secrets.svn_username }}
-      SVN_PASSWORD: ${{ secrets.svn_password }}
-      SVN_URL: ${{ secrets.svn_url }}
-      CHECK_UPDATE: true
-      UPDATED: true
+    #env:
+    #  SVN_USERNAME: ${{ secrets.svn_username }}
+    #  SVN_PASSWORD: ${{ secrets.svn_password }}
+    #  SVN_URL: ${{ secrets.svn_url }}
+    #  CHECK_UPDATE: true
+    #  UPDATED: true
     runs-on: ubuntu-latest
     steps:
     - name: checkout-git

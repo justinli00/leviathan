@@ -15,6 +15,10 @@ jobs:
 
       - name: pull-svn
         uses: ./.github/actions/pull-svn
+        with:
+          CHECK_UPDATE: true
+          UPDATED: true
+        secrets: inherit
 
       - name: run-tests
         run: |
