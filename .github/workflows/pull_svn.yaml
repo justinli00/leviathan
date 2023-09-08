@@ -7,11 +7,12 @@ on:
 permissions:
   contents: write
 
-env:
-  need_update: 'true'
-
 jobs:
   pull-svn-files:
+    env:
+      NEED_UPDATE: 'true'
+      SVN_WORKING_REVISION: '[Working Revision]'
+      SVN_HEAD_REVISION: '[Head Revision]'
     runs-on: ubuntu-latest
     steps:
     - name: checkout-git
@@ -29,14 +30,14 @@ jobs:
           echo ">> svn-repo found. Checking if update is necessary."
 
           cd svn-repo
-          working_revision=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)
-          head_revision=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)
-          echo 'Working revision is $env.working_revision. Head revision is $env.head_revision.'
+          SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)
+          SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)
+          echo 'Working revision is $SVN_WORKING_REVISION. Head revision is $SVN_HEAD_REVISION.'
           
-          if [ working_revision == head_revision ];
+          if [ $SVN_WORKING_REVISION == $SVN_HEAD_REVISION ];
           then
             echo ">> Update is not necessary."
-            need_update='false'
+              NEED_UPDATE='false'
             exit
           fi
 
@@ -57,10 +58,10 @@ jobs:
     #TODO -- add version for the revision to add to the commit message
     #push changes to github
     - name: push-changes
-      if: ${{ env.need_update }} == 'true'
+      if: $NEED_UPDATE == 'true'
       run: |
         git config user.name "$(git log -n 1 --pretty=format:%an)"
         git config user.email "$(git log -n 1 --pretty=format:%ae)"
         git add .
-        git commit -m "Update from commit"
+        git commit -m "Updating svn to r.$HEAD_REVISION"
         git push
