@@ -8,7 +8,7 @@ on:
 
 jobs:
   pull-svn:
-    uses: ./.github/workflows/pull-svn.yaml
+    uses: ./.github/workflows/pull_svn.yaml
   run_tests:
     runs-on:  windows-latest
     steps:
