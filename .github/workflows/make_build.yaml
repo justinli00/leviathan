@@ -11,16 +11,13 @@ env:
   BUILD_NAME: Basil and the Isles of Spice
 
 jobs:
+  pull-svn:
+      uses: ./.github/workflows/pull_svn.yaml
+      secrets: inherit
   build:
     runs-on: windows-2019 #possible issue with OS?
     steps:
     - uses: actions/checkout@v3
-    - name: checkout-svn
-      run: svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-      env:
-        SVN_USERNAME: ${{ secrets.svn_username }}
-        SVN_PASSWORD: ${{ secrets.svn_password }}
-        SVN_URL: ${{ secrets.svn_url }}
 
     #check the repo structure
     - run: | 
@@ -29,22 +26,22 @@ jobs:
         dir
         cd ..
         
-    - name: make-build
-      uses: game-ci/unity-builder@v3
-      env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-      with:
-        targetPlatform: StandaloneWindows64
-        unityVersion: 2021.3.1f1 
-        projectPath: svn-repo
-        allowDirtyBuild: true
-    
-    #TODO -- add version for the revision to add to the commit message
-    - name: upload-build
-      uses: actions/upload-artifact@v3
-      with:
-        name: Build
-        path: build #TODO -- might need to update build path to reflect actual path
+    #- name: make-build
+    #  uses: game-ci/unity-builder@v3
+    #  env:
+    #    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    #    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    #    UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    #  with:
+    #    targetPlatform: StandaloneWindows64
+    #    unityVersion: 2021.3.1f1 
+    #    projectPath: svn-repo
+    #    allowDirtyBuild: true
+    #
+    ##TODO -- add version for the revision to add to the commit message
+    #- name: upload-build
+    #  uses: actions/upload-artifact@v3
+    #  with:
+    #    name: Build
+    #    path: build #TODO -- might need to update build path to reflect actual path
         

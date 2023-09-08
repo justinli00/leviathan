@@ -27,7 +27,6 @@ jobs:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
 
-      #TODO -- add version for the revision to add to the commit message
       #create the log and then push change to commit
       - name: push-log
         run: |
