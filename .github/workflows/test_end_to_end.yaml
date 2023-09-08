@@ -20,6 +20,12 @@ jobs:
         run: |
           echo 'End to end tests run successfully!' > test_log.txt
           echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
+          cd svn-repo
+          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+          cd ..
+        env:
+          SVN_USERNAME: ${{ secrets.svn_username }}
+          SVN_PASSWORD: ${{ secrets.svn_password }}
 
       #TODO -- add version for the revision to add to the commit message
       #create the log and then push change to commit
@@ -30,6 +36,6 @@ jobs:
           git config user.name "$(git log -n 1 --pretty=format:%an)"
           git config user.email "$(git log -n 1 --pretty=format:%ae)"
           git add .
-          git commit -m "Automated Testing for Revision"
+          git commit -m "Automated test results for Revision ${{ env.SVN_HEAD_REVISION }}"
           git push
 
