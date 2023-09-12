@@ -21,17 +21,6 @@ jobs:
     - name: checkout-git
       uses: actions/checkout@v3
 
-    #check to see if this still works
-    - name: run-tests
-      run: |
-        echo "This syntax should work"
-        cd svn-repo
-        echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
-        cd ..
-      env:
-        SVN_USERNAME: ${{ secrets.svn_username }}
-        SVN_PASSWORD: ${{ secrets.svn_password }}
-
 
     #check out or update svn
     - name: check-if-checkout-needed
@@ -42,6 +31,8 @@ jobs:
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
           echo "CHECK_UPDATE=false" | Out-File -FilePath $env:GITHUB_ENV
           echo "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV
+        else
+          echo "THIS_GOT_RUN=true" | Out-File -FilePath $env:GITHUB_ENV
         fi
       shell: bash
     
@@ -52,7 +43,6 @@ jobs:
         cd svn-repo
         echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
         echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
-      shell: bash
 
     - name: update-if-needed
       if: ${{ env.CHECK_UPDATE == 'true' }} 
