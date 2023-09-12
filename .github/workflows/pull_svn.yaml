@@ -16,13 +16,24 @@ jobs:
       SVN_URL: ${{ secrets.svn_url }}
       CHECK_UPDATE: true
       UPDATED: true
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
     - name: checkout-git
       uses: actions/checkout@v3
 
+    #check to see if this still works
+    - name: run-tests
+          run: |
+            echo "This syntax should work"
+            cd svn-repo
+            echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+            cd ..
+          env:
+            SVN_USERNAME: ${{ secrets.svn_username }}
+            SVN_PASSWORD: ${{ secrets.svn_password }}
+
+
     #check out or update svn
-    #TODO -- not sure if conflicts will actually get resolved -- only time will tell i guess?
     - name: check-if-checkout-needed
       run: |
         if [ ! -d svn-repo ];
@@ -34,7 +45,7 @@ jobs:
         fi
       shell: bash
     
-    #check version to see if checkout is needed
+    #check version to see if update is needed
     - name: get-working-and-head-revisions
       if: ${{ env.CHECK_UPDATE == 'true' }}
       run: |
