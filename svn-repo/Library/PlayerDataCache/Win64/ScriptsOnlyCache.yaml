@@ -39,7 +39,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 15626}
+      Script: {instanceID: 7852}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -831,4 +831,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/TheScene.unity
   playerPath: c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of
-    Spice r182.exe
+    Spice r183.exe

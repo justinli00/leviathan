@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.0.220
+  bundleVersion: 0.0.224
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -155,7 +155,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.DefaultCompany.TestProject3D
   buildNumber:
-    Standalone: 0.0.220
+    Standalone: 0.0.224
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0

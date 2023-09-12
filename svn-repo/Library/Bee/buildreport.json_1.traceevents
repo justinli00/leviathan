@@ -1,441 +1,418 @@
 ﻿{ "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
 { "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 0, "tid": 1, "ts": 1694492096521370, "dur": 922337203685477580, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492096523565, "dur": 15085, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492096539174, "dur": 44669, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492096583874, "dur": 296781, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492096880657, "dur": 9326699, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492106207379, "dur": 10239, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492118441007, "dur": 922337203685477580, "ph": "X", "name": "Build Player", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492118441318, "dur": 4096, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492118445415, "dur": 41324, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492118486742, "dur": 276986, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492118763730, "dur": 315672, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492119079405, "dur": 4505, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492119084361, "dur": 32, "ph": "X", "name": "", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496409860544, "dur": 922337203685477580, "ph": "X", "name": "Build ScriptAssemblies", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496409862385, "dur": 26956, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496409889619, "dur": 69356, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496409959004, "dur": 290315, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496410249322, "dur": 749787, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496410999131, "dur": 9773, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414174080, "dur": 922337203685477580, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414174361, "dur": 3822, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414178184, "dur": 32607, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414210793, "dur": 273352, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414484148, "dur": 162515, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414646665, "dur": 18936, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414666097, "dur": 30, "ph": "X", "name": "", "args": {} },
 { "pid": 35942, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "netcorerun.dll" } },
 { "pid": 35942, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
 { "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 35942, "tid": 1, "ts": 1694492118602375, "dur": 142310, "ph": "X", "name": "BuildProgram", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118603695, "dur": 55395, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118724187, "dur": 5836, "ph": "X", "name": "OutputData.Write", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118730027, "dur": 14646, "ph": "X", "name": "Backend.Write", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118730902, "dur": 13083, "ph": "X", "name": "JsonToString", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118750119, "dur": 1662, "ph": "X", "name": "", "args": {} },
-{ "pid": 35942, "tid": 1, "ts": 1694492118749516, "dur": 2294, "ph": "X", "name": "Write chrome-trace events", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492119084505, "dur": 205, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414330468, "dur": 137380, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414331841, "dur": 53938, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414447533, "dur": 5811, "ph": "X", "name": "OutputData.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414453348, "dur": 14489, "ph": "X", "name": "Backend.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414454257, "dur": 12907, "ph": "X", "name": "JsonToString", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414472981, "dur": 1765, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1694496414472379, "dur": 2395, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414666250, "dur": 197, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
-,{ "pid":12345, "tid":0, "ts":1694492118798895, "dur":1207, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492118800112, "dur":45, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
-,{ "pid":12345, "tid":0, "ts":1694492118800168, "dur":15, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
-,{ "pid":12345, "tid":0, "ts":1694492118800185, "dur":208, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
-,{ "pid":12345, "tid":0, "ts":1694492118800416, "dur":566, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492118800983, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119035864, "dur":6, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119035870, "dur":502, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119036372, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119036375, "dur":427, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119036802, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119036818, "dur":3, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119036876, "dur":1435, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
-,{ "pid":12345, "tid":1, "ts":1694492118800807, "dur":205, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118801012, "dur":7516, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118808530, "dur":1431, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":1, "ts":1694492118809966, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118810557, "dur":1316, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":1, "ts":1694492118812007, "dur":1336, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118813347, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118813437, "dur":605, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118814094, "dur":793, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":1, "ts":1694492118814891, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118814899, "dur":755, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":1, "ts":1694492118815738, "dur":540, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":1, "ts":1694492118816282, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118816290, "dur":1493, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":1, "ts":1694492118817833, "dur":1551, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118819388, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118819395, "dur":623, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118820063, "dur":630, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":1, "ts":1694492118820697, "dur":20, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118820723, "dur":1449, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":1, "ts":1694492118822266, "dur":1168, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118823437, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118823509, "dur":613, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118824172, "dur":995, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118825171, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118825183, "dur":641, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118825873, "dur":547, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118826424, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118826431, "dur":1101, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":1, "ts":1694492118827585, "dur":3633, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118831222, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118831395, "dur":1043, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118832485, "dur":99439, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118931939, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118931944, "dur":26490, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118958539, "dur":510, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118959053, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118959060, "dur":758, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118959850, "dur":553, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118960407, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118960413, "dur":673, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118961119, "dur":641, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118961763, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118961769, "dur":872, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118962680, "dur":507, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118963192, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118963198, "dur":638, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118963871, "dur":3708, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118967583, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118967590, "dur":694, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118968319, "dur":707, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118969029, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118969036, "dur":616, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118969685, "dur":582, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118970271, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118970278, "dur":668, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118970981, "dur":624, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118971609, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118971616, "dur":1451, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118973124, "dur":697, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118973834, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118973842, "dur":766, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118974649, "dur":1019, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118975672, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118975679, "dur":1195, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118976908, "dur":537, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118977449, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118977456, "dur":683, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118978173, "dur":1313, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118979490, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118979497, "dur":854, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118980388, "dur":734, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118981126, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118981134, "dur":803, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118982026, "dur":1160, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118983190, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118983197, "dur":1588, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118984830, "dur":830, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118985664, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118985670, "dur":742, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118986445, "dur":558, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118987007, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118987013, "dur":719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118987767, "dur":1185, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118988956, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118988963, "dur":1233, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118990244, "dur":1415, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118991663, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118991670, "dur":943, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118992646, "dur":3413, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118996063, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118996071, "dur":1528, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118997689, "dur":810, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118998503, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492118998510, "dur":855, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492118999435, "dur":745, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119000183, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119000190, "dur":837, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119001067, "dur":1887, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119002958, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119002965, "dur":1004, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119004003, "dur":6729, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119010736, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119010743, "dur":2234, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119013020, "dur":3577, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119016601, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119016608, "dur":1620, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119018269, "dur":761, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119019033, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119019040, "dur":1208, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119020283, "dur":1148, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119021435, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119021442, "dur":873, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":1, "ts":1694492119022353, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":1, "ts":1694492119022407, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119022465, "dur":877, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":1, "ts":1694492119023376, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":1, "ts":1694492119023412, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119023417, "dur":640, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":1, "ts":1694492119024097, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":1, "ts":1694492119024219, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119024225, "dur":614, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":1, "ts":1694492119024873, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":1, "ts":1694492119024997, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119025003, "dur":590, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":1, "ts":1694492119025626, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/level0" }}
-,{ "pid":12345, "tid":1, "ts":1694492119025662, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119025667, "dur":494, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/level0" }}
-,{ "pid":12345, "tid":1, "ts":1694492119026193, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":1, "ts":1694492119026228, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119026233, "dur":1120, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":1, "ts":1694492119027388, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":1, "ts":1694492119027439, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119027445, "dur":644, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":1, "ts":1694492119028123, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492119028239, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1694492119028245, "dur":563, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1694492119028842, "dur":6980, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118800735, "dur":266, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118801003, "dur":7466, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118808480, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1694492118808484, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118809178, "dur":222, "ph":"X", "name": "WriteText",  "args": { "detail":"Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1694492118809403, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1694492118809464, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118809710, "dur":2151, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/app.info" }}
-,{ "pid":12345, "tid":2, "ts":1694492118811863, "dur":799, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118812666, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118813080, "dur":1140, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118814272, "dur":1200, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":2, "ts":1694492118815476, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118815484, "dur":652, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":2, "ts":1694492118816228, "dur":613, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118816845, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118817125, "dur":741, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118817940, "dur":897, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1694492118818841, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118818911, "dur":709, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1694492118819670, "dur":904, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":2, "ts":1694492118820578, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118820585, "dur":1053, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":2, "ts":1694492118821682, "dur":559, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118822245, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118822561, "dur":897, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":2, "ts":1694492118823506, "dur":552, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1694492118824062, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118824069, "dur":917, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1694492118825067, "dur":510, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":2, "ts":1694492118825581, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118825588, "dur":1711, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":2, "ts":1694492118827379, "dur":491, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":2, "ts":1694492118827874, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118827881, "dur":1678, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":2, "ts":1694492118829606, "dur":27746, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118857359, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118857517, "dur":6044, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118863685, "dur":5194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":2, "ts":1694492118868884, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118868892, "dur":1716, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":2, "ts":1694492118870671, "dur":581, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182.exe" }}
-,{ "pid":12345, "tid":2, "ts":1694492118871256, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118871263, "dur":940, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182.exe" }}
-,{ "pid":12345, "tid":2, "ts":1694492118872237, "dur":703, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":2, "ts":1694492118872945, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118873163, "dur":10152, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":2, "ts":1694492118883373, "dur":850, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118884227, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118884788, "dur":742, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118885565, "dur":606, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118886175, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118886256, "dur":674, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118886966, "dur":564, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118887534, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118887541, "dur":910, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118888488, "dur":548, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118889040, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118889047, "dur":844, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118889933, "dur":752, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118890689, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118890715, "dur":692, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118891442, "dur":621, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118892068, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118892074, "dur":678, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118892785, "dur":498, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118893286, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118893293, "dur":619, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118893944, "dur":639, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118894587, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118894594, "dur":670, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118895384, "dur":571, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118895959, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118895966, "dur":637, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118896638, "dur":719, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118897361, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118897367, "dur":723, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118898126, "dur":565, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118898695, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118898702, "dur":657, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118899393, "dur":683, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118900080, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118900087, "dur":787, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118901031, "dur":603, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118901638, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118901645, "dur":738, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118902416, "dur":657, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118903077, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118903084, "dur":605, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118903722, "dur":519, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118904245, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118904252, "dur":703, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118905081, "dur":618, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118905703, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118905710, "dur":1046, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118906791, "dur":784, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118907579, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118907586, "dur":680, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118908300, "dur":524, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118908828, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118908835, "dur":738, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118909607, "dur":710, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118910321, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118910328, "dur":668, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118911029, "dur":614, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118911648, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118911655, "dur":680, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118912369, "dur":3416, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118915839, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118915847, "dur":1175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118917055, "dur":1175, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118918234, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118918241, "dur":861, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118919137, "dur":726, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118919867, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118919874, "dur":837, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118920746, "dur":639, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118921388, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118921395, "dur":846, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118922273, "dur":638, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118922915, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118922921, "dur":621, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118923576, "dur":866, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118924446, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118924454, "dur":780, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118925292, "dur":695, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118925991, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118925997, "dur":663, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118926693, "dur":520, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118927217, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118927224, "dur":778, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118928035, "dur":778, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118928817, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118928824, "dur":653, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118929571, "dur":554, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118930129, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118930135, "dur":616, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118930784, "dur":526, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118931314, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118931320, "dur":624, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118931981, "dur":619, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118932604, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118932611, "dur":567, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118933210, "dur":573, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118933787, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118933794, "dur":589, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118934416, "dur":585, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118935005, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118935012, "dur":611, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118935658, "dur":615, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118936277, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118936283, "dur":650, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118936966, "dur":569, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118937539, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118937546, "dur":613, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118938194, "dur":552, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118938750, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118938757, "dur":1142, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118939935, "dur":619, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118940559, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118940565, "dur":598, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118941197, "dur":751, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118941951, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118941958, "dur":634, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118942626, "dur":937, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118943566, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118943573, "dur":800, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118944407, "dur":518, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118944929, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118944936, "dur":733, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118945706, "dur":1053, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118946763, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118946770, "dur":668, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118947471, "dur":593, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118948068, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118948075, "dur":727, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118948836, "dur":482, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118949322, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118949329, "dur":599, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118949966, "dur":680, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118950650, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118950657, "dur":992, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118951682, "dur":539, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118952225, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118952232, "dur":848, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118953115, "dur":602, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118953738, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118953745, "dur":637, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118954414, "dur":835, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118955253, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118955260, "dur":1270, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118956563, "dur":557, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118957124, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118957131, "dur":805, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118957970, "dur":746, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118958720, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118958727, "dur":658, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118959420, "dur":513, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118959951, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118959958, "dur":699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118960695, "dur":550, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118961249, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118961256, "dur":660, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118961956, "dur":531, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118962491, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118962497, "dur":738, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118963272, "dur":7852, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118971128, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118971135, "dur":1954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118973133, "dur":681, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118973833, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118973842, "dur":815, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118974705, "dur":834, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118975543, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118975550, "dur":732, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118976316, "dur":617, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118976937, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118976943, "dur":778, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118977759, "dur":560, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118978323, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118978329, "dur":631, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118978994, "dur":2113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118981111, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118981118, "dur":1556, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118982707, "dur":1597, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118984307, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118984330, "dur":934, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118985299, "dur":8950, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118994252, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118994274, "dur":2930, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118997238, "dur":922, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118998164, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118998171, "dur":823, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118999028, "dur":569, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492118999601, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492118999608, "dur":670, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119000316, "dur":596, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119000916, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119000938, "dur":711, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119001682, "dur":7716, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119009402, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119009409, "dur":2346, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119011787, "dur":983, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119012774, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119012781, "dur":804, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119013620, "dur":778, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119014402, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119014409, "dur":767, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119015213, "dur":1146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119016363, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119016370, "dur":932, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119017336, "dur":323, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Scripts.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119017663, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119017670, "dur":961, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/Scripts.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119018664, "dur":13307, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119031974, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1694492119031981, "dur":3703, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r182_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":2, "ts":1694492119035720, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
-,{ "pid":12345, "tid":2, "ts":1694492119035722, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1694492119042925, "dur":1658, "ph":"X", "name": "ProfilerWriteOutput" }
-,{ "pid": 0, "tid": 1, "ts": 1694492119084800, "dur": 652, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1694492119084348, "dur": 1144, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+,{ "pid":12345, "tid":0, "ts":1694496414523947, "dur":1205, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414525161, "dur":49, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1694496414525221, "dur":14, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1694496414525237, "dur":180, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1694496414525438, "dur":551, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414525989, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414622636, "dur":98, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414622734, "dur":450, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414623184, "dur":4, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414623188, "dur":453, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414623641, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414623661, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414623665, "dur":1183, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1694496414525635, "dur":373, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414526011, "dur":6720, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414532742, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1694496414532743, "dur":122, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414532870, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1694496414532876, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414533522, "dur":2161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1694496414535685, "dur":824, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":1, "ts":1694496414536510, "dur":89, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414536600, "dur":623, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1694496414537224, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414537282, "dur":507, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1694496414537790, "dur":636, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414538428, "dur":740, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1694496414539168, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414539237, "dur":554, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1694496414539792, "dur":438, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414540231, "dur":698, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1694496414540929, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414540985, "dur":580, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1694496414541566, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414541635, "dur":564, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":1, "ts":1694496414542200, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414542255, "dur":726, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414542982, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414543054, "dur":461, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":1, "ts":1694496414543516, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414543590, "dur":630, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":1, "ts":1694496414544224, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414544466, "dur":8342, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":1, "ts":1694496414552869, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414552962, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414552968, "dur":1085, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414554090, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414554154, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414554160, "dur":1031, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414555229, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414555297, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414555303, "dur":881, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414556227, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414556295, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414556301, "dur":895, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414557234, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414557304, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414557310, "dur":1199, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414558547, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414558606, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414558628, "dur":849, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414559512, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414559564, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414559570, "dur":878, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414560488, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414560548, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414560554, "dur":961, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414561551, "dur":1409, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414562964, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414562970, "dur":863, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414563877, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414563938, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414563943, "dur":1464, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414565461, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414565515, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414565520, "dur":1505, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414567063, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414567121, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414567127, "dur":959, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414568123, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414568178, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414568184, "dur":1524, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414569748, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414569800, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414569805, "dur":884, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414570727, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414570781, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414570803, "dur":991, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414571829, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414571885, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414571891, "dur":1066, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414572993, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414573051, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414573056, "dur":958, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414574058, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414574111, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414574117, "dur":1306, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414575458, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414575512, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414575517, "dur":1485, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414577042, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414577107, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414577134, "dur":1281, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414578456, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414578518, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414578524, "dur":1005, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414579571, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414579634, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414579640, "dur":1149, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414580840, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414580929, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414580934, "dur":852, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414581820, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414581878, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414581886, "dur":1197, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414583138, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414583213, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414583219, "dur":961, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414584218, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414584278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414584284, "dur":873, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414585197, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414585256, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414585261, "dur":3385, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414588681, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414588771, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414588777, "dur":1017, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414589831, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414589892, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414589898, "dur":891, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414590824, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414590880, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414590902, "dur":962, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414591902, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414591968, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414591974, "dur":846, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414592856, "dur":1361, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414594221, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414594227, "dur":871, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414595135, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414595210, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414595216, "dur":955, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414596209, "dur":756, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414596969, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414596975, "dur":794, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414597807, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414597861, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414597866, "dur":1214, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414599122, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414599164, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414599170, "dur":2840, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414602047, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414602105, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414602111, "dur":1700, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414603851, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414603942, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414603949, "dur":1117, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414605109, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414605167, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414605173, "dur":853, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414606067, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414606129, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414606134, "dur":1107, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414607282, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414607341, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414607346, "dur":1984, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414609366, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414609420, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414609443, "dur":3570, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414613048, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414613105, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414613111, "dur":1072, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414614224, "dur":317, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Scripts.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414614545, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414614551, "dur":640, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Scripts.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414615232, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414615303, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414615308, "dur":1175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414616517, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414616568, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414616573, "dur":1910, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":1, "ts":1694496414618519, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1694496414618557, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414618616, "dur":1270, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1694496414619927, "dur":141, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1694496414620071, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414620091, "dur":611, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1694496414620740, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1694496414620780, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414620785, "dur":594, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1694496414621414, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":1, "ts":1694496414621454, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1694496414621458, "dur":664, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":1, "ts":1694496414622164, "dur":455, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414525784, "dur":237, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414526021, "dur":6722, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414532744, "dur":1695, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1694496414534440, "dur":813, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414535255, "dur":595, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1694496414535850, "dur":558, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414536410, "dur":577, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1694496414536988, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414537053, "dur":519, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1694496414537572, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414537633, "dur":681, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414538315, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414538436, "dur":715, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414539151, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414539214, "dur":620, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1694496414539835, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414539896, "dur":699, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414540595, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414540666, "dur":610, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414541276, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414541334, "dur":536, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414541871, "dur":89, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414541961, "dur":613, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414542574, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414542642, "dur":468, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414543110, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414543177, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183.exe" }}
+,{ "pid":12345, "tid":2, "ts":1694496414543224, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414543229, "dur":1125, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183.exe" }}
+,{ "pid":12345, "tid":2, "ts":1694496414544396, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414544469, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414544951, "dur":1017, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414546004, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414546062, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414546115, "dur":902, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414547054, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414547110, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414547116, "dur":1595, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414548752, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414548813, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414548819, "dur":1151, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414550007, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414550074, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414550080, "dur":1250, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414551365, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414551433, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414551439, "dur":1065, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414552542, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414552607, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414552613, "dur":912, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414553560, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414553621, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414553627, "dur":839, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414554507, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414554569, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414554575, "dur":866, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414555483, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414555567, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414555573, "dur":885, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414556499, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414556561, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414556567, "dur":1455, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414558059, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414558112, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414558118, "dur":2596, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414560756, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414560815, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414560821, "dur":2691, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414563558, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414563619, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414563625, "dur":1296, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414564961, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414565019, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414565025, "dur":1207, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414566269, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414566338, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414566344, "dur":1073, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414567456, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414567531, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414567537, "dur":1188, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414568761, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414568813, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414568819, "dur":1483, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414570337, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414570393, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414570398, "dur":914, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414571347, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414571403, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414571408, "dur":919, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414572364, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414572420, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414572425, "dur":1200, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414573663, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414573726, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414573731, "dur":1118, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414574887, "dur":80, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414574969, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414574976, "dur":967, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414575983, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414576042, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414576047, "dur":971, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414577060, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414577132, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414577138, "dur":1289, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414578470, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414578534, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414578539, "dur":968, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414579547, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414579610, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414579615, "dur":1567, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414581223, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414581281, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414581287, "dur":985, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414582312, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414582438, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414582443, "dur":1025, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414583507, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414583567, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414583573, "dur":1198, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414584806, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414584896, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414584905, "dur":873, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414585814, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414585870, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414585875, "dur":1042, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414586953, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414587009, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414587015, "dur":843, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414587894, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414587948, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414587954, "dur":1075, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414589067, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414589130, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414589135, "dur":906, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414590084, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414590146, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414590151, "dur":1298, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414591484, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414591558, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414591576, "dur":1038, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414592655, "dur":980, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414593649, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414593656, "dur":716, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414594414, "dur":1835, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414596252, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414596259, "dur":1012, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414597309, "dur":1521, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414598834, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414598840, "dur":874, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414599751, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414599807, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414599830, "dur":1023, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414600890, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414600944, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414600949, "dur":1341, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414602330, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414602388, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414602393, "dur":2282, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414604713, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414604778, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414604783, "dur":1143, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414605967, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414606027, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414606034, "dur":1289, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414607367, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414607411, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414607417, "dur":2506, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414609959, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414610013, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414610019, "dur":949, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414611002, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414611055, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414611060, "dur":2762, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414613859, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414613921, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414613927, "dur":1540, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414615507, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414615547, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414615553, "dur":3788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":2, "ts":1694496414619376, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":2, "ts":1694496414619416, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414619421, "dur":653, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":2, "ts":1694496414620113, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1694496414620254, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414620259, "dur":691, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1694496414620990, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1694496414621032, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414621037, "dur":800, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1694496414621873, "dur":131, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414622006, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1694496414622011, "dur":553, "ph":"X", "name": "CopyFiles",  "args": { "detail":"c:/github/workspace/build/StandaloneWindows64/Basil and the Isles of Spice r183_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1694496414622598, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":2, "ts":1694496414622600, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1694496414629637, "dur":1668, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1694496414666533, "dur": 623, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1694496414666084, "dur": 1106, "ph": "X", "name": "Write chrome-trace events", "args": {} },
