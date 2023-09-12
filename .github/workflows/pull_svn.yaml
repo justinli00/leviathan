@@ -26,21 +26,22 @@ jobs:
       run: |
         If ( !(Test-Path -Path svn-repo ) )
         {
-          Write-Host ">> svn-repo not found. Checking out new copy."
+          Write-Host ">> svn-repo was not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
           "CHECK_UPDATE=false"  | Out-File -FilePath $env:GITHUB_ENV
           "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV
         } 
         Else {
+          Write-Host ">> svn-repo was found. Finding head"
           cd svn-repo
           "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
-          "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
+          "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         }
       shell: pwsh
     
     - name: update-if-needed
-      if: ${{ env.CHECK_UPDATE == 'true' }} 
+      if: ${{ env.UPDATED == 'false' }} 
       run: |
         cd svn-repo
         echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
