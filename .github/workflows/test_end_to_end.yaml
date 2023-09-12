@@ -20,10 +20,10 @@ jobs:
       #TODO - replace with actual test runner
       - name: run-tests
         run: |
-          "End to end tests run successfully!" | Out-File test-log.txt
-          "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
+          "End to end tests run successfully!" | Out-File -FilePath test-log.txt
+          "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd svn-repo
-          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         env:
           SVN_USERNAME: ${{ secrets.svn_username }}
@@ -39,4 +39,5 @@ jobs:
           git add .
           git commit -m "Automated test results for Revision ${{ env.SVN_HEAD_REVISION }}"
           git push
+        shell: bash 
 
