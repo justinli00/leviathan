@@ -36,7 +36,7 @@ jobs:
           "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
           "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
           cd ..
-        fi
+        }
       shell: pwsh
     
     - name: update-if-needed
@@ -73,7 +73,7 @@ jobs:
     #push changes to github
     - name: push-changes
       if: ${{ env.UPDATED == 'true' }}
-      run: echo >> "committing :D"
+      run: echo ">>committing :D"
       #run: |
       #  git config user.name '$(git log -n 1 --pretty=format:%an)'
       #  git config user.email '$(git log -n 1 --pretty=format:%ae)'
