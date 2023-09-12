@@ -32,8 +32,8 @@ jobs:
           echo "UPDATED=true" >> $GITHUB_ENV
         else:
           cd svn-repo
-          echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
-          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
+          echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)" >> $env:GITHUB_ENV
+          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" >> $env:GITHUB_ENV
           cd ..
         fi
       shell: bash
@@ -47,7 +47,7 @@ jobs:
         if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
         then
           echo ">> Update is not necessary."
-          echo "UPDATED=false" >> $GITHUB_ENV
+          echo "UPDATED=false" >> $env:GITHUB_ENV
           exit
         else
           echo ">> Update is necessary."
@@ -60,10 +60,10 @@ jobs:
           fi 
           cd ..
 
-          svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
-          svn resolve --accept theirs-full --username $SVN_USERNAME --password $SVN_PASSWORD 
-          echo "UPDATED=true" >> $GITHUB_ENV
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          echo "UPDATED=true" >> $env:GITHUB_ENV
           cd ..
         fi
         echo ">> git repo's copy of svn files is now up-to-date."
@@ -76,6 +76,6 @@ jobs:
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
-        git commit -m 'Updating svn to r.$HEAD_REVISION'
+        git commit -m 'Updating svn to r.$env:SVN_HEAD_REVISION'
         git push
       shell: bash
