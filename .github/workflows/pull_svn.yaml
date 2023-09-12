@@ -24,7 +24,7 @@ jobs:
     #check out or update svn
     - name: check-if-checkout-needed
       run: |
-        If ( ! -d svn-repo )
+        If ( !(Test-Path -Path svn-repo ) )
         {
           Write-Host ">> svn-repo not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
