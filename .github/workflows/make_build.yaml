@@ -38,7 +38,8 @@ jobs:
       #...hooks?
 
     - name: make-build
-      uses: game-ci/unity-builder@v2
+      run: "$env:BUILD_NAME | Out-File -FilePath 'test file'"
+      #uses: game-ci/unity-builder@v2
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
@@ -52,6 +53,7 @@ jobs:
     #push changes to github
     - name: push-build
       run: |
+        git pull
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
