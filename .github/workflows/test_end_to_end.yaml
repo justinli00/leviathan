@@ -16,10 +16,11 @@ jobs:
       - name: checkout-git
         uses: actions/checkout@v3
       
+      #TODO - replace with actual test runner
       - name: run-tests
         run: |
-          echo 'End to end tests run successfully!' > test_log.txt
-          echo "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
+          "End to end tests run successfully!" | Out-File test-log.txt
+          "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV
           cd svn-repo
           echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
           cd ..

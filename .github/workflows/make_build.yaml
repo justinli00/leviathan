@@ -26,18 +26,12 @@ jobs:
     - name: make_build_name
       run: |
         cd svn-repo
-        echo "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+        "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
       env:
         SVN_USERNAME: ${{ secrets.svn_username }}
         SVN_PASSWORD: ${{ secrets.svn_password }}
-
-    - name: check-scenes
-      run: |
-        cd svn-repo/projectsettings
-        cat editorbuildsettings.asset
-        cd ..
-        cd ..
+      shell: pwsh
 
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
     #how can we version the library while keeping it unversioned in svn?
@@ -55,15 +49,7 @@ jobs:
         projectPath: svn-repo
         allowDirtyBuild: true        
 
-    # #TODO -- need to clean the repo somehow so that the entire repo doesn't get uploaded as an artifact...?
-    # #if that even happens lol
-    # - name: upload-build
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: ${{ env.BUILD_NAME }}
-    #     path: build/${{ env.TARGET_PLATFORM }}
-        
-  #push changes to github
+    #push changes to github
     - name: push-build
       run: |
         git config user.name '$(git log -n 1 --pretty=format:%an)'
@@ -71,4 +57,3 @@ jobs:
         git add .
         git commit -m 'Automated Build | $env:BUILD_NAME'
         git push
-      shell: bash
