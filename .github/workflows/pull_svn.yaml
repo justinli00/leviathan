@@ -25,12 +25,13 @@ jobs:
       run: |
         If ( !(Test-Path -Path svn-repo ) )
         {
+          $relativePath = svn-repo | Resolve-Path -Relative
           Write-Host ">> svn-repo was not found. Checking out new copy."
-          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
+          svn checkout --username $SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL $relativePath
           "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV -Append
         } 
         Else {
-          Write-Host ">> svn-repo was found. Finding head"
+          Write-Host ">> svn-repo was found. Finding head, working revisions."
           cd svn-repo
           "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
           "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -42,8 +43,8 @@ jobs:
       if: ${{ env.UPDATED == 'false' }} 
       run: |
         cd svn-repo
-        Write-Host ">> Working revision is ${{ env.SVN_WORKING_REVISION }}"
-        Write-Host ">> Head revision is ${{ env.SVN_HEAD_REVISION}}"
+        Write-Host ">> Working revision is ${{ env.SVN_WORKING_REVISION }}."
+        Write-Host ">> Head revision is ${{ env.SVN_HEAD_REVISION}}."
         If ( ${{ env.SVN_WORKING_REVISION }} -eq ${{ env.SVN_HEAD_REVISION }} )
         {
           Write-Host ">> Update is not necessary."
@@ -53,7 +54,7 @@ jobs:
         Else
         {
           Write-Host ">> Update is necessary."
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -65,10 +66,10 @@ jobs:
     #push changes to github
     - name: push-changes
       if: ${{ env.UPDATED == 'true' }}
-      run: Write-Host ">>committing :D"
-      #run: |
-      #  git config user.name '$(git log -n 1 --pretty=format:%an)'
-      #  git config user.email '$(git log -n 1 --pretty=format:%ae)'
-      #  git add .
-      #  git commit -m 'Updating svn to r.$env:SVN_HEAD_REVISION'
-      #  git push
+      run: |
+        git config user.name '$(git log -n 1 --pretty=format:%an)'
+        git config user.email '$(git log -n 1 --pretty=format:%ae)'
+        git add .
+        git commit -m 'Updating svn to r.$env:SVN_HEAD_REVISION'
+        git push
+      shell: pwsh
