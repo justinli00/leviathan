@@ -58,5 +58,5 @@ jobs:
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
-        git commit -m 'Automated Build | $env:BUILD_NAME'
+        git commit -m 'Automated Build | ${{ env.BUILD_NAME }}'
         git push
