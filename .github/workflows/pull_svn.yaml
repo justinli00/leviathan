@@ -16,7 +16,7 @@ jobs:
       SVN_URL: ${{ secrets.svn_url }}
       CHECK_UPDATE: true
       UPDATED: true
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
     - name: checkout-git
       uses: actions/checkout@v3
@@ -28,9 +28,9 @@ jobs:
         if [ ! -d svn-repo ];
         then
           echo ">> svn-repo not found. Checking out new copy."
-          svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
-          echo "CHECK_UPDATE=false" >> $GITHUB_ENV
-          echo "UPDATED=true" >> $GITHUB_ENV
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+          echo "CHECK_UPDATE=false" | Out-File -FilePath $env:GITHUB_ENV
+          echo "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV
         fi
       shell: bash
     
@@ -39,9 +39,8 @@ jobs:
       if: ${{ env.CHECK_UPDATE == 'true' }}
       run: |
         cd svn-repo
-        echo "SVN_WORKING_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --show-item revision)" >> $GITHUB_ENV
-        echo "SVN_HEAD_REVISION=$(svn info --username $SVN_USERNAME --password $SVN_PASSWORD --revision HEAD --show-item revision)" >> $GITHUB_ENV
-        cd ..
+        echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+        echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
       shell: bash
 
     - name: update-if-needed
@@ -53,7 +52,7 @@ jobs:
         if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
         then
           echo ">> Update is not necessary."
-          echo "UPDATED=false" >> $GITHUB_ENV
+          echo "UPDATED=false" | Out-File -FilePath $env:GITHUB_ENV
           exit
         else
           echo ">> Update is necessary."
@@ -66,10 +65,10 @@ jobs:
           fi 
           cd ..
 
-          svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
-          svn resolve --accept theirs-full --username $SVN_USERNAME --password $SVN_PASSWORD 
-          echo "UPDATED=true" >> $GITHUB_ENV
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          echo "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV
           cd ..
         fi
         echo ">> git repo's copy of svn files is now up-to-date."

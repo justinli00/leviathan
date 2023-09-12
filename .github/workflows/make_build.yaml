@@ -6,6 +6,8 @@ on:
     - cron: '59 23 * * 1' #runs at 11:59 on Monday
   repository_dispatch:
     types: build
+permissions:
+  contents: write
 
 jobs:
   pull-svn:
