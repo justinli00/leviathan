@@ -16,7 +16,7 @@ jobs:
       SVN_URL: ${{ secrets.svn_url }}
       CHECK_UPDATE: true
       UPDATED: true
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
     - name: checkout-git
       uses: actions/checkout@v3
@@ -47,8 +47,8 @@ jobs:
       if: ${{ env.CHECK_UPDATE == 'true' }} 
       run: |
         cd svn-repo
-        echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
-        echo "Head revision is ${{ env.SVN_HEAD_REVISION}}"
+        echo ">> Working revision is ${{ env.SVN_WORKING_REVISION }}"
+        echo ">> Head revision is ${{ env.SVN_HEAD_REVISION}}"
         if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
         then
           echo ">> Update is not necessary."
