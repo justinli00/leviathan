@@ -53,15 +53,6 @@ jobs:
         Else
         {
           Write-Host ">> Update is necessary."
-          
-          #make tmp folder
-          cd .svn
-          if [ ! -d svn-repo ];
-          then 
-            mkdir tmp
-          fi 
-          cd ..
-
           svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
