@@ -28,12 +28,12 @@ jobs:
         then
           echo ">> svn-repo not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
-          echo "CHECK_UPDATE=false" >> $GITHUB_ENV
-          echo "UPDATED=true" >> $GITHUB_ENV
+          echo "CHECK_UPDATE=false"  | Out-File -FilePath $env:GITHUB_ENV
+          echo "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV
         else:
           cd svn-repo
-          echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)" >> $env:GITHUB_ENV
-          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" >> $env:GITHUB_ENV
+          echo "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
+          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
           cd ..
         fi
       shell: bash
