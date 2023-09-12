@@ -23,14 +23,14 @@ jobs:
 
     #check to see if this still works
     - name: run-tests
-          run: |
-            echo "This syntax should work"
-            cd svn-repo
-            echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
-            cd ..
-          env:
-            SVN_USERNAME: ${{ secrets.svn_username }}
-            SVN_PASSWORD: ${{ secrets.svn_password }}
+      run: |
+        echo "This syntax should work"
+        cd svn-repo
+        echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV
+        cd ..
+      env:
+        SVN_USERNAME: ${{ secrets.svn_username }}
+        SVN_PASSWORD: ${{ secrets.svn_password }}
 
 
     #check out or update svn
