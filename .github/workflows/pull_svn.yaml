@@ -65,7 +65,7 @@ jobs:
             mkdir tmp
           fi 
           cd ..
-          
+
           svn update --username $SVN_USERNAME --password $SVN_PASSWORD 
           echo ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $SVN_USERNAME --password $SVN_PASSWORD 
@@ -79,8 +79,6 @@ jobs:
     - name: push-changes
       if: ${{ env.UPDATED == 'true' }}
       run: |
-        echo ${{ env.UPDATED }}
-        echo $UPDATED
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .

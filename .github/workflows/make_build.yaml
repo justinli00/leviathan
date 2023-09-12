@@ -63,13 +63,10 @@ jobs:
         
   #push changes to github
     - name: push-build
-      if: ${{ env.UPDATED == 'true' }}
       run: |
-        echo ${{ env.UPDATED }}
-        echo $UPDATED
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
-        git commit -m 'Updating svn to r.$HEAD_REVISION'
+        git commit -m 'Automated Build | $env:BUILD_NAME'
         git push
       shell: bash
