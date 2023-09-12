@@ -11,6 +11,7 @@ jobs:
     uses: ./.github/workflows/pull_svn.yaml
     secrets: inherit
   run_tests:
+    needs: pull-svn
     runs-on:  windows-latest
     steps:
       - name: checkout-git
