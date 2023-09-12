@@ -53,11 +53,23 @@ jobs:
         projectPath: svn-repo
         allowDirtyBuild: true        
 
-    #TODO -- need to clean the repo somehow so that the entire repo doesn't get uploaded as an artifact...?
-    #if that even happens lol
-    - name: upload-build
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.BUILD_NAME }}
-        path: build/${{ env.TARGET_PLATFORM }}
+    # #TODO -- need to clean the repo somehow so that the entire repo doesn't get uploaded as an artifact...?
+    # #if that even happens lol
+    # - name: upload-build
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: ${{ env.BUILD_NAME }}
+    #     path: build/${{ env.TARGET_PLATFORM }}
         
+  #push changes to github
+    - name: push-build
+      if: ${{ env.UPDATED == 'true' }}
+      run: |
+        echo ${{ env.UPDATED }}
+        echo $UPDATED
+        git config user.name '$(git log -n 1 --pretty=format:%an)'
+        git config user.email '$(git log -n 1 --pretty=format:%ae)'
+        git add .
+        git commit -m 'Updating svn to r.$HEAD_REVISION'
+        git push
+      shell: bash
