@@ -14,8 +14,7 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
       SVN_URL: ${{ secrets.svn_url }}
-      CHECK_UPDATE: true
-      UPDATED: true
+      UPDATED: false
     runs-on: windows-2019
     steps:
     - name: checkout-git
@@ -28,13 +27,12 @@ jobs:
         {
           Write-Host ">> svn-repo was not found. Checking out new copy."
           svn checkout --username $SVN_USERNAME --password $SVN_PASSWORD $SVN_URL svn-repo
-          "CHECK_UPDATE=false"  | Out-File -FilePath $env:GITHUB_ENV
-          "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV
+          "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV -Append
         } 
         Else {
           Write-Host ">> svn-repo was found. Finding head"
           cd svn-repo
-          "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV
+          "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
           "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         }
@@ -44,15 +42,17 @@ jobs:
       if: ${{ env.UPDATED == 'false' }} 
       run: |
         cd svn-repo
-        echo "Working revision is ${{ env.SVN_WORKING_REVISION }}"
-        echo "Head revision is ${{ env.SVN_HEAD_REVISION}}"
-        if [ ${{ env.SVN_WORKING_REVISION }} == ${{ env.SVN_HEAD_REVISION }} ];
-        then
-          echo ">> Update is not necessary."
-          echo "UPDATED=false" >> $env:GITHUB_ENV
+        Write-Host ">> Working revision is ${{ env.SVN_WORKING_REVISION }}"
+        Write-Host ">> Head revision is ${{ env.SVN_HEAD_REVISION}}"
+        If ( ${{ env.SVN_WORKING_REVISION }} -eq ${{ env.SVN_HEAD_REVISION }} )
+        {
+          Write-Host ">> Update is not necessary."
+          "UPDATED=false" | Out-File -FilePath $env:GITHUB_ENV -Append
           exit
-        else
-          echo ">> Update is necessary."
+        }
+        Else
+        {
+          Write-Host ">> Update is necessary."
           
           #make tmp folder
           cd .svn
@@ -63,22 +63,21 @@ jobs:
           cd ..
 
           svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
-          echo ">> Update successful. Resolving any conflicts."
+          Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
-          echo "UPDATED=true" >> $env:GITHUB_ENV
+          "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
-        fi
-        echo ">> git repo's copy of svn files is now up-to-date."
-      shell: bash
+        }
+        Write-Host ">> git repo's copy of svn files is now up-to-date."
+      shell: pwsh
       
     #push changes to github
     - name: push-changes
       if: ${{ env.UPDATED == 'true' }}
-      run: echo ">>committing :D"
+      run: Write-Host ">>committing :D"
       #run: |
       #  git config user.name '$(git log -n 1 --pretty=format:%an)'
       #  git config user.email '$(git log -n 1 --pretty=format:%ae)'
       #  git add .
       #  git commit -m 'Updating svn to r.$env:SVN_HEAD_REVISION'
       #  git push
-      shell: bash
