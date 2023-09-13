@@ -28,7 +28,7 @@ jobs:
           #New-Item -Path .\svn-repo -Item-Type Directory
           #$relativePath = "svn-repo" | Resolve-Path -Relative
           Write-Host ">> svn-repo was not found. Checking out new copy."
-          svn checkout --username $SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL $relativePath
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL
           "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV -Append
         } 
         Else {
