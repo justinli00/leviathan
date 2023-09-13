@@ -25,8 +25,7 @@ jobs:
       run: |
         If ( !(Test-Path -Path svn-repo ) )
         { 
-          New-Item -Path .\svn-repo -Item-Type Directory
-          #$relativePath = "svn-repo" | Resolve-Path -Relative
+          New-Item -Path ".\svn-repo" -Item-Type "Directory"    
           dir
           Write-Host ">> svn-repo was not found. Checking out new copy."
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
