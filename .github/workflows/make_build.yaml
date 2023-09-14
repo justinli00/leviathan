@@ -26,6 +26,7 @@ jobs:
     
     - name: checkout-svn
       run: |
+        Make-Directory -Path ".\svn-repo" -ItemType "Directory"
         svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
         cd svn-repo
         "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
