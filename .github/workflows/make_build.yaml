@@ -39,25 +39,28 @@ jobs:
 
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
     #how can we version the library while keeping it unversioned in svn?
-    #so now yeah caching is a thing again
+    #so now yeah caching is a thing again, since we're no longer storing the entire repo
 
-    - name: make-build
-      #run: '"${{ env.BUILD_NAME }}" | Out-File -FilePath "test file"'
-      uses: game-ci/unity-builder@v2
-      env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    #- name: make-build
+    #  #run: '"${{ env.BUILD_NAME }}" | Out-File -FilePath "test file"'
+    #  uses: game-ci/unity-builder@v2
+    #  env:
+    #    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    #    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    #    UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    #  with:
+    #    targetPlatform: ${{ env.TARGET_PLATFORM }}
+    #    unityVersion: 2021.3.1f1 
+    #    projectPath: svn-repo
+    #    allowDirtyBuild: true       
+
+    #delete the svn files
+    - name: delete-svn-repo
+      uses: JesseTG/rm@v1.0.3
       with:
-        targetPlatform: ${{ env.TARGET_PLATFORM }}
-        unityVersion: 2021.3.1f1 
-        projectPath: svn-repo
-        allowDirtyBuild: true       
-
-    #delete all unused files 
-    - name: clean-up
-      run: Remove-Item '.\svn-repo' -Recurse 
-      shell: pwsh
+        path: svn-repo
+    
+    - run: dir
 
     #push changes to github
     - name: push-build
