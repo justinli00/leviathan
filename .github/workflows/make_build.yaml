@@ -10,13 +10,13 @@ permissions:
   contents: write
 
 jobs:
-  pull-svn:
-    uses: ./.github/workflows/pull_svn.yaml
-    secrets: inherit
-    permissions: 
-      contents: write
+  #pull-svn:
+  #  uses: ./.github/workflows/pull_svn.yaml
+  #  secrets: inherit
+  #  permissions: 
+  #    contents: write
   build:
-    needs: pull-svn        #fails on thing   
+    #needs: pull-svn        #fails on thing   
     runs-on: windows-2019 
     env:
       BUILD_NAME: Basil and the Isles of Spice
@@ -24,8 +24,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: make_build_name
+    - name: checkout-svn
       run: |
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
         cd svn-repo
         "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
@@ -36,7 +37,7 @@ jobs:
 
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
     #how can we version the library while keeping it unversioned in svn?
-      #...hooks?
+    #so now yeah caching is a thing again
 
     - name: make-build
       #run: '"${{ env.BUILD_NAME }}" | Out-File -FilePath "test file"'
@@ -49,12 +50,16 @@ jobs:
         targetPlatform: ${{ env.TARGET_PLATFORM }}
         unityVersion: 2021.3.1f1 
         projectPath: svn-repo
-        allowDirtyBuild: true        
+        allowDirtyBuild: true       
+
+    #delete all unused files 
+    - name: clean-up
+      run: Remove-Item '.\svn-repo' -Recurse 
+      shell: pwsh
 
     #push changes to github
     - name: push-build
       run: |
-        git pull
         git config user.name '$(git log -n 1 --pretty=format:%an)'
         git config user.email '$(git log -n 1 --pretty=format:%ae)'
         git add .
