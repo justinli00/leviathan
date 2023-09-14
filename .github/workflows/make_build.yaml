@@ -23,6 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    #check out the project from the svn
     - name: checkout-svn
       run: |
         New-Item -Path ".\svn-repo" -ItemType "Directory"
@@ -35,6 +36,19 @@ jobs:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_URL: ${{ secrets.SVN_URL }}
       shell: pwsh
+
+    #remove the .svn folder
+    - name: remove-.svn
+      uses: JesseTG/rm@v1.0.3
+      with:
+        path: /svn-repo/.svn
+    
+    - name: dir-check-1
+      run: |
+        dir 
+        cd svn-repo
+        dir
+        cd ..
 
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
     #how can we version the library while keeping it unversioned in svn?
@@ -52,6 +66,14 @@ jobs:
         unityVersion: 2021.3.1f1 
         projectPath: svn-repo
         allowDirtyBuild: true       
+
+    - name: dir-check-2
+      run: |
+        dir 
+        cd build
+        dir
+        cd ${{env.TARGET_PLATFORM}}
+        dir
 
     - name: upload-artifact
       uses: actions/upload-artifact@v3
