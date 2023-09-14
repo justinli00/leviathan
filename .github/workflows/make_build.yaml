@@ -32,8 +32,9 @@ jobs:
         "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
       env:
-        SVN_USERNAME: ${{ secrets.svn_username }}
-        SVN_PASSWORD: ${{ secrets.svn_password }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_URL: ${{ secrets.SVN_URL }}
       shell: pwsh
 
     #TODO -- caching --> https://game.ci/docs/github/builder/#caching
