@@ -1,5 +1,6 @@
 #updates git repo's versions of svn repo files
 name: Pull SVN
+run-name: ((DEPRECATED -- FAILS INSTANTLY)) Run end to end tests
 
 on:
   repository_dispatch:
@@ -9,7 +10,18 @@ permissions:
   contents: write
 
 jobs:
+  #TODO -- maybe we'll end up using this again, but for now: DO NOT USE THIS
+  #if we do, delete use-guard and the needs: use-guard line from pull-svn-files
+  use-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DO NOT USE THIS -- DEPRECATED WORKFLOW!
+        run: |
+          echo "Do not run this workflow unless there's a good reason to version the svn files"
+          exit 1
+        
   pull-svn-files:
+    needs: use-guard 
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
