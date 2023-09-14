@@ -58,13 +58,19 @@ jobs:
       uses: JesseTG/rm@v1.0.3
       with:
         path: svn-repo
-    - run: dir
+
+    - run: |
+        dir
+        cd build
+        dir
+        cd StandaloneWindows64
+        dir
 
     #push changes to github
     - name: push-build
       run: |
-        git config user.name '$(git log -n 1 --pretty=format:%an)'
-        git config user.email '$(git log -n 1 --pretty=format:%ae)'
-        git add .
+        git config user.name 'Automated Build'
+        git config user.email ${{ secrets.UNITY_EMAIL }}
+        git add build
         git commit -m 'Automated Build | ${{ env.BUILD_NAME }}'
         git push
