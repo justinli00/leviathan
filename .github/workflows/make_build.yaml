@@ -53,24 +53,17 @@ jobs:
         projectPath: svn-repo
         allowDirtyBuild: true       
 
-    #delete the svn files
-    - name: delete-svn-repo
-      uses: JesseTG/rm@v1.0.3
+    - name: upload-artifact
+      uses: actions/upload-artifact@v3
       with:
-        path: svn-repo
-
-    - run: |
-        dir
-        cd build
-        dir
-        cd StandaloneWindows64
-        dir
+        name: ${{ env.BUILD_NAME }}
+        path: build/${{ env.TARGET_PLATFORM }}
 
     #push changes to github
-    - name: push-build
-      run: |
-        git config user.name 'Automated Build'
-        git config user.email ${{ secrets.UNITY_EMAIL }}
-        git add build
-        git commit -m 'Automated Build | ${{ env.BUILD_NAME }}'
-        git push
+    #- name: push-build
+    #  run: |
+    #    git config user.name 'Automated Build'
+    #    git config user.email ${{ secrets.UNITY_EMAIL }}
+    #    git add build
+    #    git commit -m 'Automated Build | ${{ env.BUILD_NAME }}'
+    #    git push
