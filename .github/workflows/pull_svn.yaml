@@ -1,6 +1,6 @@
 #updates git repo's versions of svn repo files
 name: Pull SVN
-run-name: ((DEPRECATED -- FAILS INSTANTLY)) Run end to end tests
+run-name: Pull from SVN 
 
 on:
   repository_dispatch:
@@ -12,25 +12,32 @@ permissions:
 jobs:
   #TODO -- maybe we'll end up using this again, but for now: DO NOT USE THIS
   #if we do, delete use-guard and the needs: use-guard line from pull-svn-files
-  use-guard:
-    runs-on: ubuntu-latest
-    steps:
-      - name: DO NOT USE THIS -- DEPRECATED WORKFLOW!
-        run: |
-          echo "Do not run this workflow unless there's a good reason to version the svn files"
-          exit 1
-        
+  #use-guard:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: DO NOT USE THIS -- DEPRECATED WORKFLOW!
+  #      run: |
+  #        echo "Do not run this workflow unless there's a good reason to version the svn files"
+  #        exit 1
+  
+  #TODO -- if using larger runners, hten 
   pull-svn-files:
-    needs: use-guard 
+    #needs: use-guard 
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
       SVN_URL: ${{ secrets.svn_url }}
       UPDATED: false
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     steps:
     - name: checkout-git
       uses: actions/checkout@v3
+
+    #do we need to do this every time?
+    - name: set-config
+      run: |
+        git config http.postBuffer 500000000
+        git config http.lowSpeedTime 600
 
     #check out or update svn
     - name: check-if-checkout-needed
