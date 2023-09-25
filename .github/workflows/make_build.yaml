@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   build:
-    needs: pull-svn
     runs-on: self-hosted
     env:
       BUILD_NAME: Basil and the Isles of Spice
