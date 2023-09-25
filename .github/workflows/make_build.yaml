@@ -37,6 +37,10 @@ jobs:
           cd ..
         }
         Write-Host ">> git repo's copy of svn files is now up-to-date."
+      env:
+        SVN_USERNAME: ${{ secrets.svn_username }}
+        SVN_PASSWORD: ${{ secrets.svn_password }}
+        SVN_URL: ${{ secrets.svn_url }}
 
     - name: make-build
       uses: game-ci/unity-builder@v2
