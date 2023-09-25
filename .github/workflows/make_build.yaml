@@ -58,7 +58,6 @@ jobs:
       run: |
         Write-Host ">> Building project."
         dir 
-        #"${{ secrets.unity_path }}" -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
         Start-Process -FilePath $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$env:BUILD_PATH","-buildTarget","Windows"
         Write-Host ">> Build complete."
 
