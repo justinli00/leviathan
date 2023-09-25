@@ -24,14 +24,14 @@ jobs:
         dir
         If ( !(Test-Path -Path svn-repo ) )
         { 
-          New-Item -Path ".\svn-repo" -ItemType "Directory"    
           Write-Host ">> svn-repo was not found. Checking out new copy."
+          New-Item -Path ".\svn-repo" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo --quiet
         } 
         Else {
           Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
           cd svn-repo
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location 
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           cd ..
@@ -70,7 +70,10 @@ jobs:
         name: ${{ env.BUILD_NAME }}
         path: build/${{ env.TARGET_PLATFORM }}
 
-    #push changes to github
+    #checkout svn-build 
+      #upload the build
+
+    # 
     #- name: push-build
     #  run: |
     #    git config user.name 'Automated Build'
