@@ -13,13 +13,17 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      BUILD_NAME: Basil and the Isles of Spice
+      BUILD_NAME: BATIOS
       TARGET_PLATFORM: StandaloneWindows64
+      SVN_USERNAME: ${{ secrets.svn_username }}
+      SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
-    - uses: actions/checkout@v3
-    
+    #do not check out from git, since that will remove all tracked files from svn
+
     #check out or update svn
-    - name: check-if-checkout-needed
+    - name: checkout-update-svn
+      env:
+        SVN_URL: ${{ secrets.svn_url }}
       run: |
         dir
         If ( !(Test-Path -Path svn-repo ) )
@@ -36,12 +40,9 @@ jobs:
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           cd ..
         }
+        "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         Write-Host ">> git repo's copy of svn files is now up-to-date."
-      env:
-        SVN_USERNAME: ${{ secrets.svn_username }}
-        SVN_PASSWORD: ${{ secrets.svn_password }}
-        SVN_URL: ${{ secrets.svn_url }}
-
+  
     - name: make-build
       uses: game-ci/unity-builder@v2
       env:
@@ -64,20 +65,22 @@ jobs:
         cd ..
         cd ..
 
-    - name: upload-artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.BUILD_NAME }}
-        path: build/${{ env.TARGET_PLATFORM }}
+    #upload builds to svn build folder
+    - name: upload-build-to-svn
+      env: 
+        SVN_BUILD: ${{ secrets.SVN_BUILD }}
+      run: |
+        Rename-Item -Path build/$env:TARGET_PLATFORM -NewName "$env:BUILD_NAME"
 
-    #checkout svn-build 
-      #upload the build
+        Write-Host ">> Checking out svn-builds"
+        New-Item -Path ".\svn-builds" -ItemType "Directory"    
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILDS svn-builds --quiet
 
-    # 
-    #- name: push-build
-    #  run: |
-    #    git config user.name 'Automated Build'
-    #    git config user.email ${{ secrets.UNITY_EMAIL }}
-    #    git add build
-    #    git commit -m 'Automated Build | ${{ env.BUILD_NAME }}'
-    #    git push
+        Write-Host ">> Moving new build to svn-builds."
+        Move-Item -Path "build/$env:BUILD_NAME" -Destination svn-builds 
+        cd svn-builds
+        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
+        cd ..
+
+        Remove-Item svn-builds
+        Remove-Item build
