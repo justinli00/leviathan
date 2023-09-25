@@ -18,30 +18,21 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
-    #do not check out from git, since that will remove all tracked files from svn
+    - name: checkout-git
+      uses: actions/checkout@v3
 
     #check out or update svn
-    - name: checkout-update-svn
+    - name: checkout-svn
       env:
         SVN_URL: ${{ secrets.svn_url }}
       run: |
-        dir
-        If ( !(Test-Path -Path svn-repo ) )
-        { 
-          Write-Host ">> svn-repo was not found. Checking out new copy."
-          New-Item -Path ".\svn-repo" -ItemType "Directory"    
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo --quiet
-          cd svn-repo
-        } 
-        Else {
-          Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
-          cd svn-repo
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location 
-          Write-Host ">> Update successful. Resolving any conflicts."
-          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL 
-        }
+        Write-Host ">> svn-repo was not found. Checking out new copy."
+        New-Item -Path ".\svn-repo" -ItemType "Directory"    
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo --quiet
+        Write-Host ">> runner's copy of svn files is now up-to-date."
+
+        cd svn-repo
         "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-        Write-Host ">> git repo's copy of svn files is now up-to-date."
         cd ..
 
     - name: make-build
