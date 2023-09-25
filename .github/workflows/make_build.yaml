@@ -13,7 +13,6 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      BUILD_NAME: BATIOS
       TARGET_PLATFORM: StandaloneWindows64
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
@@ -26,35 +25,37 @@ jobs:
       env:
         SVN_URL: ${{ secrets.svn_url }}
       run: |
-        Write-Host ">> svn-repo was not found. Checking out new copy."
-        New-Item -Path ".\svn-repo" -ItemType "Directory"    
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo --quiet
-        Write-Host ">> runner's copy of svn files is now up-to-date."
+        If ( !(Test-Path -Path svn-repo ) )
+        { 
+          Write-Host ">> svn-repo was not found. Checking out new copy."
+          New-Item -Path ".\svn-repo" -ItemType "Directory"    
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+          cd svn-repo
+        } 
+        Else {
+          Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
+          cd svn-repo
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
+          Write-Host ">> Update successful. Resolving any conflicts."
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+        }
 
-        cd svn-repo
-        "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        Write-Host ">> runner's copy of svn files is now up-to-date."
+        "BUILD_NAME=r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
 
     - name: make-build
-      uses: game-ci/unity-builder@v2
       env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-      with:
-        targetPlatform: ${{ env.TARGET_PLATFORM }}
-        unityVersion: 2021.3.1f1 
-        projectPath: svn-repo
-        allowDirtyBuild: true       
-
-    - name: dir-check-2
+        UNITY_PATH: ${{ secrets.unity_path }}
       run: |
+        Write-Host ">> Building project."
         dir 
-        cd build
+        New-Item -Path "$env:BUILD_NAME"
+        $env:UNITY_PATH -batchmode -quit -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
+        Write-Host ">> Build complete."
+
+        cd $env:BUILD_NAME
         dir
-        cd ${{env.TARGET_PLATFORM}}
-        dir
-        cd ..
         cd ..
 
     #upload builds to svn build folder
@@ -63,16 +64,15 @@ jobs:
         SVN_BUILD: ${{ secrets.SVN_BUILD }}
       run: |
         Rename-Item -Path build/$env:TARGET_PLATFORM -NewName "$env:BUILD_NAME"
-
+        Write-Host ">> Uploading new build"
         Write-Host ">> Checking out svn-builds"
         New-Item -Path ".\svn-builds" -ItemType "Directory"    
         svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILDS svn-builds --quiet
 
         Write-Host ">> Moving new build to svn-builds."
-        Move-Item -Path "build/$env:BUILD_NAME" -Destination svn-builds 
+        Move-Item -Path "$env:BUILD_NAME" -Destination svn-builds 
         cd svn-builds
         svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
         cd ..
 
         Remove-Item svn-builds
-        Remove-Item build
