@@ -17,9 +17,7 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
-    - name: checkout-git
-      uses: actions/checkout@v3
-
+    #DO NOT USE actions/checkout! 
     #check out or update svn
     - name: checkout-svn
       env:
