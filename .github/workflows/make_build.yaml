@@ -21,6 +21,7 @@ jobs:
     #check out or update svn
     - name: check-if-checkout-needed
       run: |
+        dir
         If ( !(Test-Path -Path svn-repo ) )
         { 
           New-Item -Path ".\svn-repo" -ItemType "Directory"    
