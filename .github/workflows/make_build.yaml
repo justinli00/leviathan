@@ -52,7 +52,7 @@ jobs:
         New-Item -Path "$env:BUILD_NAME" -ItemType "Directory"
         #"${{ secrets.unity_path }}" -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
         $buildPath = Resolve-Path -Path $env:BUILD_NAME
-        Start-Process -FilePath env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$buildPath","-buildTarget","Windows"
+        Start-Process -FilePath $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$buildPath","-buildTarget","Windows"
         Write-Host ">> Build complete."
 
         cd $env:BUILD_NAME 
