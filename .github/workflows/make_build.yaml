@@ -26,7 +26,7 @@ jobs:
         { 
           New-Item -Path ".\svn-repo" -ItemType "Directory"    
           Write-Host ">> svn-repo was not found. Checking out new copy."
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo --quiet
         } 
         Else {
           Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
