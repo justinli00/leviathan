@@ -10,11 +10,6 @@ permissions:
   contents: write
 
 jobs:
-  pull-svn:
-    uses: ./.github/workflows/pull_svn.yaml
-    secrets: inherit
-    permissions: 
-      contents: write
   build:
     needs: pull-svn
     runs-on: self-hosted
@@ -24,12 +19,24 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: dir-check-1
+    #check out or update svn
+    - name: check-if-checkout-needed
       run: |
-        dir 
-        cd svn-repo
-        dir
-        cd ..
+        If ( !(Test-Path -Path svn-repo ) )
+        { 
+          New-Item -Path ".\svn-repo" -ItemType "Directory"    
+          Write-Host ">> svn-repo was not found. Checking out new copy."
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+        } 
+        Else {
+          Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
+          cd svn-repo
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
+          Write-Host ">> Update successful. Resolving any conflicts."
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          cd ..
+        }
+        Write-Host ">> git repo's copy of svn files is now up-to-date."
 
     - name: make-build
       uses: game-ci/unity-builder@v2
@@ -50,6 +57,8 @@ jobs:
         dir
         cd ${{env.TARGET_PLATFORM}}
         dir
+        cd ..
+        cd ..
 
     - name: upload-artifact
       uses: actions/upload-artifact@v3
