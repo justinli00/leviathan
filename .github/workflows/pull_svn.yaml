@@ -27,40 +27,15 @@ jobs:
         If ( !(Test-Path -Path svn-repo ) )
         { 
           New-Item -Path ".\svn-repo" -ItemType "Directory"    
-          dir
           Write-Host ">> svn-repo was not found. Checking out new copy."
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-          "UPDATED=true"  | Out-File -FilePath $env:GITHUB_ENV -Append
         } 
         Else {
-          Write-Host ">> svn-repo was found. Finding head, working revisions."
+          Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
           cd svn-repo
-          "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
-          "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
-          cd ..
-        }
-      #shell: pwsh
-    
-    - name: update-if-needed
-      if: ${{ env.UPDATED == 'false' }} 
-      run: |
-        cd svn-repo
-        Write-Host ">> Working revision is ${{ env.SVN_WORKING_REVISION }}."
-        Write-Host ">> Head revision is ${{ env.SVN_HEAD_REVISION}}."
-        If ( ${{ env.SVN_WORKING_REVISION }} -eq ${{ env.SVN_HEAD_REVISION }} )
-        {
-          Write-Host ">> Update is not necessary."
-          "UPDATED=false" | Out-File -FilePath $env:GITHUB_ENV -Append
-          exit
-        }
-        Else
-        {
-          Write-Host ">> Update is necessary."
           svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
-          "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV -Append
+          cd ..
         }
         Write-Host ">> git repo's copy of svn files is now up-to-date."
-        cd ..
-      shell: pwsh
