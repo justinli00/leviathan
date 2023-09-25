@@ -50,10 +50,11 @@ jobs:
         Write-Host ">> Building project."
         dir 
         New-Item -Path "$env:BUILD_NAME"
-        "${{ secrets.unity_path }}" -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
+        #"${{ secrets.unity_path }}" -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
+        Start-Process -FilePath env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","BuildProject","-projectPath","svn-repo","outputPath","`"$env:BUILD_NAME`"","-buildTarget","Windows"
         Write-Host ">> Build complete."
 
-        cd $env:BUILD_NAME
+        cd $env:BUILD_NAME 
         dir
         cd ..
 
