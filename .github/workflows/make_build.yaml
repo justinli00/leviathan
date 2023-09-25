@@ -40,6 +40,8 @@ jobs:
 
         Write-Host ">> runner's copy of svn files is now up-to-date."
         "BUILD_NAME=r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        New-Item -Path "$env:BUILD_NAME" -ItemType "Directory"
+        "BUILD_PATH=$(Resolve-Path -Path $env:BUILD_NAME)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
 
     #build the project from the command line; unity is installed on self-hosted runner
@@ -49,10 +51,8 @@ jobs:
       run: |
         Write-Host ">> Building project."
         dir 
-        New-Item -Path "$env:BUILD_NAME" -ItemType "Directory"
         #"${{ secrets.unity_path }}" -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
-        $buildPath = Resolve-Path -Path $env:BUILD_NAME
-        Start-Process -FilePath $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$buildPath","-buildTarget","Windows"
+        Start-Process -FilePath $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$env:BUILD_PATH","-buildTarget","Windows"
         Write-Host ">> Build complete."
 
         cd $env:BUILD_NAME 
