@@ -33,7 +33,7 @@ jobs:
         Else {
           Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
           cd svn-repo
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD Get-Location
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
         }
@@ -50,7 +50,7 @@ jobs:
         Write-Host ">> Building project."
         dir 
         New-Item -Path "$env:BUILD_NAME"
-        $env:UNITY_PATH -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
+        ${{ secrets.unity_path }} -batchMode -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath "$env:BUILD_NAME" -buildTarget Windows
         Write-Host ">> Build complete."
 
         cd $env:BUILD_NAME
