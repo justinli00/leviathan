@@ -58,7 +58,7 @@ jobs:
       run: |
         Write-Host ">> Building project."
         dir 
-        Start-Process -FilePath $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$env:BUILD_PATH","-buildTarget","Windows"
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","outputPath","$env:BUILD_PATH","-buildTarget","Windows"
         Write-Host ">> Build complete."
 
         cd $env:BUILD_NAME 
