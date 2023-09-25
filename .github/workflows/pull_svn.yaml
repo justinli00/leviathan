@@ -10,34 +10,16 @@ permissions:
   contents: write
 
 jobs:
-  #TODO -- maybe we'll end up using this again, but for now: DO NOT USE THIS
-  #if we do, delete use-guard and the needs: use-guard line from pull-svn-files
-  #use-guard:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: DO NOT USE THIS -- DEPRECATED WORKFLOW!
-  #      run: |
-  #        echo "Do not run this workflow unless there's a good reason to version the svn files"
-  #        exit 1
-  
-  #TODO -- if using larger runners, hten 
   pull-svn-files:
-    #needs: use-guard 
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
       SVN_URL: ${{ secrets.svn_url }}
       UPDATED: false
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: checkout-git
       uses: actions/checkout@v3
-
-    #do we need to do this every time?
-    - name: set-config
-      run: |
-        git config http.postBuffer 500000000
-        git config http.lowSpeedTime 600
 
     #check out or update svn
     - name: check-if-checkout-needed
@@ -78,18 +60,7 @@ jobs:
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           "UPDATED=true" | Out-File -FilePath $env:GITHUB_ENV -Append
-          cd ..
         }
         Write-Host ">> git repo's copy of svn files is now up-to-date."
-      shell: pwsh
-      
-    #push changes to github
-    - name: push-changes
-      if: ${{ env.UPDATED == 'true' }}
-      run: |
-        git config user.name '$(git log -n 1 --pretty=format:%an)'
-        git config user.email '$(git log -n 1 --pretty=format:%ae)'
-        git add .
-        git commit -m 'Updating svn to r.${{ env.SVN_HEAD_REVISION }}'
-        git push
+        cd ..
       shell: pwsh

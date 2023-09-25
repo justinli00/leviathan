@@ -10,38 +10,18 @@ permissions:
   contents: write
 
 jobs:
-  #pull-svn:
-  #  uses: ./.github/workflows/pull_svn.yaml
-  #  secrets: inherit
-  #  permissions: 
-  #    contents: write
+  pull-svn:
+    uses: ./.github/workflows/pull_svn.yaml
+    secrets: inherit
+    permissions: 
+      contents: write
   build:
-    runs-on: windows-2019 
+    runs-on: self-hosted
     env:
       BUILD_NAME: Basil and the Isles of Spice
       TARGET_PLATFORM: StandaloneWindows64
     steps:
     - uses: actions/checkout@v3
-    
-    #check out the project from the svn
-    - name: checkout-svn
-      run: |
-        New-Item -Path ".\svn-repo" -ItemType "Directory"
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-        cd svn-repo
-        "BUILD_NAME=${{ env.BUILD_NAME }} r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-        cd ..
-      env:
-        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        SVN_URL: ${{ secrets.SVN_URL }}
-      shell: pwsh
-
-    #remove the .svn folder
-    - name: remove-.svn
-      uses: JesseTG/rm@v1.0.3
-      with:
-        path: /svn-repo/.svn
     
     - name: dir-check-1
       run: |
@@ -50,12 +30,7 @@ jobs:
         dir
         cd ..
 
-    #TODO -- caching --> https://game.ci/docs/github/builder/#caching
-    #how can we version the library while keeping it unversioned in svn?
-    #so now yeah caching is a thing again, since we're no longer storing the entire repo
-
     - name: make-build
-      #run: '"${{ env.BUILD_NAME }}" | Out-File -FilePath "test file"'
       uses: game-ci/unity-builder@v2
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
