@@ -13,7 +13,6 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      TARGET_PLATFORM: StandaloneWindows64
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
 
@@ -66,7 +65,7 @@ jobs:
         Write-Host ">> Uploading new build"
         Write-Host ">> Checking out svn-builds"
         New-Item -Path ".\svn-builds" -ItemType "Directory"    
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILDS svn-builds --quiet
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
 
         Write-Host ">> Moving new build to svn-builds."
         Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
