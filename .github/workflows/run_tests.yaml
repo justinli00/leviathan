@@ -14,32 +14,51 @@ jobs:
     permissions: 
       contents: write
   run_tests:
+    needs: pull-svn
     runs-on: self-hosted
+    env:
+      SVN_USERNAME: ${{ secrets.svn_username }}
+      SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
       #DO NOT CHECK OUT GIT      
-      - name: get-head-revision
+      - name: init-test-variables
         run: |
+          cd svn-repo
+          "HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-
+          "RUN_TESTS_PATH=$(Join-Path -Path (Get-Location) -ChildPath "\svn-repo\Hooks\run_tests.exe")" | Out-File -FilePath $env:GITHUB_ENV -Append
+          cd ..
+        
       #run tests through testing pipeline
       - name: run-tests
         run: |
-          Write-Host ">> Running tests."
-          Start-Process (Join-Path -Path (Get-Location) -ChildPath "\svn-repo\Hooks\run_tests.exe") 
+          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$HEAD_REVISION"
+      
+      - name: checkout-tests
+        run: |
+          Write-Host ">> Checking out svn-tests"
+          New-Item -Path ".\svn-tests" -ItemType "Directory"    
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_TEST svn-tests --quiet
           
+          Write-Host ">> Finding the number of test logs existing for revision $env:HEAD_REVISION."
+          "TEST_LOG_NAME='results_$env:HEAD_REVISION_$(Get-ChildItem svn-tests -Recurse -File -Include results_$env:HEAD_REVISION*.xlsx | Measure-Object | %{$_.Count}).xlsx'" | Out-File -FilePath $env:GITHUB_ENV -Append
         env:
-          SVN_USERNAME: ${{ secrets.svn_username }}
-          SVN_PASSWORD: ${{ secrets.svn_password }}
+          SVN_TEST: ${{ secrets.svn_test }}
 
       #create the log and then push change to commit
-      - name: push-log
+      - name: commit-test-log
         run: |
-          cd test_logs
-          echo "${{ env.TEST_OUTPUT }}" > test_log.txt
-          git config user.name "$(git log -n 1 --pretty=format:%an)"
-          git config user.email "$(git log -n 1 --pretty=format:%ae)"
-          git add .
-          git commit -m "Automated test results for Revision ${{ env.SVN_HEAD_REVISION }}"
-          git push
-        shell: bash 
+          Write-Host ">> Moving new test log to svn-tests."
+          Rename-Item -Path ".\svn-repo\Hooks\test_artifacts\results_$env:HEAD_REVISION.xlsx" -NewName "$env:TEST_LOG_NAME"
+          Move-Item -Path ".\svn-repo\Hooks\test_artifacts\$env:TEST_LOG_NAME" -Destination ".\svn-tests"
+
+          Write-Host ">> Committing new test log to svn."
+          cd svn-tests
+          svn add $env:TEST_LOG_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated test results"
+          cd ..                  
+
+          Write-Host ">> Cleaning up."
+          Remove-Item -Path ".\svn-tests" -Recurse -Force
+          Write-Host ">> Done!."
 
