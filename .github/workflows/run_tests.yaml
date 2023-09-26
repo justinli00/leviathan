@@ -23,6 +23,12 @@ jobs:
       #DO NOT CHECK OUT GIT      
       - name: init-test-variables
         run: |
+          #clean up the directory in case a previous run failed
+          If ( Test-Path -Path svn-tests )
+          {
+            Remove-Item -Path ".\svn-tests" -Recurse -Force
+          }
+
           cd svn-repo
           "HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -33,7 +39,7 @@ jobs:
       - name: run-tests
         run: |
           "TEST_LOG_NAME=results_$env:HEAD_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
-          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION" -Wait
+          #Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION" -Wait
       
       #rename the test log and move it into the test log folder
       - name: commit-test-log

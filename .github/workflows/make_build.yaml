@@ -27,6 +27,12 @@ jobs:
     #get the head revision
     - name: get-head-revision
       run: |
+        #clean up the directory in case a previous run failed
+        If ( Test-Path -Path svn-builds )
+        {
+          Remove-Item -Path ".\svn-builds" -Recurse -Force
+        }
+
         cd svn-repo
         "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
