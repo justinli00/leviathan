@@ -68,11 +68,11 @@ jobs:
         svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
 
         Write-Host ">> Moving new build to svn-builds."
-        Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
-        Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
+        #Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
+        #Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
         cd svn-builds
-        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
+        #svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+        #svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
         cd ..
 
-        Remove-Item svn-builds
+        rm -r ".\svn-builds"
