@@ -32,7 +32,7 @@ jobs:
       #run tests through testing pipeline
       - name: run-tests
         run: |
-          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$HEAD_REVISION"
+          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION"
       
       - name: checkout-tests
         run: |

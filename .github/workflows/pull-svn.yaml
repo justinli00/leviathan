@@ -9,6 +9,8 @@ on:
 permissions:
   contents: write
 
+#TODO -- watch for failure and run cleanup 
+
 jobs:
   pull-svn-files:
     env:
