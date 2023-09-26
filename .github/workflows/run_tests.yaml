@@ -26,7 +26,7 @@ jobs:
           cd svn-repo
           "HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "RUN_TESTS_PATH=$(Join-Path -Path (Get-Location) -ChildPath "\svn-repo\Hooks\run_tests.exe")" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "RUN_TESTS_PATH=$(Join-Path -Path (Get-Location) -ChildPath "Hooks\run_tests.exe")" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         
       #run tests through testing pipeline
