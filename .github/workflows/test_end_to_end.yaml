@@ -12,9 +12,7 @@ jobs:
   run_tests:
     runs-on: self-hosted
     steps:
-      - name: checkout-git
       #DO NOT CHECK OUT GIT      
-
 
       #TODO - replace with actual test runner
       - name: run-tests
