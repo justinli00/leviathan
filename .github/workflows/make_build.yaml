@@ -76,4 +76,4 @@ jobs:
         #cd ..
 
         dir
-        Remove-Item -Path ".\svn-builds"
+        Remove-Item -Path ".\svn-builds" -Recurse -Force
