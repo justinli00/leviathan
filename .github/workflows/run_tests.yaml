@@ -32,22 +32,16 @@ jobs:
       #run tests through testing pipeline
       - name: run-tests
         run: |
-          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION"
+          "TEST_LOG_NAME=results_$env:HEAD_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION" -Wait
       
-      - name: checkout-tests
+      #rename the test log and move it into the test log folder
+      - name: commit-test-log
         run: |
           Write-Host ">> Checking out svn-tests"
           New-Item -Path ".\svn-tests" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_TEST svn-tests --quiet
           
-          Write-Host ">> Finding the number of test logs existing for revision $env:HEAD_REVISION."
-          "TEST_LOG_NAME='results_$env:HEAD_REVISION_$(Get-ChildItem svn-tests -Recurse -File -Include results_$env:HEAD_REVISION*.xlsx | Measure-Object | %{$_.Count}).xlsx'" | Out-File -FilePath $env:GITHUB_ENV -Append
-        env:
-          SVN_TEST: ${{ secrets.svn_test }}
-
-      #create the log and then push change to commit
-      - name: commit-test-log
-        run: |
           Write-Host ">> Moving new test log to svn-tests."
           Rename-Item -Path ".\svn-repo\Hooks\test_artifacts\results_$env:HEAD_REVISION.xlsx" -NewName "$env:TEST_LOG_NAME"
           Move-Item -Path ".\svn-repo\Hooks\test_artifacts\$env:TEST_LOG_NAME" -Destination ".\svn-tests"
@@ -61,4 +55,7 @@ jobs:
           Write-Host ">> Cleaning up."
           Remove-Item -Path ".\svn-tests" -Recurse -Force
           Write-Host ">> Done!."
+        env:
+          SVN_TEST: ${{ secrets.svn_test }}
+
 
