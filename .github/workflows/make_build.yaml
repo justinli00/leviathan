@@ -40,19 +40,8 @@ jobs:
         }
         Write-Host ">> runner's copy of svn files is now up-to-date."
 
-        "BUILD_NAME=r$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd .. 
-
-    #set up build variables
-    - name: setup-build
-      run: |
-        cd svn-repo
-        If ( !(Test-Path -Path $env:BUILD_NAME ) )
-        {
-          New-Item -Path "$env:BUILD_NAME" -ItemType "Directory"
-        }
-        "BUILD_PATH=$(Resolve-Path -Path $env:BUILD_NAME)" | Out-File -FilePath $env:GITHUB_ENV -Append
-        cd ..
 
     #build the project from the command line; unity is installed on self-hosted runner
     - name: make-build
@@ -61,14 +50,15 @@ jobs:
       run: |
         Write-Host ">> Building project."
         dir 
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode,-executeMethod,Builder.BuildProject,-projectPath,svn-repo,outputPath,$env:BUILD_PATH,-buildTarget,Windows"
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
         Write-Host ">> Build complete."
 
-        cd $env:BUILD_NAME 
+        dir
+        cd tempBuild
         dir
         cd ..
 
-    #upload builds to svn build folder
+    #upload builds to svn builds folder
     - name: upload-build-to-svn
       env: 
         SVN_BUILD: ${{ secrets.SVN_BUILD }}
@@ -79,8 +69,10 @@ jobs:
         svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILDS svn-builds --quiet
 
         Write-Host ">> Moving new build to svn-builds."
-        Move-Item -Path "$env:BUILD_PATH" -Destination svn-builds 
+        Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
+        Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
         cd svn-builds
+        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
         cd ..
 
