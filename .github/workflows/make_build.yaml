@@ -10,7 +10,13 @@ permissions:
   contents: write
 
 jobs:
+  pull-svn:
+    uses: ./.github/workflows/pull-svn.yaml
+    secrets: inherit
+    permissions: 
+      contents: write
   build:
+    needs: pull-svn
     runs-on: self-hosted
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
@@ -19,28 +25,28 @@ jobs:
     steps:
     #DO NOT USE actions/checkout! 
     #check out or update svn
-    - name: checkout-svn
-      env:
-        SVN_URL: ${{ secrets.svn_url }}
-      run: |
-        If ( !(Test-Path -Path svn-repo ) )
-        { 
-          Write-Host ">> svn-repo was not found. Checking out new copy."
-          New-Item -Path ".\svn-repo" -ItemType "Directory"    
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
-          cd svn-repo
-        } 
-        Else {
-          Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
-          cd svn-repo
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-          Write-Host ">> Update successful. Resolving any conflicts."
-          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
-        }
-        Write-Host ">> runner's copy of svn files is now up-to-date."
-
-        "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-        cd .. 
+    #- name: checkout-svn
+    #  env:
+    #    SVN_URL: ${{ secrets.svn_url }}
+    #  run: |
+    #    If ( !(Test-Path -Path svn-repo ) )
+    #    { 
+    #      Write-Host ">> svn-repo was not found. Checking out new copy."
+    #      New-Item -Path ".\svn-repo" -ItemType "Directory"    
+    #      svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+    #      cd svn-repo
+    #    } 
+    #    Else {
+    #      Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
+    #      cd svn-repo
+    #      svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+    #      Write-Host ">> Update successful. Resolving any conflicts."
+    #      svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+    #    }
+    #    Write-Host ">> runner's copy of svn files is now up-to-date."
+#
+    #    "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+    #    cd .. 
 
     #build the project from the command line; unity is installed on self-hosted runner
     - name: make-build
@@ -48,36 +54,36 @@ jobs:
         UNITY_PATH: ${{ secrets.unity_path }}
       run: |
         Write-Host ">> Building project."
-        dir 
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
-        Write-Host ">> Build complete."
-
-        dir
-        cd tempBuild
-        dir
-        cd ..
+      #  dir 
+      #  Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+      #  Write-Host ">> Build complete."
+#
+      #  dir
+      #  cd tempBuild
+      #  dir
+      #  cd ..
 
     #upload builds to svn builds folder
-    - name: upload-build-to-svn
-      env: 
-        SVN_BUILD: ${{ secrets.SVN_BUILD }}
-      run: |
-        Write-Host ">> Uploading new build"
-        Write-Host ">> Checking out svn-builds"
-        New-Item -Path ".\svn-builds" -ItemType "Directory"    
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
-
-        Write-Host ">> Moving new build to svn-builds."
-        Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
-        Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
-
-        Write-Host ">> Committing new build to svn."
-        cd svn-builds
-        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
-        cd ..
-
-        dir
-        Write-Host ">> Cleaning up."
-        Remove-Item -Path ".\svn-builds" -Recurse -Force
-        Write-Host ">> Done!."
+    #- name: upload-build-to-svn
+    #  env: 
+    #    SVN_BUILD: ${{ secrets.SVN_BUILD }}
+    #  run: |
+    #    Write-Host ">> Uploading new build"
+    #    Write-Host ">> Checking out svn-builds"
+    #    New-Item -Path ".\svn-builds" -ItemType "Directory"    
+    #    svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
+#
+    #    Write-Host ">> Moving new build to svn-builds."
+    #    Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
+    #    Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
+#
+    #    Write-Host ">> Committing new build to svn."
+    #    cd svn-builds
+    #    svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+    #    svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
+    #    cd ..
+#
+    #    dir
+    #    Write-Host ">> Cleaning up."
+    #    Remove-Item -Path ".\svn-builds" -Recurse -Force
+    #    Write-Host ">> Done!."
