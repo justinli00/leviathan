@@ -1,5 +1,4 @@
-name: Run end to end tests
-run-name: Run end to end tests
+name: Run tests
 permissions:
   contents: write
 on: 
@@ -9,19 +8,25 @@ on:
 #TODO - get which assemblies to run from payload, or wherever else it would be if possible
 
 jobs:
+  pull-svn:
+    uses: ./.github/workflows/pull-svn.yaml
+    secrets: inherit
+    permissions: 
+      contents: write
   run_tests:
     runs-on: self-hosted
     steps:
       #DO NOT CHECK OUT GIT      
+      - name: get-head-revision
+        run: |
+          "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-      #TODO - replace with actual test runner
+      #run tests through testing pipeline
       - name: run-tests
         run: |
-          "End to end tests run successfully!" | Out-File -FilePath test-log.txt
-          "TEST_OUTPUT=$(cat test_log.txt)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          cd svn-repo
-          echo "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          cd ..
+          Write-Host ">> Running tests."
+          Start-Process (Join-Path -Path (Get-Location) -ChildPath "\svn-repo\Hooks\run_tests.exe") 
+          
         env:
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.svn_password }}
