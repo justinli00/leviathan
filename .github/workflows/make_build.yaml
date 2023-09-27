@@ -43,29 +43,29 @@ jobs:
         UNITY_PATH: ${{ secrets.unity_path }}
       run: |
         Write-Host ">> Building project."
-#    Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
-#    Write-Host ">> Build complete."
-#
-##upload builds to svn builds folder
-#- name: upload-build-to-svn
-#  env: 
-#    SVN_BUILD: ${{ secrets.SVN_BUILD }}
-#  run: |
-#    Write-Host ">> Uploading new build"
-#    Write-Host ">> Checking out svn-builds"
-#    New-Item -Path ".\svn-builds" -ItemType "Directory"    
-#    svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
-#
-#    Write-Host ">> Moving new build to svn-builds."
-#    Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
-#    Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
-#
-#    Write-Host ">> Committing new build to svn."
-#    cd svn-builds
-#    svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-#    svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
-#    cd ..
-#
-#    Write-Host ">> Cleaning up."
-#    Remove-Item -Path ".\svn-builds" -Recurse -Force
-#    Write-Host ">> Done!."
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+        Write-Host ">> Build complete."
+    
+    #upload builds to svn builds folder
+    - name: upload-build-to-svn
+      env: 
+        SVN_BUILD: ${{ secrets.SVN_BUILD }}
+      run: |
+        Write-Host ">> Uploading new build"
+        Write-Host ">> Checking out svn-builds"
+        New-Item -Path ".\svn-builds" -ItemType "Directory"    
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --quiet
+    
+        Write-Host ">> Moving new build to svn-builds."
+        Rename-Item -Path ".\tempBuild" -NewName "$env:BUILD_NAME"
+        Move-Item -Path ".\$env:BUILD_NAME" -Destination ".\svn-builds"
+    
+        Write-Host ">> Committing new build to svn."
+        cd svn-builds
+        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
+        cd ..
+    
+        Write-Host ">> Cleaning up."
+        Remove-Item -Path ".\svn-builds" -Recurse -Force
+        Write-Host ">> Done!."
