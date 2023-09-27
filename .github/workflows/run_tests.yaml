@@ -39,9 +39,9 @@ jobs:
       - name: run-tests
         run: |
           "TEST_LOG_NAME=results_$env:HEAD_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
-          &"$env:RUN_TESTS_PATH" --head_rev $env:HEAD_REVISION
           cd svn-repo
           cd hooks
+          &"$env:RUN_TESTS_PATH" --head_rev $env:HEAD_REVISION
           cd test_artifacts
           dir
           cd ..
