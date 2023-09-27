@@ -39,8 +39,16 @@ jobs:
       - name: run-tests
         run: |
           "TEST_LOG_NAME=results_$env:HEAD_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
-          #Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION" -Wait
-      
+          Start-Process $env:RUN_TESTS_PATH -ArgumentList "--head_rev","$env:HEAD_REVISION" -Wait
+          cd svn-repo
+          cd hooks
+          cd test_artifacts
+          dir
+          cd ..
+          cd ..
+          cd ..
+          cd ..
+
       #rename the test log and move it into the test log folder
       - name: commit-test-log
         run: |
