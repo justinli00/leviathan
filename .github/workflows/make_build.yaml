@@ -43,7 +43,7 @@ jobs:
         UNITY_PATH: ${{ secrets.unity_path }}
       run: |
         Write-Host ">> Building project."
-        &$env:UNITY_PATH -batchMode -quit -executeMethod Builder.BuildProject -projectPath svn-repo -outputPath tempBuild -buildTarget StandaloneWindows64 -Wait
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
         Write-Host ">> Build complete."
     
     #upload builds to svn builds folder
