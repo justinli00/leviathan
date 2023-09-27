@@ -40,13 +40,7 @@ jobs:
         run: |
           "TEST_LOG_NAME=results_$env:HEAD_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd svn-repo
-          cd hooks
           &"$env:RUN_TESTS_PATH" --head_rev $env:HEAD_REVISION
-          cd test_artifacts
-          dir
-          cd ..
-          cd ..
-          cd ..
           cd ..
 
       #rename the test log and move it into the test log folder
@@ -71,5 +65,3 @@ jobs:
           Write-Host ">> Done!."
         env:
           SVN_TEST: ${{ secrets.svn_test }}
-
-
