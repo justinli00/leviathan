@@ -53,31 +53,31 @@ jobs:
         SVN_INSTALLER: ${{ secrets.svn_installer }}
 
     #build the project from the command line; unity is installed on self-hosted runner
-    #- name: make-build
-    #  env:
-    #    UNITY_PATH: ${{ secrets.unity_path }}
-    #  run: |
-    #    Write-Host ">> Building project."
-    #    Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
-    #    Write-Host ">> Build complete."
+    - name: make-build
+      env:
+        UNITY_PATH: ${{ secrets.unity_path }}
+      run: |
+        Write-Host ">> Building project."
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+        Write-Host ">> Build complete."
 
-    #- name: make-installer
-    #  run: |
-    #    Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
-    #    Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
-    #    Remove-Item -Path ".\tempBuild" -Recurse -Force
+    - name: make-installer
+      run: |
+        Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
+        Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
+        Remove-Item -Path ".\tempBuild" -Recurse -Force
 
     #upload builds to svn builds folder
     - name: upload-installer-to-svn
       env: 
         SVN_BUILD: ${{ secrets.SVN_BUILD }}
       run: |
-        #Write-Host ">> Uploading new build"
-        #Write-Host ">> Checking out svn-builds"
-        #New-Item -Path ".\svn-builds" -ItemType "Directory"    
-        #svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
+        Write-Host ">> Uploading new build"
+        Write-Host ">> Checking out svn-builds"
+        New-Item -Path ".\svn-builds" -ItemType "Directory"    
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
 
-        #Write-Host ">> Moving new installer to svn-builds."
+        Write-Host ">> Moving new installer to svn-builds."
         New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
         New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
         Move-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-builds\$env:BUILD_NAME\GameDirectory"
