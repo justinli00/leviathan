@@ -42,7 +42,8 @@ jobs:
         else
         {
           cd svn-installer
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_INSTALLER
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           cd ..
         }
 
