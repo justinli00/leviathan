@@ -53,16 +53,16 @@ jobs:
         SVN_INSTALLER: ${{ secrets.svn_installer }}
 
     #build the project from the command line; unity is installed on self-hosted runner
-    - name: make-build
-      env:
-        UNITY_PATH: ${{ secrets.unity_path }}
-      run: |
-        Write-Host ">> Building project."
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
-        Write-Host ">> Build complete."
+    #- name: make-build
+    #  env:
+    #    UNITY_PATH: ${{ secrets.unity_path }}
+    #  run: |
+    #    Write-Host ">> Building project."
+    #    Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+    #    Write-Host ">> Build complete."
 
     - name: make-installer
-      run:
+      run: |
         Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
         Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
         Remove-Item -Path ".\tempBuild" -Recurse -Force
