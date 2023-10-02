@@ -6,6 +6,7 @@ on:
     #- cron: '0 * * * *' #runs every hour on the dot
   repository_dispatch:
     types: check
+  push:
 
 permissions:
   contents: write
@@ -28,7 +29,7 @@ jobs:
         }
 
     - name: make-matrix
-      if: $env:SVN_WORKING_REVISION != $env:SVN_HEAD_REVISION
+      if: ${{ env.SVN_WORKING_REVISION }} != ${{ env.SVN_HEAD_REVISION }}
       run: |
         Write-Host "Working revision is: $env:SVN_WORKING_REVISION. Head revision is: $env:SVN_HEAD_REVISION. Update is needed."
         cd svn-repo
