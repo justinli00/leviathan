@@ -50,10 +50,13 @@ jobs:
         "REVISIONS_TO_TEST=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
   
   run-tests:
+    runs-on: [self-hosted]
     strategy:
       matrix:
         revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}
     #note - replace with actual workflow run
     steps:
-    - run: Write-Host ""
-    
+    - name: call-workflow
+      uses: ./.github/workflows/input-test.yaml
+      with:
+        revision: ${{ matrix.revision }}
