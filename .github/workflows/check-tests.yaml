@@ -45,7 +45,7 @@ jobs:
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
             Write-Host "Adding to list of revisions to test."
-            $revisions_to_test.Add($i)
+            $revisions_to_test += ,$i
           }
           else
           {
