@@ -40,10 +40,11 @@ jobs:
         {
           #get the change log for revision i
           $revision_changes = svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i
+          Write-Host "Revision $i contains the following changes : "
+          Write-Host "$revision_changes"
           if ( $revision_changes -like "375_PROJECT" )
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
-            Write-Host "$revision_changes"
             Write-Host "Adding to list of revisions to test."
             $revisions_to_test += $i
           }
