@@ -38,7 +38,7 @@ jobs:
         {
           #get the change log for revision i
           $revision_changes = svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i
-          Write-Host "Changes in revision $i:\n$revision_changes"
+          Write-Host "Changes in revision $i : \n$revision_changes"
           if ( $revision_changes -like "375_PROJECT" )
           {
             Write-Host "Revision $i contains changes to unity project files. Adding to list of revisions to test."
