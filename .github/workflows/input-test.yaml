@@ -12,6 +12,8 @@ jobs:
   write-host:
     runs-on: [self-hosted]
     steps:
-      - run: Write-Host "Inputted revision is: $env:testing_revision"
+      - name: Print input
+        run: | 
+          Write-Host "Inputted revision is: $env:testing_revision"
         with: 
           testing_revision: ${{ inputs.revision }}
