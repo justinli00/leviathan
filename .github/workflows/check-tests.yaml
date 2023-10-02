@@ -34,7 +34,9 @@ jobs:
         Write-Host "Working revision is: $env:SVN_WORKING_REVISION. Head revision is: $env:SVN_HEAD_REVISION. Update is needed."
         cd svn-repo
         $revisions_to_test = $null
-        for (($i = $env:SVN_WORKING_REVISION); $i -le $env:SVN_HEAD_REVISION; $i++)
+        $wc = [int]$env:SVN_WORKING_REVISION 
+        $head = [int]$env:SVN_HEAD_REVISION   
+        for (($i = $wc); $i -le $head; $i++)
         {
           #get the change log for revision i
           $revision_changes = svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i
