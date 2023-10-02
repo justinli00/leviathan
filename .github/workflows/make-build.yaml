@@ -1,5 +1,5 @@
 #makes a release with unity
-name: Make Build
+name: make-build
 
 on:
   schedule:
@@ -28,13 +28,13 @@ jobs:
     - name: setup-build
       run: |
         #clean up the directory in case a previous run failed
-        If ( Test-Path -Path svn-builds )
+        if ( Test-Path -Path svn-builds )
         {
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
         #make sure installer files are up-to-date
-        If ( !(Test-Path -Path svn-installer ))
+        if ( !(Test-Path -Path svn-installer ))
         {
           New-Item -Path ".\svn-installer" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_INSTALLER svn-installer

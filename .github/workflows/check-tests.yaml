@@ -1,0 +1,59 @@
+#check svn for head revision #; compare with working copy revision and run tests for all between
+name: check-tests
+
+on:
+  #schedule:
+    #- cron: '0 * * * *' #runs every hour on the dot
+  repository_dispatch:
+    types: check
+
+permissions:
+  contents: write
+
+jobs:
+  check-head:
+    runs-on: [self-hosted]
+    env:
+      SVN_USERNAME: ${{ secrets.svn_username }}
+      SVN_PASSWORD: ${{ secrets.svn_password }}
+    steps:
+    - name: get-revisions
+      run: |
+        if ( Test-Path -Path svn-repo )
+        {
+          cd svn-repo
+          "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
+          "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          cd ..
+        }
+
+    - name: make-matrix
+      if: $env:SVN_WORKING_REVISION != $env:SVN_HEAD_REVISION
+      run: |
+        Write-Host "Working revision is: $env:SVN_WORKING_REVISION. Head revision is: $env:SVN_HEAD_REVISION. Update is needed."
+        cd svn-repo
+        $revisions_to_test = $null
+        for (($i = $env:SVN_WORKING_REVISION); $i -le $env:SVN_HEAD_REVISION; $i++)
+        {
+          #get the change log for revision i
+          $revision_changes = svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i
+          Write-Host "Changes in revision $i:\n$revision_changes"
+          if ( $revision_changes -like "375_PROJECT" )
+          {
+            Write-Host "Revision $i contains changes to unity project files. Adding to list of revisions to test."
+            $revisions_to_test += $i
+          }
+        }
+
+        #writing to GITHUB_OUTPUT, not GITHUB_ENV!
+        Write-Host "Revisions to test: $revisions_to_test"
+        "REVISIONS_TO_TEST=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+  
+  run-tests:
+    strategy:
+      matrix:
+        revision: ${{ jobs.outputs.REVISIONS_TO_TEST }}
+    #note - replace with actual workflow run
+    steps:
+    - run: Write-Host ""
+    

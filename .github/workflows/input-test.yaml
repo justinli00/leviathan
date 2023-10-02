@@ -1,0 +1,17 @@
+#tested to check for revision
+name: print inputted variable
+
+on:
+  workflow_call:
+    inputs:
+      revision:
+        required: true
+        type: int
+
+jobs:
+  write-host:
+    runs-on: [self-hosted]
+    steps:
+      - run: Write-Host "Inputted revision is: $env:testing_revision"
+        with: 
+          testing_revision: ${{ inputs.revision }}
