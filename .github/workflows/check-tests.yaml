@@ -56,7 +56,7 @@ jobs:
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         Write-Host "Revisions to test: $revisions_to_test"
-        "REVISIONS_TO_TEST=$revisions_to_test | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
   
   run-tests:
     if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
