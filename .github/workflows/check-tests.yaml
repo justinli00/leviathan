@@ -41,7 +41,7 @@ jobs:
           $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i).replace("-","")
           Write-Host "Revision $i contains the following changes : "
           Write-Host "$revision_changes"
-          if ( $revision_changes -gt 0 )
+          if ( $revision_changes.Length -gt 0 )
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
             Write-Host "Adding to list of revisions to test."
