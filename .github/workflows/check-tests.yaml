@@ -52,7 +52,7 @@ jobs:
   run-tests:
     strategy:
       matrix:
-        revision: ${{ jobs.outputs.REVISIONS_TO_TEST }}
+        revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}
     #note - replace with actual workflow run
     steps:
     - run: Write-Host ""
