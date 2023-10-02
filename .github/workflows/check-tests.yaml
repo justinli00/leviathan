@@ -38,10 +38,12 @@ jobs:
         for (($i = [int]$env:SVN_WORKING_REVISION); $i -le $head; $i++)
         {
           #get the change log for revision i and remove all dashes
-          $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i).replace("-","")
+          $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i)
+          $change_count = ($revision_changes.Split("`n").Count - 1)
           Write-Host "Revision $i contains the following changes : "
           Write-Host "$revision_changes"
-          if ( $revision_changes -eq "" )
+          Write-Host "there are $change_count changes."
+          if ( $change_count )
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
             Write-Host "Adding to list of revisions to test."
