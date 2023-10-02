@@ -33,7 +33,7 @@ jobs:
       run: |
         Write-Host "Checking updates in the range of [$env:SVN_WORKING_REVISION, $env:SVN_HEAD_REVISION]."
         cd svn-repo
-        $revisions_to_test = $null
+        $revisions_to_test = @()
         $head = [int]$env:SVN_HEAD_REVISION   
         for (($i = [int]$env:SVN_WORKING_REVISION); $i -le $head; $i++)
         {
@@ -45,7 +45,7 @@ jobs:
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
             Write-Host "Adding to list of revisions to test."
-            $revisions_to_test += $i
+            $revisions_to_test.Add($i)
           }
           else
           {
