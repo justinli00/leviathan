@@ -27,9 +27,8 @@ jobs:
           "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         }
-
     - name: check-revisions
-      id: check-revisions #need an id for output
+      id: check-revisions
       if: ${{ env.SVN_WORKING_REVISION }} != ${{ env.SVN_HEAD_REVISION }}
       run: |
         Write-Host "Checking updates in the range of [$env:SVN_WORKING_REVISION, $env:SVN_HEAD_REVISION]."
@@ -52,12 +51,9 @@ jobs:
             Write-Host "Revision $i did not change 375_PROJECT."
           }
         }
-
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        $revisions_to_test = ($revisions_to_test | ConvertTo-Json).replace('`n', ' ')
-        Write-Host "`n---------------------------------`n`nRevisions to test: $revisions_to_test"
+        $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-
       shell: powershell
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
@@ -76,7 +72,7 @@ jobs:
     strategy:
       matrix:
         revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}
-    #TODO - replace with actual workflow run
+    #note - replace with actual workflow run
     steps:
     - name: call-workflow
       uses: ./.github/workflows/input-test.yaml
