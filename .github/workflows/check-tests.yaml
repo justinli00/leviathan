@@ -61,10 +61,19 @@ jobs:
         $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
         Write-Host "`n--------------------------------`n`nRevisions to test: $revisions_to_test"
         "REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-  
+
+  job2:
+    runs-on: [self-hosted]
+    needs: check-head
+    steps:
+      - env:
+          OUTPUT1: ${{needs.check-head.outputs.REVISIONS_TO_TEST}}
+        run: echo "$OUTPUT1"
+
   run-tests:
     if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
     runs-on: [self-hosted]
+    needs: check-head
     strategy:
       matrix:
         revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}

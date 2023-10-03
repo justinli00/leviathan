@@ -6,7 +6,7 @@ on:
     inputs:
       revision:
         required: true
-        type: int
+        type: string
 
 jobs:
   write-host:
