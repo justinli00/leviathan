@@ -67,7 +67,7 @@ jobs:
 
   #tests needed and found
   run-tests:
-    if: ${{ needs.check-head.outputs.revisions_to_test != @() }}
+    if: ${{ needs.check-head.outputs.revisions_to_test != "" }}
     needs: check-head
     strategy:
       max-parallel: 1
@@ -79,5 +79,5 @@ jobs:
 
   #just run pull-svn if no revisions are needed; no input --> update to HEAD
   update-to-head:
-    if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST == @() }} 
+    if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST == "" }} 
     uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main 
