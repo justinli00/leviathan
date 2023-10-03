@@ -3,10 +3,10 @@ name: print inputted variable
 
 on:
   workflow_call:
-    #inputs:
-    #  revision:
-    #    required: true
-    #    type: string
+    inputs:
+      revision:
+        required: true
+        type: string
 
 jobs:
   write-host:
