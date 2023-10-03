@@ -4,29 +4,52 @@ permissions:
 on: 
   repository_dispatch:
     types: 'test'
+  workflow_call:
+    inputs:
+      revision:
+        required: true
+        type: string
 
 #TODO - get which assemblies to run from payload, or wherever else it would be if possible
 
 jobs:
   pull-svn:
-    uses: ./.github/workflows/pull-svn.yaml
+    uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main
     secrets: inherit
     permissions: 
       contents: write
+    with:
+      revision: ${{ inputs.revision }}
   run_tests:
     needs: pull-svn
     runs-on: self-hosted
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
+      SVN_URL: ${{ secrets.svn_url }}
     steps:
-      #DO NOT CHECK OUT GIT      
+      - name: checkout-git
+        uses: actions/checkout@v3
+        with:
+          clean: false #important -- don't clean the directory   
+
       - name: init-test-variables
         run: |
           #clean up the directory in case a previous run failed
-          If ( Test-Path -Path svn-tests )
+          if ( Test-Path -Path svn-tests )
           {
             Remove-Item -Path ".\svn-tests" -Recurse -Force
+          }
+
+          if ( ${{ github.event_name == "repository_dispatch" }} )
+          {
+            #get the head revision
+            "TARGET_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+          else
+          {
+            #from workflow call; pass input along
+            "TARGET_REVISION=${{ inputs.revision }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
           cd svn-repo
@@ -57,7 +80,7 @@ jobs:
           Write-Host ">> Committing new test log to svn."
           cd svn-tests
           svn add $env:TEST_LOG_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated test results"
+          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated test results for $env:TARGET_REVISION"
           cd ..                  
 
           Write-Host ">> Cleaning up."

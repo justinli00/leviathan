@@ -65,28 +65,19 @@ jobs:
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
 
+  #tests needed and found
   run-tests:
-    if: ${{ needs.check-head.outputs.revisions_to_test }}.Length -gt 0
+    if: ${{ needs.check-head.outputs.revisions_to_test != @() }}
     needs: check-head
     strategy:
       max-parallel: 1
       matrix:
         revision: ${{ fromJson(needs.check-head.outputs.revisions_to_test) }}
-    #TODO - replace with actual workflow run
-    uses: justinli00/leviathan/.github/workflows/input-test.yaml@main
+    uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with:
       revision: ${{ matrix.revision }}
 
-    #steps:
-    #- name: call-workflow
-    #  uses: ./.github/workflows/input-test.yaml
-    #  with:
-    #    revision: ${{ matrix.revision }}
-
-  #TODO -- just run pull-svn if no revisions are needed
-  #update-to-head:
-  #  if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} == $null
-  #  uses: ./.github/workflows/pull-svn.yaml
-  #  secrets: inherit
-  #  permissions: 
-  #    contents: write
+  #just run pull-svn if no revisions are needed; no input --> update to HEAD
+  update-to-head:
+    if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST == @() }} 
+    uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main 

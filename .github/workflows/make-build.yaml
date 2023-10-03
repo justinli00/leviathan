@@ -23,8 +23,11 @@ jobs:
       SVN_PASSWORD: ${{ secrets.svn_password }}
 
     steps:
-    #DO NOT USE actions/checkout! 
-    #get the head revision and make sure installer folder is made
+    - name: checkout-git
+      uses: actions/checkout@v3
+      with:
+        clean: false #important -- don't clean the directory
+        
     - name: setup-build
       run: |
         #clean up the directory in case a previous run failed

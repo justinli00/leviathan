@@ -6,6 +6,10 @@ on:
   repository_dispatch:
     types: pull-svn
   workflow_call:
+    inputs:
+      revision:
+        required: false
+        type: string
 permissions:
   contents: write
 
@@ -17,25 +21,44 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
       SVN_URL: ${{ secrets.svn_url }}
+      TARGET_REVISION: "_"
     runs-on: self-hosted
     steps:
-    #DO NOT CHECK OUT GIT
-    #check out or update svn
-    - name: checkout-svn
+    - name: checkout-git
+      uses: actions/checkout@v3
+      with:
+        clean: false #important -- don't clean the directory
+
+    #determine which variable to use
+    - name: set-revision
+      run: |
+        if ( ${{ github.event_name == "repository_dispatch" }} || ${{ inputs.revision == "" }} )
+        {
+          #get the head revision
+          "TARGET_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        }
+        else
+        {
+          #revision specified from workflow call; pass input along
+          "TARGET_REVISION=${{ inputs.revision }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+        }
+
+    - name: checkout-update-svn
       env:
         SVN_URL: ${{ secrets.svn_url }}
       run: |
-        If ( !(Test-Path -Path svn-repo ) )
+        if ( !(Test-Path -Path svn-repo ) )
         { 
           Write-Host ">> svn-repo was not found. Checking out new copy."
           New-Item -Path ".\svn-repo" -ItemType "Directory"    
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL svn-repo
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision $env:TARGET_REVISION svn-repo 
           cd svn-repo
         } 
-        Else {
+        else 
+        {
           Write-Host ">> svn-repo was found. Updating to head revision, if necessary."
           cd svn-repo
-          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision $env:TARGET_REVISION
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
         }
