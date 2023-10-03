@@ -93,7 +93,7 @@ jobs:
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
         "output1=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        Write-Host $($revisions_to_test -eq '')
+        Write-Host $($revisions_to_test -ne '')
         "output2=$($revisions_to_test -ne '')" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       testing-revision: ${{ steps.get-revisions.outputs.output }}
@@ -102,7 +102,7 @@ jobs:
 
   #tests needed and found
   test_revisions:
-    if: "${{ needs.check-head.outputs.should-test != '' }}"
+    if: ${{ needs.check-head.outputs.should-test }}
     needs: check-head
     strategy:
       max-parallel: 1
