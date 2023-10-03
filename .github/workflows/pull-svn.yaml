@@ -85,7 +85,7 @@ jobs:
         if ($env:TEST_SCRIPT_REVISION -ne $env:TARGET_REVISION)
         {
           Write-Host ">> Updating testing folder to $env:TEST_SCRIPT_REVISION."
-          cd TESTING_PATH
+          cd $env:TESTING_PATH
           svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision $env:TEST_SCRIPT_REVISION
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
