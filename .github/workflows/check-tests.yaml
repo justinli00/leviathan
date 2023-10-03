@@ -15,7 +15,7 @@ jobs:
   check-head:
     runs-on: [self-hosted]
     outputs:
-      REVISIONS_TO_TEST: ${{ steps.check-revisions.outputs.REVISIONS_TO_TEST }}
+      REVISIONS_TO_TEST: ${{ steps.check-revisions.outputs.test_array }}
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
@@ -61,9 +61,9 @@ jobs:
         $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
         Write-Host "`n--------------------------------`n`nRevisions to test: $revisions_to_test"
         Write-Host $env:GITHUB_OUTPUT
-        Write-Host "REVISIONS_TO_TEST=$revisions_to_test"
-        #"REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        echo "REVISIONS_TO_TEST=$revisions_to_test" >> $env:GITHUB_OUTPUT
+        Write-Host "test_array=$revisions_to_test"
+        "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        #echo "test_array=$revisions_to_test" >> $env:GITHUB_OUTPUT
 
   job2:
     runs-on: [self-hosted]
