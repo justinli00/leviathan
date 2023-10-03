@@ -112,20 +112,6 @@ jobs:
     secrets: inherit
     permissions: 
       contents: write
-  #test_revisions:
-  #  #if: always() #"${{ needs.check-head.outputs.revisions_to_test != '' }}"
-  #  needs: check-head
-  #  strategy:
-  #    max-parallel: 1
-  #    matrix:
-  #      revision: ${{ fromJson(needs.check-head.outputs.revisions_to_test) }}
-  #  uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
-  #  with:
-  #    revision: ${{ matrix.revision }}
-  #    test-revision: ${{ needs.check-head.outputs.testing_revision }}
-  #  secrets: inherit
-  #  permissions: 
-  #    contents: write
 
   #update svn-repo to head revision, regardless of whether tests were run or not
   update-to-head:
