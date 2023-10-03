@@ -20,8 +20,8 @@ jobs:
     #DO NOT CHECKOUT GIT
     - name: get-revisions
       env: 
-        START: ${{ github.event.client_payload.start }}
-        END: ${{ github.event.client_payload.end }}
+        START: ${{ github.event.client_payload.start-revision }}
+        END: ${{ github.event.client_payload.end-revision }}
       run: |
         if (("START" -ne "") -and (Test-Path -Path svn-repo))
         {
