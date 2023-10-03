@@ -43,7 +43,7 @@ jobs:
 
     - name: check-revisions
       id: check-revisions
-      if: ${{ $env:START_REVISION != $env:START_REVISION }}
+      if: ${{ $env.START_REVISION != $env.START_REVISION }}
       run: |
         Write-Host ">> Checking updates in the range of [$env:START_REVISION, $env:END_REVISION]."
         cd svn-repo
