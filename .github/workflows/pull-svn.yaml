@@ -8,10 +8,10 @@ on:
   workflow_call:
     inputs:
       revision:
-        required: true
+        required: false
         type: string
       test-revision:
-        required: true
+        required: false
         type: number
 permissions:
   contents: write
