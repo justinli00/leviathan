@@ -64,7 +64,7 @@ jobs:
         Write-Host "test_array=$revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         #echo "test_array=$revisions_to_test" >> $env:GITHUB_OUTPUT
-      shell: pwsh
+      shell: powershell
 
   job2:
     runs-on: [self-hosted]
