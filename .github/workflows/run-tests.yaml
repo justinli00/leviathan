@@ -16,12 +16,6 @@ on:
 #TODO - get which assemblies to run from payload, or wherever else it would be if possible
 
 jobs:
-  print-inputs:
-    runs-on: self-hosted
-    steps: 
-      - run: |
-          Write-Host "inputs.revision: ${{ inputs.revision }}"
-          Write-Host "inputs.test-revision: ${{ inputs.test-revision }}"
   pull-svn:
     uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main
     secrets: inherit
