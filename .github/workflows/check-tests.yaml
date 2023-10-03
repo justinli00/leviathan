@@ -55,8 +55,8 @@ jobs:
 
         if ( $revisions_to_test.Length -eq 1 )
         {
-          #special case, handle it
-          $revisions_to_test = (@($revisions_to_test) | ConvertTo-Json -Compress)
+          #special case manually serialize the 
+          $revisions_to_test = '[' + $revisions_to_test + ']'
         }
         else
         {
