@@ -71,7 +71,7 @@ jobs:
     steps:
       - env:
           OUTPUT1: ${{needs.check-head.outputs.REVISIONS_TO_TEST}}
-        run: echo "$OUTPUT1"
+        run: Write-Host "$env:OUTPUT1"
 
   run-tests:
     if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
