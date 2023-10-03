@@ -18,6 +18,11 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
+    - name: checkout-git
+      uses: actions/checkout@v3
+      with:
+        clean: false #important -- don't clean the directory
+
     - name: get-revisions
       run: |
         if ( Test-Path -Path svn-repo )
@@ -51,7 +56,7 @@ jobs:
             Write-Host "Revision $i did not change 375_PROJECT."
           }
         }
-        
+
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
