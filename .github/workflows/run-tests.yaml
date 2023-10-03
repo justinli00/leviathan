@@ -11,7 +11,7 @@ on:
         type: string
       test-revision:
         required: true
-        type: string
+        type: number
 
 #TODO - get which assemblies to run from payload, or wherever else it would be if possible
 
