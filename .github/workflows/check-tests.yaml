@@ -16,10 +16,21 @@ jobs:
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
-      START_REVISION: ${{ github.event.client_payload.start-revision }}
-      END_REVISION: ${{ github.event.client_payload.end-revision }}
     steps:
     #DO NOT CHECKOUT GIT
+    - name: get-payload
+      run: |
+        #parse the message
+        $message = ${{ github.event.client_payload.message }} 
+        if ("$message" -ne "")
+        {
+          Write-Host ">> Parsing message from payload."
+          Write-Host ">> $message."
+          $message = $message | ConvertFrom-Json
+          "END_REVISION=$message.end-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "START_REVISION=$message.start-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+        } 
+
     - name: get-revisions
       env: 
         MIN_TEST: ${{ vars.min_test }}
@@ -43,7 +54,7 @@ jobs:
       id: check-revisions
       if: ${{ env.START_REVISION != env.START_REVISION }}
       run: |
-        Write-Host "Checking updates in the range of [$env:START_REVISION, $env:END_REVISION]."
+        Write-Host ">> Checking updates in the range of [$env:START_REVISION, $env:END_REVISION]."
         cd svn-repo
         $revisions_to_test = @()
         $end = [int]$env:END_REVISION   
@@ -54,13 +65,13 @@ jobs:
           $change_count = ($revision_changes.Split("`n").Count - 1)
           if ( $change_count )
           {
-            Write-Host "Revision $i contains changes 375_PROJECT : "
-            Write-Host "Adding to list of revisions to test."
+            Write-Host ">> Revision $i contains changes 375_PROJECT : "
+            Write-Host ">> Adding to list of revisions to test."
             $revisions_to_test += ,$i
           }
           else
           {
-            Write-Host "Revision $i did not change 375_PROJECT."
+            Write-Host ">> Revision $i did not change 375_PROJECT."
           }
         }
         cd ..
@@ -76,7 +87,7 @@ jobs:
         }
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        Write-Host "`n-----------------------------------`n`nRevisions to test: $revisions_to_test"
+        Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
