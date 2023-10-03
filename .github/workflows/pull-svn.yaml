@@ -8,7 +8,7 @@ on:
   workflow_call:
     inputs:
       revision:
-        required: false
+        required: true
         type: string
       test-revision:
         required: false
