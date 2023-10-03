@@ -99,7 +99,7 @@ jobs:
 
   #tests needed and found
   test_revisions:
-    if: always() #${{ 'needs.check-head.outputs.revisions_to_test' != '' }}
+    if: ${{ needs.check-head.outputs.revisions_to_test != "" }}
     needs: check-head
     strategy:
       max-parallel: 1
