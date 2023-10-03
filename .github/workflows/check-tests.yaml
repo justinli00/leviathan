@@ -76,9 +76,6 @@ jobs:
     uses: justinli00/leviathan/.github/workflows/input-test.yaml@main
     with:
       revision: ${{ matrix.revision }}
-    secrets: inherit
-    permissions:
-      contents: write
 
     #steps:
     #- name: call-workflow
