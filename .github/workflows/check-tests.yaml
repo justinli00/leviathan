@@ -94,12 +94,12 @@ jobs:
         Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
         "output=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
-      #testing_revision: ${{ steps.get-revision.outputs.output }}
-      revisions_to_test: ${{ steps.check-revision.outputs.output }}
+      testing_revision: ${{ steps.get-revisions.outputs.output }}
+      revisions_to_test: ${{ steps.check-revisions.outputs.output }}
 
   #tests needed and found
   test_revisions:
-    if: ${{ needs.check-head.outputs.revisions_to_test != '' }}
+    if: "${{ needs.check-head.outputs.revisions_to_test != '' }}"
     needs: check-head
     strategy:
       max-parallel: 1
@@ -108,7 +108,7 @@ jobs:
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with:
       revision: ${{ matrix.revision }}
-      test-revision: 2491 #${{ needs.check-head.outputs.testing_revision }}
+      test-revision: ${{ needs.check-head.outputs.testing_revision }}
     secrets: inherit
     permissions: 
       contents: write
