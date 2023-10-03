@@ -60,6 +60,7 @@ jobs:
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
+        Write-Host "Revisions to test: $revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
       shell: powershell
     outputs:
