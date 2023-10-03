@@ -25,6 +25,9 @@ jobs:
         MIN_TEST: ${{ vars.min_test }}
       run: |
         #assume that svn-repo exists -- we have bigger problems if not
+        cd svn-repo 
+
+        #clamp inputted values if necessary
         $head = (svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)
         if ("$env:END_REVISION" -eq "" -or [int]$head -lt [int]$env:END_REVISION)
         {
@@ -34,6 +37,7 @@ jobs:
         {
            "START_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
         }
+        cd ..
 
     - name: check-revisions
       id: check-revisions
