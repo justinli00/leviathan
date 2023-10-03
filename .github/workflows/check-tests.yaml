@@ -52,7 +52,9 @@ jobs:
         }
 
         #serialize testing revision
-        "test_revision=[$testing_revision]"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        $testing_revision = "[$testing_revision]"
+        Write-Host "testing_revision: $testing_revision"
+        "test_revision=$testing_revision"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
