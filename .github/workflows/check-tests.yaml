@@ -69,7 +69,7 @@ jobs:
           $change_count = ($revision_changes.Split("`n").Count - 1)
           if ( $change_count )
           {
-            Write-Host ">> Revision $i contains changes 375_PROJECT : "
+            Write-Host ">> Revision $i contains changes 375_PROJECT."
             Write-Host ">> Adding to list of revisions to test."
             $revisions_to_test += ,$i
           }
