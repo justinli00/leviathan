@@ -3,7 +3,7 @@ permissions:
   contents: write
 on: 
   repository_dispatch:
-    types: 'test'
+    types: [test]
   workflow_call:
     inputs:
       revision:

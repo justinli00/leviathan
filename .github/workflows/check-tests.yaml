@@ -20,16 +20,16 @@ jobs:
     #DO NOT CHECKOUT GIT
     - name: get-payload
       env: 
-        MESSAGE: ${{ github.event.client_payload.message }} 
+        PAYLOAD: ${{ github.event.client_payload }} 
       run: |
         #parse the message
-        if ("$env:MESSAGE" -ne "")
+        if ("$env:PAYLOAD" -ne "")
         {
-          Write-Host ">> Parsing message from payload."
-          Write-Host ">> $env:MESSAGE."
-          $message = $env:MESSAGE | ConvertFrom-Json
-          "END_REVISION=$message.end-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "START_REVISION=$message.start-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host ">> Parsing start and end revisions from payload."
+          Write-Host ">> $env:PAYLOAD."
+          $payload = $env:PAYLOAD | ConvertFrom-Json
+          "END_REVISION=$payload.end-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "START_REVISION=$payload.start-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
         } 
 
     - name: get-revisions
