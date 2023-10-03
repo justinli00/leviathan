@@ -52,7 +52,8 @@ jobs:
         }
 
         #serialize testing revision
-        "test_revision=$testing_revision"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        Write-Host ">> testing_revision: $testing_revision" 
+        "output=$testing_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
@@ -92,10 +93,10 @@ jobs:
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
-        "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
-      revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
-      testing_revision: ${{ steps.check-revision.outputs.test_revision }}
+      revisions_to_test: ${{ steps.check-revisions.outputs.output }}
+      testing_revision: ${{ steps.check-revision.outputs.output }}
 
   #tests needed and found
   test_revisions:

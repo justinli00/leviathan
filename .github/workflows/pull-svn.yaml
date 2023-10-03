@@ -48,6 +48,7 @@ jobs:
         "TARGET_REVISION=$target"| Out-File -FilePath $env:GITHUB_ENV -Append
 
         #which revision to update the test-revision to
+        Write-Host ">> inputs.test-revision: ${{ inputs.test-revision }}"
         if ( "${{ inputs.test-revision }}" -eq "" -or [int]${{ inputs.test-revision }} -gt [int]$head -or [int]${{ inputs.test-revision }} -lt [int]$env:MIN_TEST )
         {
           #invalid test-revision
