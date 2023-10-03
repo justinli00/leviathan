@@ -6,7 +6,7 @@ on:
     #- cron: '0 * * * *' #runs every hour on the dot
   repository_dispatch:
     types: check
-  push:
+  push: #TODO -- remove
 
 permissions:
   contents: write
@@ -14,8 +14,6 @@ permissions:
 jobs:
   check-head:
     runs-on: [self-hosted]
-    outputs:
-      REVISIONS_TO_TEST: ${{ steps.check-revisions.outputs.test_array }}
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
@@ -65,13 +63,14 @@ jobs:
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         #echo "test_array=$revisions_to_test" >> $env:GITHUB_OUTPUT
       shell: powershell
-
+    outputs:
+      revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
   job2:
     runs-on: [self-hosted]
     needs: check-head
     steps:
       - env:
-          OUTPUT1: ${{needs.check-head.outputs.REVISIONS_TO_TEST}}
+          OUTPUT1: ${{needs.check-head.outputs.revisions_to_test}}
         run: Write-Host "$env:OUTPUT1"
 
   run-tests:
