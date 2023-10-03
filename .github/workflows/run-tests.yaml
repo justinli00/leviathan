@@ -74,7 +74,7 @@ jobs:
           Write-Host ">> Committing new test log to svn."
           cd svn-tests
           svn add $env:TEST_LOG_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated test results for $env:TARGET_REVISION"
+          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated test results for revision $env:TARGET_REVISION"
           cd ..                  
 
           Write-Host ">> Cleaning up."

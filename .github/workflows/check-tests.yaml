@@ -42,7 +42,7 @@ jobs:
           $change_count = ($revision_changes.Split("`n").Count - 1)
           if ( $change_count )
           {
-            Write-Host "Revision $i contains the following changes to 375_PROJECT : "
+            Write-Host "Revision $i contains changes 375_PROJECT : "
             Write-Host "Adding to list of revisions to test."
             $revisions_to_test += ,$i
           }
@@ -53,8 +53,17 @@ jobs:
         }
         cd ..
 
+        if ( $revisions_to_test.Length -eq 1 )
+        {
+          #special case, handle it
+          $revisions_to_test = (@($revisions_to_test) | ConvertTo-Json -Compress)
+        }
+        else
+        {
+          $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
+        }
+
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
         Write-Host "`n-----------------------------------`n`nRevisions to test: $revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
