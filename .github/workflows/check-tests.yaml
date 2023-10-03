@@ -51,8 +51,8 @@ jobs:
           $testing_revision = ""
         }
 
-        #Write-Host ">> testing_revision: $testing_revision" 
-        #"output=$testing_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        Write-Host ">> testing_revision: $testing_revision" 
+        "output=$testing_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
