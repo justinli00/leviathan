@@ -108,7 +108,7 @@ jobs:
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with:
       revision: ${{ matrix.revision }}
-      test_revision: ${{ needs.check-head.outputs.testing-revision }}
+      test-revision: ${{ needs.check-head.outputs.testing-revision }}
     secrets: inherit
     permissions: 
       contents: write
