@@ -32,9 +32,9 @@ jobs:
     #determine which variable to use
     - name: set-revision
       run: |
-        if ( "${{ github.event_name }}" == "repository_dispatch" || "${{ inputs.revision }}" == "" )
+        if ( "${{ inputs.revision }}" == "" )
         {
-          #get the head revision
+          #no input specified; get the head revision
           "TARGET_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         else
