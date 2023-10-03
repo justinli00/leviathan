@@ -9,6 +9,9 @@ on:
       revision:
         required: true
         type: string
+      test-revision:
+        required: true
+        type: string
 
 #TODO - get which assemblies to run from payload, or wherever else it would be if possible
 
@@ -20,6 +23,7 @@ jobs:
       contents: write
     with:
       revision: ${{ inputs.revision }}
+      test-revision: ${{ inputs.test-revision }}
   run_tests:
     needs: pull-svn
     runs-on: self-hosted

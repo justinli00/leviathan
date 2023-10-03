@@ -10,6 +10,9 @@ on:
       revision:
         required: false
         type: string
+      test-revision:
+        required: false
+        type: string
 permissions:
   contents: write
 
@@ -27,21 +30,41 @@ jobs:
     #DO NOT CHECKOUT GIT
     #determine which variable to use
     - name: set-revision
+      env: 
+        MIN_TEST: ${{ vars.min_test }}
       run: |
+        $head=(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)
+        #which revision to update to
         if ( "${{ inputs.revision }}" -eq "" )
         {
           #no input specified; get the head revision
-          "TARGET_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          $target=$head
         }
         else
         {
           #revision specified from workflow call; pass input along
-          "TARGET_REVISION=${{ inputs.revision }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+          $target=${{ inputs.revision }}
         }
+        "TARGET_REVISION=$target"| Out-File -FilePath $env:GITHUB_ENV -Append
+
+        #which revision to update the test-revision to
+        if ( "${{ inputs.test-revision }}" -eq "" -or [int]${{ inputs.test-revision }} -gt [int]$head -or [int]${{ inputs.test-revision }} -lt [int]$env:MIN_TEST )
+        {
+          #invalid test-revision
+          Write-Host ">> Inputted testing folder revision was either empty or invalid. Updating to $target."
+          $test_target=$target
+        }
+        else
+        {
+          #testing folder revision specified from workflow call; pass input along
+          $test_target=${{ inputs.test-revision }}
+        }
+        "TEST_SCRIPT_REVISION=$test_target" | Out-File -FilePath $env:GITHUB_ENV -Append
 
     - name: checkout-update-svn
       env:
         SVN_URL: ${{ secrets.svn_url }}
+        TESTING_PATH: ${{ vars.testing_path }}
       run: |
         if ( !(Test-Path -Path svn-repo ) )
         { 
@@ -62,4 +85,13 @@ jobs:
         }
         Write-Host ">> runner's copy of svn files is now up-to-date."
 
+        if ($env:TEST_SCRIPT_REVISION -ne $env:TARGET_REVISION)
+        {
+          Write-Host ">> Updating testing folder to $env:TEST_SCRIPT_REVISION."
+          cd TESTING_PATH
+          svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision $env:TEST_SCRIPT_REVISION
+          Write-Host ">> Update successful. Resolving any conflicts."
+          svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          cd ..\..\..
+        }
         cd .. 

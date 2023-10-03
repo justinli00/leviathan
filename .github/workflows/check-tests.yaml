@@ -18,9 +18,11 @@ jobs:
       SVN_PASSWORD: ${{ secrets.svn_password }}
       START_REVISION: ${{ github.event.client_payload.start-revision }} 
       END_REVISION: ${{ github.event.client_payload.end-revision }}
+      TESTING_REVISION: ${{ github.event.client_payload.test-revision }}
     steps:
     #DO NOT CHECKOUT GIT
     - name: get-revisions
+      id: get-revisions
       env: 
         MIN_TEST: ${{ vars.min_test }}
       run: |
@@ -40,6 +42,17 @@ jobs:
           "START_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         cd ..
+
+        #same for testing revision
+        $testing_revision = $env:TESTING_REVISION
+        if ( [int]$testing_revision -gt [int]$head -or [int]$testing_revision -lt [int]$env:MIN_TEST )
+        {
+          Write-Host ">> TESTING_REVISION is invalid ($env:TESTING_REVISION). Setting to empty string."
+          $testing_revision = ""
+        }
+
+        #serialize testing revision
+        "test_revision=[$testing_revision]"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
@@ -82,6 +95,7 @@ jobs:
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
+      testing_revision: ${{ steps.check-revision.outputs.test_revision }}
 
   #tests needed and found
   test_revisions:
@@ -91,9 +105,11 @@ jobs:
       max-parallel: 1
       matrix:
         revision: ${{ fromJson(needs.check-head.outputs.revisions_to_test) }}
+        test-revision: ${{ fromJson(needs.check-head.outputs.testing_revision) }}
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with:
       revision: ${{ matrix.revision }}
+      test-revision: ${{ matrix.test-revision }}
     secrets: inherit
     permissions: 
       contents: write
