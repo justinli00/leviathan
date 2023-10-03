@@ -36,14 +36,10 @@ jobs:
         $head=(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)
         #which revision to update to
         $target=$head
-        if ( "${{ inputs.revision }}" -ne "" )
+        if ( "${{ inputs.revision }}".Length -lt 1 )
         {
           #no input specified; get the head revision
           $target=${{ inputs.revision }}
-        }
-        else
-        {
-          #revision specified from workflow call; pass input along
         }
         "TARGET_REVISION=$target"| Out-File -FilePath $env:GITHUB_ENV -Append
 
