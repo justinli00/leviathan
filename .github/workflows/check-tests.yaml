@@ -42,11 +42,13 @@ jobs:
         $head = (svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)
         if ("$env:END_REVISION" -eq "" -or [int]$head -lt [int]$env:END_REVISION)
         {
+          Write-Host ">> Setting to END_REVISION to $head."
           "END_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         if ("$env:START_REVISION" -eq "" -or [int]$env:MIN_TEST -gt [int]$env:START_REVISION ) #hard-coded... but whatever
         {
-           "START_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host ">> Setting to START_REVISION to current revision."
+          "START_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         cd ..
 
