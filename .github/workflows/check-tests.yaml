@@ -29,7 +29,7 @@ jobs:
         }
     - name: check-revisions
       id: check-revisions
-      if: ${{ env:SVN_WORKING_REVISION != env:SVN_HEAD_REVISION }}
+      if: ${{ env.SVN_WORKING_REVISION != env.SVN_HEAD_REVISION }}
       run: |
         Write-Host "Checking updates in the range of [$env:SVN_WORKING_REVISION, $env:SVN_HEAD_REVISION]."
         cd svn-repo
