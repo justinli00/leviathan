@@ -66,12 +66,12 @@ jobs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
 
   run-tests:
-    if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
+    if: ${{ needs.check-head.outputs.revisions_to_test }}.Length -gt 0
     needs: check-head
     strategy:
       max-parallel: 1
       matrix:
-        revision: ${{ fromJson(needs.check-head.outputs.REVISIONS_TO_TEST) }}
+        revision: ${{ fromJson(needs.check-head.outputs.revisions_to_test) }}
     #TODO - replace with actual workflow run
     uses: justinli00/leviathan/.github/workflows/input-test.yaml@main
     with:
