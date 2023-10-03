@@ -51,9 +51,8 @@ jobs:
           $testing_revision = ""
         }
 
-        #serialize testing revision
-        Write-Host ">> testing_revision: $testing_revision" 
-        "output=$testing_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        #Write-Host ">> testing_revision: $testing_revision" 
+        #"output=$testing_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
@@ -95,7 +94,7 @@ jobs:
         Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
         "output=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
-      testing_revision: ${{ steps.get-revision.outputs.output }}
+      #testing_revision: ${{ steps.get-revision.outputs.output }}
       revisions_to_test: ${{ steps.check-revision.outputs.output }}
 
   #tests needed and found
