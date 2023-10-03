@@ -79,6 +79,6 @@ jobs:
 
           Write-Host ">> Cleaning up."
           Remove-Item -Path ".\svn-tests" -Recurse -Force
-          Write-Host ">> Done!."
+          Write-Host ">> Done!"
         env:
           SVN_TEST: ${{ secrets.svn_test }}
