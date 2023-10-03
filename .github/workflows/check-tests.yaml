@@ -62,7 +62,8 @@ jobs:
         Write-Host "`n--------------------------------`n`nRevisions to test: $revisions_to_test"
         Write-Host $env:GITHUB_OUTPUT
         Write-Host "REVISIONS_TO_TEST=$revisions_to_test"
-        "REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        #"REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        echo "REVISIONS_TO_TEST=$revisions_to_test" >> $env:GITHUB_OUTPUT
 
   job2:
     runs-on: [self-hosted]
