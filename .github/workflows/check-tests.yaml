@@ -56,6 +56,7 @@ jobs:
             Write-Host "Revision $i did not change 375_PROJECT."
           }
         }
+        cd ..
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
