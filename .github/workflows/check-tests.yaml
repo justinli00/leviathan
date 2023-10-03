@@ -23,7 +23,7 @@ jobs:
         START: ${{ github.event.client_payload.start }}
         END: ${{ github.event.client_payload.end }}
       run: |
-        if ( ("START" -ne "") - and (Test-Path -Path svn-repo))
+        if (("START" -ne "") -and (Test-Path -Path svn-repo))
         {
           #no start/end from a repository dispatch; get it from svn-repo
           cd svn-repo
