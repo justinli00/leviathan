@@ -74,11 +74,12 @@ jobs:
         revision: ${{ fromJson(needs.check-head.outputs.REVISIONS_TO_TEST) }}
     #TODO - replace with actual workflow run
     uses: ./.github/workflows/input-test.yaml
+    with:
+      revision: ${{ matrix.revision }}
     secrets: inherit
     permissions:
       contents: write
-    with:
-      revision: ${{ matrix.revision }}
+
 
     #steps:
     #- name: call-workflow
