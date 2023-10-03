@@ -95,12 +95,12 @@ jobs:
         Write-Host "`n>> -----------------------------------`n`n>> Revisions to test: $revisions_to_test"
         "output=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
-      revisions_to_test: ${{ steps.check-revisions.outputs.output }}
+      revisions_to_test: ${{ steps.get-revisions.outputs.output }}
       testing_revision: ${{ steps.check-revision.outputs.output }}
 
   #tests needed and found
   test_revisions:
-    if: "${{ needs.check-head.outputs.revisions_to_test != '' }}"
+    if: ${{ 'needs.check-head.outputs.revisions_to_test' != '' }}
     needs: check-head
     strategy:
       max-parallel: 1
