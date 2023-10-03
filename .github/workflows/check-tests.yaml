@@ -52,7 +52,7 @@ jobs:
           }
         }
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
+        $revisions_to_test = ($revisions_to_test | ConvertTo-Json)
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
       shell: powershell
     outputs:
@@ -71,8 +71,8 @@ jobs:
     needs: check-head
     strategy:
       matrix:
-        revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}
-    #note - replace with actual workflow run
+        revision: ${{ fromJson(needs.check-head.outputs.REVISIONS_TO_TEST) }}
+    #TODO - replace with actual workflow run
     steps:
     - name: call-workflow
       uses: ./.github/workflows/input-test.yaml
