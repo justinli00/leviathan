@@ -28,11 +28,7 @@ jobs:
       SVN_PASSWORD: ${{ secrets.svn_password }}
       SVN_URL: ${{ secrets.svn_url }}
     steps:
-      - name: checkout-git
-        uses: actions/checkout@v3
-        with:
-          clean: false #important -- don't clean the directory   
-
+      #DO NOT CHECKOUT GIT
       - name: init-test-variables
         run: |
           #clean up the directory in case a previous run failed
@@ -73,7 +69,7 @@ jobs:
           
           Write-Host ">> Moving new test log to svn-tests."
           Rename-Item -Path ".\svn-repo\Hooks\test_artifacts\results_$env:TARGET_REVISION.xlsx" -NewName "$env:TEST_LOG_NAME"
-          Move-Item -Path ".\svn-repo\Hooks\test_artifacts\$env:TEST_LOG_NAME" -Destination ".\svn-tests"
+          Move-Item -Path ".\svn-repo\Hooks\test_artifacts\$env:TEST_LOG_NAME" -Destination ".\svn-tests" -Force 
 
           Write-Host ">> Committing new test log to svn."
           cd svn-tests

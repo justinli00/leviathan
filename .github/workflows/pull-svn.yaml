@@ -24,11 +24,7 @@ jobs:
       TARGET_REVISION: "_"
     runs-on: self-hosted
     steps:
-    - name: checkout-git
-      uses: actions/checkout@v3
-      with:
-        clean: false #important -- don't clean the directory
-
+    #DO NOT CHECKOUT GIT
     #determine which variable to use
     - name: set-revision
       run: |

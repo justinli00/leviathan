@@ -2,11 +2,10 @@
 name: check-tests
 
 on:
-  #schedule:
-    #- cron: '0 * * * *' #runs every hour on the dot
+  schedule:
+    - cron: '0 * * * *' #runs every hour on the dot
   repository_dispatch:
     types: check
-  push: #TODO -- remove
 
 permissions:
   contents: write
@@ -18,11 +17,7 @@ jobs:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
-    - name: checkout-git
-      uses: actions/checkout@v3
-      with:
-        clean: false #important -- don't clean the directory
-
+    #DO NOT CHECKOUT GIT
     - name: get-revisions
       run: |
         if ( Test-Path -Path svn-repo )
@@ -60,14 +55,13 @@ jobs:
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
-        Write-Host "Revisions to test: $revisions_to_test"
+        Write-Host "`n-----------------------------------`n`nRevisions to test: $revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-      shell: powershell
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
 
   #tests needed and found
-  run-tests:
+  test_revisions:
     if: "${{ needs.check-head.outputs.revisions_to_test != '' }}"
     needs: check-head
     strategy:
@@ -81,10 +75,10 @@ jobs:
     permissions: 
       contents: write
 
-  #just run pull-svn if no revisions are needed; no input --> update to HEAD
+  #update svn-repo to head revision, regardless of whether tests were run or not
   update-to-head:
-    needs: check-head
-    if: "${{ needs.check-head.outputs.revisions_to_test == '' }}"
+    needs: test_revisions
+    if: always()
     uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main 
     secrets: inherit
     permissions: 
