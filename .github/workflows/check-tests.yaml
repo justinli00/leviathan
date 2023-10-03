@@ -18,22 +18,10 @@ jobs:
       SVN_PASSWORD: ${{ secrets.svn_password }}
     steps:
     #DO NOT CHECKOUT GIT
-    - name: get-payload
-      env: 
-        PAYLOAD: ${{ github.event.client_payload }} 
-      run: |
-        #parse the message
-        if ("$env:PAYLOAD" -ne "")
-        {
-          Write-Host ">> Parsing start and end revisions from payload."
-          Write-Host ">> $env:PAYLOAD."
-          $payload = $env:PAYLOAD | ConvertFrom-Json
-          "END_REVISION=$payload.end-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "START_REVISION=$payload.start-revision" | Out-File -FilePath $env:GITHUB_ENV -Append
-        } 
-
     - name: get-revisions
       env: 
+        START_REVISION: ${{ github.event.client_payload.start-revision }} 
+        END_REVISION: ${{ github.event.client_payload.end-revision }}
         MIN_TEST: ${{ vars.min_test }}
       run: |
         #assume that svn-repo exists -- we have bigger problems if not
