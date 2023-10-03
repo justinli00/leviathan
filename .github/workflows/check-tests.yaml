@@ -16,12 +16,12 @@ jobs:
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
+      START_REVISION: ${{ github.event.client_payload.start-revision }} 
+      END_REVISION: ${{ github.event.client_payload.end-revision }}
     steps:
     #DO NOT CHECKOUT GIT
     - name: get-revisions
       env: 
-        START_REVISION: ${{ github.event.client_payload.start-revision }} 
-        END_REVISION: ${{ github.event.client_payload.end-revision }}
         MIN_TEST: ${{ vars.min_test }}
       run: |
         #assume that svn-repo exists -- we have bigger problems if not
@@ -43,7 +43,7 @@ jobs:
 
     - name: check-revisions
       id: check-revisions
-      if: ${{ env.START_REVISION != env.START_REVISION }}
+      if: $env:START_REVISION != $env:START_REVISION
       run: |
         Write-Host ">> Checking updates in the range of [$env:START_REVISION, $env:END_REVISION]."
         cd svn-repo
