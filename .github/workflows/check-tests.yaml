@@ -29,7 +29,7 @@ jobs:
         }
 
     - name: check-revisions
-      id: check-revisions
+      id: check-revisions #need an id for output
       if: ${{ env.SVN_WORKING_REVISION }} != ${{ env.SVN_HEAD_REVISION }}
       run: |
         Write-Host "Checking updates in the range of [$env:SVN_WORKING_REVISION, $env:SVN_HEAD_REVISION]."
@@ -41,9 +41,6 @@ jobs:
           #get the change log for revision i and remove all dashes
           $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i)
           $change_count = ($revision_changes.Split("`n").Count - 1)
-          Write-Host "Revision $i contains the following changes : "
-          Write-Host "$revision_changes"
-          Write-Host "there are $change_count changes."
           if ( $change_count )
           {
             Write-Host "Revision $i contains the following changes to 375_PROJECT : "
@@ -57,13 +54,10 @@ jobs:
         }
 
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
+        $revisions_to_test = ($revisions_to_test | ConvertTo-Json)
         Write-Host "`n--------------------------------`n`nRevisions to test: $revisions_to_test"
-        Write-Host $env:GITHUB_OUTPUT
-        Write-Host "test_array=$revisions_to_test"
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        #echo "test_array=$revisions_to_test" >> $env:GITHUB_OUTPUT
-      shell: powershell
+
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
   job2:
@@ -81,7 +75,7 @@ jobs:
     strategy:
       matrix:
         revision: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }}
-    #note - replace with actual workflow run
+    #TODO - replace with actual workflow run
     steps:
     - name: call-workflow
       uses: ./.github/workflows/input-test.yaml
