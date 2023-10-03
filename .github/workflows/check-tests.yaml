@@ -19,23 +19,27 @@ jobs:
     steps:
     #DO NOT CHECKOUT GIT
     - name: get-revisions
+      env: 
+        START: ${{ github.event.client_payload.start }}
+        END: ${{ github.event.client_payload.end }}
       run: |
-        if ( Test-Path -Path svn-repo )
+        if ( ("START" -ne "") - and (Test-Path -Path svn-repo))
         {
+          #no start/end from a repository dispatch; get it from svn-repo
           cd svn-repo
-          "SVN_WORKING_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
-          "SVN_HEAD_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "START=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
+          "END=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd ..
         }
     - name: check-revisions
       id: check-revisions
-      if: ${{ env.SVN_WORKING_REVISION != env.SVN_HEAD_REVISION }}
+      if: ${{ env.START != env.END }}
       run: |
-        Write-Host "Checking updates in the range of [$env:SVN_WORKING_REVISION, $env:SVN_HEAD_REVISION]."
+        Write-Host "Checking updates in the range of [$env:START, $env:END]."
         cd svn-repo
         $revisions_to_test = @()
-        $head = [int]$env:SVN_HEAD_REVISION   
-        for (($i = [int]$env:SVN_WORKING_REVISION); $i -le $head; $i++)
+        $head = [int]$env:END   
+        for (($i = [int]$env:START); $i -le $head; $i++)
         {
           #get the change log for revision i and remove all dashes
           $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i)
@@ -55,7 +59,7 @@ jobs:
 
         if ( $revisions_to_test.Length -eq 1 )
         {
-          #special case manually serialize the 
+          #special case; manually serialize
           $revisions_to_test = '[' + $revisions_to_test + ']'
         }
         else
