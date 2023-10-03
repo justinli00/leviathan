@@ -3,10 +3,10 @@ name: print inputted variable
 
 on:
   workflow_call:
-    inputs:
-      revision:
-        required: true
-        type: string
+    #inputs:
+    #  revision:
+    #    required: true
+    #    type: string
 
 jobs:
   write-host:
@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           clean: false #important -- don't clean the directory
-          
+
       - name: Print input
         run: | 
-          Write-Host "Inputted revision is: $env:testing_revision"
-        with: 
-          testing_revision: ${{ inputs.revision }}
+          Write-Host "hello" #"Inputted revision is: $env:testing_revision"
+        #with: 
+          #testing_revision: ${{ inputs.revision }}
