@@ -80,5 +80,6 @@ jobs:
 
   #just run pull-svn if no revisions are needed; no input --> update to HEAD
   update-to-head:
+    needs: check-head
     if: "${{ needs.check-head.outputs.revisions_to_test == '' }}"
     uses: justinli00/leviathan/.github/workflows/pull-svn.yaml@main 
