@@ -19,6 +19,6 @@ jobs:
 
       - name: Print input
         run: | 
-          Write-Host "hello" #"Inputted revision is: $env:testing_revision"
-        #with: 
-          #testing_revision: ${{ inputs.revision }}
+          Write-Host "Inputted revision is: $env:testing_revision"
+        with: 
+          testing_revision: ${{ inputs.revision }}
