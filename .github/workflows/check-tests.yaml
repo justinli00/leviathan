@@ -52,8 +52,6 @@ jobs:
         }
 
         #serialize testing revision
-        $testing_revision = "[$testing_revision]"
-        Write-Host "testing_revision: $testing_revision"
         "test_revision=$testing_revision"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
@@ -107,11 +105,10 @@ jobs:
       max-parallel: 1
       matrix:
         revision: ${{ fromJson(needs.check-head.outputs.revisions_to_test) }}
-        test-revision: ${{ fromJson(needs.check-head.outputs.testing_revision) }}
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with:
       revision: ${{ matrix.revision }}
-      test-revision: ${{ matrix.test-revision }}
+      test-revision: ${{ needs.check-head.outputs.testing_revision }}
     secrets: inherit
     permissions: 
       contents: write
