@@ -60,6 +60,8 @@ jobs:
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
         $revisions_to_test = "[" + ([string]$revisions_to_test).Replace(' ', ',') + "]"
         Write-Host "`n--------------------------------`n`nRevisions to test: $revisions_to_test"
+        Write-Host $env:GITHUB_OUTPUT
+        Write-Host "REVISIONS_TO_TEST=$revisions_to_test"
         "REVISIONS_TO_TEST=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
   job2:
