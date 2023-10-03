@@ -67,18 +67,24 @@ jobs:
 
   run-tests:
     if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
-    runs-on: [self-hosted]
     needs: check-head
     strategy:
-      max-parallel: 0
+      max-parallel: 1
       matrix:
         revision: ${{ fromJson(needs.check-head.outputs.REVISIONS_TO_TEST) }}
     #TODO - replace with actual workflow run
-    steps:
-    - name: call-workflow
-      uses: ./.github/workflows/input-test.yaml
-      with:
-        revision: ${{ matrix.revision }}
+    uses: ./.github/workflows/input-test.yaml
+    secrets: inherit
+    permissions:
+      contents: write
+    with:
+      revision: ${{ matrix.revision }}
+
+    #steps:
+    #- name: call-workflow
+    #  uses: ./.github/workflows/input-test.yaml
+    #  with:
+    #    revision: ${{ matrix.revision }}
 
   #TODO -- just run pull-svn if no revisions are needed
   #update-to-head:
