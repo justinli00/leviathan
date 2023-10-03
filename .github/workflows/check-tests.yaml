@@ -52,18 +52,11 @@ jobs:
           }
         }
         #writing to GITHUB_OUTPUT, not GITHUB_ENV!
-        $revisions_to_test = ($revisions_to_test | ConvertTo-Json)
+        $revisions_to_test = ($revisions_to_test | ConvertTo-Json -Compress)
         "test_array=$revisions_to_test" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
       shell: powershell
     outputs:
       revisions_to_test: ${{ steps.check-revisions.outputs.test_array }}
-  job2:
-    runs-on: [self-hosted]
-    needs: check-head
-    steps:
-      - env:
-          OUTPUT1: ${{needs.check-head.outputs.revisions_to_test}}
-        run: Write-Host "$env:OUTPUT1"
 
   run-tests:
     if: ${{ needs.check-head.outputs.REVISIONS_TO_TEST }} != $null
