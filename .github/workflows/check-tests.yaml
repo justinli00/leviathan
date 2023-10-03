@@ -16,30 +16,34 @@ jobs:
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
+      START_REVISION: ${{ github.event.client_payload.start-revision }}
+      END_REVISION: ${{ github.event.client_payload.end-revision }}
     steps:
     #DO NOT CHECKOUT GIT
     - name: get-revisions
       env: 
-        START: ${{ github.event.client_payload.start-revision }}
-        END: ${{ github.event.client_payload.end-revision }}
+        MIN_TEST: ${{ vars.min_test }}
       run: |
-        if (("START" -ne "") -and (Test-Path -Path svn-repo))
+        #assume that svn-repo exists -- we have bigger problems if not
+        $head = (svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)
+        if ("$env:END_REVISION" -eq "" -or [int]$head -lt [int]$env:END_REVISION)
         {
-          #no start/end from a repository dispatch; get it from svn-repo
-          cd svn-repo
-          "START=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
-          "END=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-          cd ..
+          "END_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
+        if ("$env:START_REVISION" -eq "" -or [int]$env:MIN_TEST -gt [int]$env:START_REVISION ) #hard-coded... but whatever
+        {
+           "START_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --show-item revision)"  | Out-File -FilePath $env:GITHUB_ENV -Append
+        }
+
     - name: check-revisions
       id: check-revisions
-      if: ${{ env.START != env.END }}
+      if: ${{ env.START_REVISION != env.START_REVISION }}
       run: |
-        Write-Host "Checking updates in the range of [$env:START, $env:END]."
+        Write-Host "Checking updates in the range of [$env:START_REVISION, $env:END_REVISION]."
         cd svn-repo
         $revisions_to_test = @()
-        $head = [int]$env:END   
-        for (($i = [int]$env:START); $i -le $head; $i++)
+        $end = [int]$env:END_REVISION   
+        for (($i = [int]$env:START_REVISION); $i -le $end; $i++)
         {
           #get the change log for revision i and remove all dashes
           $revision_changes = (svn --username $env:SVN_USERNAME --password $env:SVN_PASSWORD log -v -r $i)
