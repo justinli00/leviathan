@@ -12,6 +12,11 @@ jobs:
   write-host:
     runs-on: [self-hosted]
     steps:
+      - name: checkout-git
+        uses: actions/checkout@v3
+        with:
+          clean: false #important -- don't clean the directory
+          
       - name: Print input
         run: | 
           Write-Host "Inputted revision is: $env:testing_revision"
