@@ -54,7 +54,7 @@ jobs:
         else
         {
           #testing folder revision specified from workflow call; pass input along
-          $test_target=${{ inputs.test-revision }}
+          $test_target=${{ inputs.revision }}
         }
         "TEST_SCRIPT_REVISION=$test_target" | Out-File -FilePath $env:GITHUB_ENV -Append
 
