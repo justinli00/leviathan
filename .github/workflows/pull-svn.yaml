@@ -11,7 +11,7 @@ on:
         required: true
         type: string
       test-revision:
-        required: false
+        required: true
         type: string
 permissions:
   contents: write
