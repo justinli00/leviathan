@@ -34,6 +34,7 @@ jobs:
         if ("$env:END_REVISION" -eq "" -or [int]$head -lt [int]$env:END_REVISION)
         {
           Write-Host ">> Setting to END_REVISION to $head."
+          $end_revision=(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)
           "END_REVISION=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         if ("$env:START_REVISION" -eq "" -or [int]$env:MIN_TEST -gt [int]$env:START_REVISION ) #hard-coded... but whatever
@@ -53,7 +54,7 @@ jobs:
 
         Write-Host ">> testing_revision: $testing_revision" 
         "output1='$testing_revision'" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        "output2=$env:END_REVISION" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output2=$end_revision" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
     - name: check-revisions
       id: check-revisions
