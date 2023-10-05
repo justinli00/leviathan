@@ -64,7 +64,6 @@ jobs:
         "output1=$head" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         "output2=$build_name" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         cd ..
-
         
       env:
         SVN_INSTALLER: ${{ vars.svn_installer }}
