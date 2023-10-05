@@ -9,7 +9,11 @@ on:
 permissions:
   contents: write
 
+env:
+  BUILD_MESSAGE: ""
+
 jobs:
+ 
   pull-svn:
     uses: ./.github/workflows/pull-svn.yaml
     secrets: inherit
@@ -130,12 +134,12 @@ jobs:
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
-        "output1=(`"[REVISION $env:BUILD_NUMBER`]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME`")" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "BUILD_MESSAGE=(`"[REVISION $env:BUILD_NUMBER`]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME`")" | Out-File -FilePath $env:GITHUB_ENV -Append
 
         Write-Host ">> Done!."
         
-    outputs: 
-      build-message: ${{ steps.upload-to-svn.outputs.output1 }}
+    #outputs: 
+    #  build-message: ${{ steps.upload-to-svn.outputs.output1 }}
 
   #TODO -- include weekly build link in discord message
   #TODO -- schedule test for the revision or move the results over if they have been run already 
@@ -150,6 +154,6 @@ jobs:
         with:
           webhook: ${{ secrets.discord_webhook }}
           status: ${{ needs.build.result }}
-          content: ${{ needs.build.outputs.build-message}}
+          content: ${{ env.BUILD_MESSAGE }} #${{ needs.build.outputs.build-message}}
           title: "Daily Build"
     
