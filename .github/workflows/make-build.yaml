@@ -178,29 +178,15 @@ jobs:
           SVN_BUILD: ${{ vars.SVN_BUILD }}
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
         run: |
-          #{name}<<{delimiter}
-          #{value}
-          #{delimiter}
-          #echo "MY_STRING<<EOF" >> $GITHUB_ENV
-          #echo "$MY_STRING" >> $GITHUB_ENV
-          #echo "EOF" >> $GITHUB_ENV
-          
-          $weekly= ""
+          $message="[REVISION $env:BUILD_NUMBER]"
+          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME"
           if ((Get-Date).DayOfWeek -eq "Tuesday")
           {
-            $weekly="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME"
+           $message+="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME"
           }
 
-          $message=$(cat << NEWLINE
-          [REVISION $env:BUILD_NUMBER]
-          New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME
-          $weekly
-          )
+          "BUILD_MESSAGE=$message | Out-File -FilePath $env:GITHUB_ENV -Append
 
-          "BUILD_MESSAGE<<NEWLINE" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "$BUILD_MESSAGE" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "NEWLINE" | Out-File -FilePath $env:GITHUB_ENV -Append
-          
       - name: use-webhook
         uses: sarisia/actions-status-discord@v1
         with:
