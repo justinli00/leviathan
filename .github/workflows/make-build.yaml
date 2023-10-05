@@ -53,42 +53,76 @@ jobs:
         SVN_INSTALLER: ${{ secrets.svn_installer }}
 
     #build the project from the command line; unity is installed on self-hosted runner
-    - name: make-build
-      env:
-        UNITY_PATH: ${{ secrets.unity_path }}
-      run: |
-        Write-Host ">> Building project."
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
-        Write-Host ">> Build complete."
+    #- name: make-build
+    #  env:
+    #    UNITY_PATH: ${{ secrets.unity_path }}
+    #  run: |
+    #    Write-Host ">> Building project."
+    #    Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+    #    Write-Host ">> Build complete."
 
-    - name: make-installer
-      run: |
-        Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
-        Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
-        Remove-Item -Path ".\tempBuild" -Recurse -Force
+    #- name: make-installer
+    #  run: |
+    #    Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
+    #    Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
+    #    Remove-Item -Path ".\tempBuild" -Recurse -Force
 
     #upload builds to svn builds folder
-    - name: upload-installer-to-svn
+    - name: upload-to-svn
       env: 
         SVN_BUILD: ${{ secrets.SVN_BUILD }}
+        SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
       run: |
-        Write-Host ">> Uploading new build"
-        Write-Host ">> Checking out svn-builds"
-        New-Item -Path ".\svn-builds" -ItemType "Directory"    
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
+        #update the daily build
+        Write-Host ">> Updating daily build."
+        
+        Write-Host ">> Checking out the svn-daily-build"
+        New-Item -Path ".\svn-daily-build" -ItemType "Directory"
+        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_DAILY_BUILD svn-daily-build
 
-        Write-Host ">> Moving new installer to svn-builds."
-        New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
-        New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
-        Move-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-builds\$env:BUILD_NAME\GameDirectory"
-        Move-Item -Path ".\svn-installer\INSTALLER" -Destination ".\svn-builds\$env:BUILD_NAME\Installer"
-        New-Item -Path ".\svn-installer\INSTALLER" -ItemType "Directory" 
-        Write-Host ">> Committing new build to svn."
-        cd svn-builds
-        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Automated build"
+        Write-Host ">> Deleting previous daily build."
+        cd svn-daily-build 
+        svn remove .\* --force --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         cd ..
 
-        Write-Host ">> Cleaning up."
-        Remove-Item -Path ".\svn-builds" -Recurse -Force
+        Write-Host ">> Copying current build and installer to daily build folder"
+        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME" -ItemType "Directory"
+        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
+        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\INSTALLER" -ItemType "Directory"
+        Copy-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY"
+        Copy-Item -Path (Get-ChildItem -Path .\svn-installer\INSTALLER) -Destination ".\svn-daily-build\$env:BUILD_NAME\INSTALLER"
+        
+        Write-Host ">> Committing daily build folder"
+        cd svn-daily-build 
+        svn add .\* --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+        svn commit -m --username $env:SVN_USERNAME --password $env:SVN_PASSWORD "Daily build (test)"
+        cd ..
+
+        Write-Host ">> Cleaning up daily build upload."
+        Remove-Item -Path ".\svn-daily-build" -Recurse -Force
+
+        #upload the weekly builds on tuesday
+        if ((Get-Date).DayOfWeek -eq "Tuesday")
+        {
+          Write-Host ">> Uploading new weekly build"
+          Write-Host ">> Checking out svn-builds"
+          New-Item -Path ".\svn-builds" -ItemType "Directory"    
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
+
+          Write-Host ">> Moving new build and installer to svn-builds."
+          New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
+          New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
+          Move-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-builds\$env:BUILD_NAME\GameDirectory"
+          Move-Item -Path ".\svn-installer\INSTALLER" -Destination ".\svn-builds\$env:BUILD_NAME\Installer"
+          New-Item -Path ".\svn-installer\INSTALLER" -ItemType "Directory" 
+          Write-Host ">> Committing new build to svn."
+          cd svn-builds
+          svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Weekly build"
+          cd ..
+
+          Write-Host ">> Cleaning up weekly build upload."
+          Remove-Item -Path ".\svn-builds" -Recurse -Force
+        }
+
         Write-Host ">> Done!."
