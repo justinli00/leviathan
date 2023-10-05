@@ -142,7 +142,7 @@ jobs:
   #        as well as link to test
 
   ping-discord:
-    needs: upload-to-svn
+    needs: build
     if: always()
     runs-on: self-hosted
     steps:
