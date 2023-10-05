@@ -185,13 +185,13 @@ jobs:
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
           Write-Host ">> Making the string"
-          $message="[REVISION $env:BUILD_NUMBER]:" + "_NEWLINE_"
-          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME" + "_NEWLINE_"
-          $message+="View the BVT at: $env:SVN_DAILY_BUILD$env:BUILD_NAME" + "_NEWLINE_"
+          $message=" [REVISION $env:BUILD_NUMBER]: " + "_NEWLINE_"
+          $message+=" New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME " + "_NEWLINE_"
+          $message+=" View the BVT at: $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx " + "_NEWLINE_"
           if((Get-Date).DayOfWeek -eq "Tuesday")
           {
             Write-Host ">> It is Tuesday my dudes"
-            $message+="After today, it can be found at $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx" + "_NEWLINE_"
+            $message+=" After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME " + "_NEWLINE_"
           }
           
           Write-Host ">> Multiline string"
