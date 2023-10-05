@@ -47,6 +47,7 @@ jobs:
         }
 
         cd svn-repo
+        "BUILD_NUMBER=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
       env:
@@ -69,6 +70,7 @@ jobs:
 
     #upload builds to svn builds folder
     - name: upload-to-svn
+      id: upload-to-svn
       env: 
         SVN_BUILD: ${{ secrets.SVN_BUILD }}
         SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
@@ -97,7 +99,7 @@ jobs:
         Write-Host ">> Committing daily build folder"
         cd svn-daily-build 
         svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Daily build (test)"
+        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Daily build"
         cd ..
 
         Write-Host ">> Cleaning up daily build upload."
@@ -128,4 +130,26 @@ jobs:
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
+        "output1="[REVISION $env:BUILD_NUMBER]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME"" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
         Write-Host ">> Done!."
+        
+    outputs: 
+      build-message: ${{ steps.upload-to-svn.outputs.output1 }}
+
+  #TODO -- include weekly build link in discord message
+  #TODO -- schedule test for the revision or move the results over if they have been run already 
+  #        as well as link to test
+
+  ping-discord:
+    needs: upload-to-svn
+    if: always()
+    runs-on: self-hosted
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.discord_webhook }}
+          status: ${{ job.status }}
+          content: ${{ needs.build.outputs.build-message}}
+          title: "Daily Build"
+    
