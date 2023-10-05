@@ -134,12 +134,15 @@ jobs:
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
-        "BUILD_MESSAGE=(`"[REVISION $env:BUILD_NUMBER`]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME`")" | Out-File -FilePath $env:GITHUB_ENV -Append
+        #make the outputs
+        "output1=$env:BUILD_NAME" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output2=$env:BUILD_NUMBER" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
         Write-Host ">> Done!."
         
-    #outputs: 
-    #  build-message: ${{ steps.upload-to-svn.outputs.output1 }}
+    outputs: 
+      build-name: ${{ steps.upload-to-svn.outputs.output1 }}
+      build-number: ${{ steps.upload-to-svn.outputs.output2 }}
 
   #TODO -- include weekly build link in discord message
   #TODO -- schedule test for the revision or move the results over if they have been run already 
@@ -150,7 +153,21 @@ jobs:
     if: always()
     runs-on: self-hosted
     steps:
-      - uses: sarisia/actions-status-discord@v1
+      - name: assemble-build-message
+        env:
+          BUILD_NAME: ${{ needs.build.outputs.build-name}}
+          BUILD_NUMBER: ${{ needs.build.outputs.build-number}}
+          SVN_BUILD: ${{ secrets.SVN_BUILD }}
+          SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
+        run: |
+          $message="[REVISION $env:BUILD_NUMBER]\nNew daily build up at: $env:SVN_DAILY_BUILD${{ needs.build.outputs.build-name}}!"
+          if ((Get-Date.DayOfWeek -eq "Tuesday"))
+          {
+            $message="$message\nIt is also the weekly build, which is at: $env:SVN_BUILD${{ needs.build.outputs.build-name}}."
+          }
+          "BUILD_MESSAGE=$message" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: use-webhook
+        uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.discord_webhook }}
           status: ${{ needs.build.result }}
