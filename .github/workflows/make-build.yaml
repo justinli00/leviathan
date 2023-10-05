@@ -169,10 +169,10 @@ jobs:
           SVN_BUILD: ${{ vars.SVN_BUILD }}
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
         run: |
-          $message="[REVISION $env:BUILD_NUMBER]`nNew daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME!"
+          $message="[REVISION $env:BUILD_NUMBER]`nNew daily build up at: $env:SVN_DAILY_BUILD" + $env:BUILD_NAME + "!"
           if ((Get-Date).DayOfWeek -eq "Tuesday")
           {
-            $message="$message`nIt is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME!."
+            $message+="`nIt is also the weekly build, which is at: $env:SVN_BUILD" + $env:BUILD_NAME + "."
           }
           "BUILD_MESSAGE=$message" | Out-File -FilePath $env:GITHUB_ENV -Append
       - name: use-webhook
