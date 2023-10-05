@@ -185,21 +185,22 @@ jobs:
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
           Write-Host ">> Making the string"
-          $message="[REVISION $env:BUILD_NUMBER]:`n"
-          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
-          $message+="View the BVT at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+          $message="[REVISION $env:BUILD_NUMBER]:" + "_NEWLINE_"
+          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME" + "_NEWLINE_"
+          $message+="View the BVT at: $env:SVN_DAILY_BUILD$env:BUILD_NAME" + "_NEWLINE_"
           if((Get-Date).DayOfWeek -eq "Tuesday")
           {
             Write-Host ">> It is Tuesday my dudes"
-            $message+="After today, it can be found at $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx`n"
+            $message+="After today, it can be found at $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx" + "_NEWLINE_"
           }
-
+          
           Write-Host ">> Multiline string"
-          "BUILD_MESSAGE<<`n" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "BUILD_MESSAGE<<_NEWLINE_" | Out-File -FilePath $env:GITHUB_ENV -Append
           $message | Out-File -FilePath $env:GITHUB_ENV -Append
-          "`n" | Out-File -FilePath $env:GITHUB_ENV -Append
-
+          "_NEWLINE_" | Out-File -FilePath $env:GITHUB_ENV -Append
+      
       - name: use-webhook
+        if: always()
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.discord_webhook }}
