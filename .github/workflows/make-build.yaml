@@ -130,7 +130,7 @@ jobs:
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
-        "output1=(`"[REVISION $env:BUILD_NUMBER`]`nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME`")" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output1=(`"[REVISION $env:BUILD_NUMBER`]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME`")" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
         Write-Host ">> Done!."
         
@@ -149,7 +149,7 @@ jobs:
       - uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.discord_webhook }}
-          status: ${{ needs.build.status }}
+          status: ${{ needs.build.result }}
           content: ${{ needs.build.outputs.build-message}}
           title: "Daily Build"
     
