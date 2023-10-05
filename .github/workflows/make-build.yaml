@@ -96,7 +96,7 @@ jobs:
         
         Write-Host ">> Committing daily build folder"
         cd svn-daily-build 
-        svn add .\* --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         svn commit -m --username $env:SVN_USERNAME --password $env:SVN_PASSWORD "Daily build (test)"
         cd ..
 
@@ -104,6 +104,7 @@ jobs:
         Remove-Item -Path ".\svn-daily-build" -Recurse -Force
 
         #upload the weekly builds on tuesday
+        Write-Host ">> Is today Tuesday?"
         if ((Get-Date).DayOfWeek -eq "Tuesday")
         {
           Write-Host ">> Uploading new weekly build"
