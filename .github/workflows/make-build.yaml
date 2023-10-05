@@ -149,7 +149,7 @@ jobs:
       - uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.discord_webhook }}
-          status: ${{ jobs.build.status }}
+          status: ${{ needs.build.status }}
           content: ${{ needs.build.outputs.build-message}}
           title: "Daily Build"
     
