@@ -172,7 +172,7 @@ jobs:
   #        test-revision: ${{ needs.build.outputs.build-number }}
 
   ping-discord:
-    needs: [build, bvt]
+    needs: build #, bvt]
     if: always()
     runs-on: self-hosted
     steps:
