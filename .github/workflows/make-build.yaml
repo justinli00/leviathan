@@ -35,7 +35,10 @@ jobs:
         {
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
-
+        if ( Test-Path -Path svn-daily-build )
+        {
+          Remove-Item -Path ".\svn-daily-build" -Recurse -Force
+        }     
         #make sure installer files are up-to-date
         if ( !(Test-Path -Path svn-installer ))
         {
