@@ -29,6 +29,7 @@ jobs:
     steps:
     #DO NOT CHECKOUT GIT
     - name: setup-build
+      id: setup-build
       run: |
         #clean up the directory in case a previous run failed
         if ( Test-Path -Path svn-builds )
@@ -54,9 +55,18 @@ jobs:
         }
 
         cd svn-repo
-        "BUILD_NUMBER=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
-        "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        #create output values
+        $head=$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)
+        $build_name="BATIOSr$head"
+
+        #write outputs
+        "BUILD_NUMBER=$head" | Out-File -FilePath $env:GITHUB_ENV -Append
+        "BUILD_NAME=$build_name" | Out-File -FilePath $env:GITHUB_ENV -Append
+        "output1=$head" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output2=$build_name" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         cd ..
+
+        
       env:
         SVN_INSTALLER: ${{ vars.svn_installer }}
 
@@ -76,82 +86,81 @@ jobs:
     #    Remove-Item -Path ".\tempBuild" -Recurse -Force
 
     #upload builds to svn builds folder
-    - name: upload-to-svn
-      id: upload-to-svn
-      env: 
-        SVN_BUILD: ${{ vars.SVN_BUILD }}
-        SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
-      run: |
-        #update the daily build
-        Write-Host ">> Updating daily build."
-        
-        Write-Host ">> Checking out the svn-daily-build"
-        New-Item -Path ".\svn-daily-build" -ItemType "Directory"
-        svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_DAILY_BUILD svn-daily-build
-
-        Write-Host ">> Deleting previous daily build."
-        cd svn-daily-build 
-        svn remove .\* --force --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        cd ..
-
-        Write-Host ">> Setting up daily build folder"
-        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME" -ItemType "Directory"
-        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
-        New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\INSTALLER" -ItemType "Directory"
-
-        Write-Host ">> Copying current build and installer to daily build folder"
-        Copy-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY"
-        Copy-Item -Path ".\svn-installer\INSTALLER\*" -Destination ".\svn-daily-build\$env:BUILD_NAME\INSTALLER"
-        
-        Write-Host ">> Committing daily build folder"
-        cd svn-daily-build 
-        svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-        svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Daily build"
-        cd ..
-
-        Write-Host ">> Cleaning up daily build upload."
-        Remove-Item -Path ".\svn-daily-build" -Recurse -Force
-
-        #upload the weekly builds on tuesday
-        Write-Host ">> Is today Tuesday?"
-        if ((Get-Date).DayOfWeek -eq "Tuesday")
-        {
-          Write-Host ">> Uploading new weekly build"
-          Write-Host ">> Checking out svn-builds"
-          New-Item -Path ".\svn-builds" -ItemType "Directory"    
-          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
-
-          #TODO -- copy previously made files and then clean up properly after in both cases
-          Write-Host ">> Moving new build and installer to svn-builds."
-          New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
-          New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
-          Move-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-builds\$env:BUILD_NAME\GameDirectory"
-          Move-Item -Path ".\svn-installer\INSTALLER" -Destination ".\svn-builds\$env:BUILD_NAME\Installer"
-          New-Item -Path ".\svn-installer\INSTALLER" -ItemType "Directory" 
-          Write-Host ">> Committing new build to svn."
-          cd svn-builds
-          svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
-          svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Weekly build"
-          cd ..
-
-          Write-Host ">> Cleaning up weekly build upload."
-          Remove-Item -Path ".\svn-builds" -Recurse -Force
-        }
-        else
-        {
-          Remove-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Recurse -Force
-          Remove-Item -Path ".\svn-installer\INSTALLER\*" -Force
-        }
-
-        #make the outputs
-        "output1=$env:BUILD_NAME" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        "output2=$env:BUILD_NUMBER" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-
-        Write-Host ">> Done!."
+    #- name: upload-to-svn
+    #  id: upload-to-svn
+    #  env: 
+    #    SVN_BUILD: ${{ vars.SVN_BUILD }}
+    #    SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
+    #  run: |
+    #    #update the daily build
+    #    Write-Host ">> Updating daily build."
+    #    
+    #    Write-Host ">> Checking out the svn-daily-build"
+    #    New-Item -Path ".\svn-daily-build" -ItemType "Directory"
+    #    svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_DAILY_BUILD svn-daily-build
+#
+    #    Write-Host ">> Deleting previous daily build."
+    #    cd svn-daily-build 
+    #    svn remove .\* --force --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+    #    cd ..
+#
+    #    Write-Host ">> Setting up daily build folder"
+    #    New-Item -Path ".\svn-daily-build\$env:BUILD_NAME" -ItemType "Directory"
+    #    New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
+    #    New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\INSTALLER" -ItemType "Directory"
+#
+    #    Write-Host ">> Copying current build and installer to daily build folder"
+    #    Copy-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY"
+    #    Copy-Item -Path ".\svn-installer\INSTALLER\*" -Destination ".\svn-daily-build\$env:BUILD_NAME\INSTALLER"
+    #    
+    #    Write-Host ">> Committing daily build folder"
+    #    cd svn-daily-build 
+    #    svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+    #    svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Daily build"
+    #    cd ..
+#
+    #    Write-Host ">> Cleaning up daily build upload."
+    #    Remove-Item -Path ".\svn-daily-build" -Recurse -Force
+#
+    #    #upload the weekly builds on tuesday
+    #    Write-Host ">> Is today Tuesday?"
+    #    if ((Get-Date).DayOfWeek -eq "Tuesday")
+    #    {
+    #      Write-Host ">> Uploading new weekly build"
+    #      Write-Host ">> Checking out svn-builds"
+    #      New-Item -Path ".\svn-builds" -ItemType "Directory"    
+    #      svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
+#
+    #      #TODO -- copy previously made files and then clean up properly after in both cases
+    #      Write-Host ">> Moving new build and installer to svn-builds."
+    #      New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
+    #      New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
+    #      Move-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-builds\$env:BUILD_NAME\GameDirectory"
+    #      Move-Item -Path ".\svn-installer\INSTALLER" -Destination ".\svn-builds\$env:BUILD_NAME\Installer"
+    #      New-Item -Path ".\svn-installer\INSTALLER" -ItemType "Directory" 
+    #      Write-Host ">> Committing new build to svn."
+    #      cd svn-builds
+    #      svn add $env:BUILD_NAME --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
+    #      svn commit --username $env:SVN_USERNAME --password $env:SVN_PASSWORD -m "Weekly build"
+    #      cd ..
+#
+    #      Write-Host ">> Cleaning up weekly build upload."
+    #      Remove-Item -Path ".\svn-builds" -Recurse -Force
+    #    }
+    #    else
+    #    {
+    #      Remove-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Recurse -Force
+    #      Remove-Item -Path ".\svn-installer\INSTALLER\*" -Force
+    #    }
+#
+    #    #make the outputs
+    #    
+#
+    #    Write-Host ">> Done!."
         
     outputs: 
-      build-name: ${{ steps.upload-to-svn.outputs.output1 }}
-      build-number: ${{ steps.upload-to-svn.outputs.output2 }}
+      build-name: ${{ steps.setup-build.outputs.output1 }}
+      build-number: ${{ steps.setup-build.outputs.output2 }}
 
   #TODO -- include weekly build link in discord message
   #TODO -- schedule test for the revision or move the results over if they have been run already 
