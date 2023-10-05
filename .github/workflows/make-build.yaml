@@ -184,18 +184,17 @@ jobs:
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
-          #use & as delimiter
-          Write-Host ">> Making the string"
-          $message="[REVISION $env:BUILD_NUMBER]:&"
-          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME&"
-          $message+="View the BVT at: $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx&"
+          $message="[REVISION $env:BUILD_NUMBER]:`n"
+          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+          $message+="View the BVT at: $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx`n"
           if((Get-Date).DayOfWeek -eq "Tuesday")
           {
             Write-Host ">> It is Tuesday my dudes"
-            $message+="After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME&"
+            $message+="After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
           }
-          
-          Write-Host ">> Multiline string"
+          $message+="&"
+          Write-Host $message
+
           "BUILD_MESSAGE<<&" | Out-File -FilePath $env:GITHUB_ENV -Append
           $message | Out-File -FilePath $env:GITHUB_ENV -Append
           "&" | Out-File -FilePath $env:GITHUB_ENV -Append
