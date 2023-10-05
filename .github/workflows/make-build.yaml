@@ -184,8 +184,8 @@ jobs:
           {
            $message+="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME"
           }
-
-          "BUILD_MESSAGE=$message | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host $message
+          "BUILD_MESSAGE=$message" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: use-webhook
         uses: sarisia/actions-status-discord@v1
