@@ -161,13 +161,18 @@ jobs:
     outputs: 
       build-number: ${{ steps.setup-build.outputs.output1 }}
       build-name: ${{ steps.setup-build.outputs.output2 }}
-
-  #TODO -- include weekly build link in discord message
-  #TODO -- schedule test for the revision or move the results over if they have been run already 
-  #        as well as link to test
+  
+  #run-bvt:
+  #  needs: build
+  #  runs-on: self-hosted
+  #  steps:
+  #    - uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
+  #      with: 
+  #        revision: ${{ needs.build.outputs.build-number }}
+  #        test-revision: ${{ needs.build.outputs.build-number }}
 
   ping-discord:
-    needs: build
+    needs: [build, bvt]
     if: always()
     runs-on: self-hosted
     steps:
@@ -177,15 +182,24 @@ jobs:
           BUILD_NUMBER: ${{ needs.build.outputs.build-number}}
           SVN_BUILD: ${{ vars.SVN_BUILD }}
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
+          SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
-          $message="[REVISION $env:BUILD_NUMBER]`n"
+          Write-Host ">> Making the string"
+          $message="[REVISION $env:BUILD_NUMBER]:`n"
           $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
-          if ((Get-Date).DayOfWeek -eq "Tuesday")
+          $message+="View the BVT at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+          if((Get-Date).DayOfWeek -eq "Tuesday")
           {
-           $message+="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME`n"
+            Write-Host ">> It is Tuesday my dudes"
+            $message+="After today, it can be found at $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx`n"
           }
-          Write-Host $message
-          "BUILD_MESSAGE=$message" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          Write-Host ">> Multiline string"
+          "BUILD_MESSAGE<<`n" | Out-File -FilePath $env:GITHUB_ENV -Append
+          $message | Out-File -FilePath $env:GITHUB_ENV -Append
+          "`n" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+        shell: bash
 
       - name: use-webhook
         uses: sarisia/actions-status-discord@v1
