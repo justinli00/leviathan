@@ -36,10 +36,10 @@ jobs:
         $head=(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_URL --revision HEAD --show-item revision)
         #which revision to update to
         $target=$head
-        if ( "${{ inputs.revision }}".Length -lt 1 )
+        if ( "${{ inputs.revision }}" -ne "" )
         {
-          #no input specified; get the head revision
-          $target=${{ inputs.revision }}
+          #input specified; 
+          $target=[int]"${{ inputs.revision }}"
         }
         "TARGET_REVISION=$target"| Out-File -FilePath $env:GITHUB_ENV -Append
 
@@ -54,7 +54,7 @@ jobs:
         else
         {
           #testing folder revision specified from workflow call; pass input along
-          $test_target=${{ inputs.revision }}
+          $test_target=[int]"${{ inputs.test-revision }}"
         }
         "TEST_SCRIPT_REVISION=$test_target" | Out-File -FilePath $env:GITHUB_ENV -Append
 
