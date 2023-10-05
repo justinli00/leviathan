@@ -13,7 +13,6 @@ env:
   BUILD_MESSAGE: ""
 
 jobs:
- 
   pull-svn:
     uses: ./.github/workflows/pull-svn.yaml
     secrets: inherit
@@ -166,7 +165,7 @@ jobs:
       test-revision: ${{ needs.build.outputs.build-number }}
 
   ping-discord:
-    needs: [build, bvt]
+    needs: [build, run-bvt]
     if: always()
     runs-on: self-hosted
     steps:
