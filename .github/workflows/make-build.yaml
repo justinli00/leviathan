@@ -118,6 +118,7 @@ jobs:
           New-Item -Path ".\svn-builds" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
 
+          #TODO -- copy previously made files and then clean up properly after in both cases
           Write-Host ">> Moving new build and installer to svn-builds."
           New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
           New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
@@ -132,6 +133,11 @@ jobs:
 
           Write-Host ">> Cleaning up weekly build upload."
           Remove-Item -Path ".\svn-builds" -Recurse -Force
+        }
+        else
+        {
+          Remove-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Recurse -Force
+          Remove-Item -Path ".\svn-installer\INSTALLER\*" -Force
         }
 
         #make the outputs
@@ -161,7 +167,7 @@ jobs:
           SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
         run: |
           $message="[REVISION $env:BUILD_NUMBER]\nNew daily build up at: $env:SVN_DAILY_BUILD${{ needs.build.outputs.build-name}}!"
-          if ((Get-Date.DayOfWeek -eq "Tuesday"))
+          if ((Get-Date).DayOfWeek -eq "Tuesday")
           {
             $message="$message\nIt is also the weekly build, which is at: $env:SVN_BUILD${{ needs.build.outputs.build-name}}."
           }
