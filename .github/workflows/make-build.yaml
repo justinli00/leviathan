@@ -130,7 +130,7 @@ jobs:
           Remove-Item -Path ".\svn-builds" -Recurse -Force
         }
 
-        "output1="[REVISION $env:BUILD_NUMBER]\nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME"" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        "output1="`[REVISION $env:BUILD_NUMBER`]`nNew daily build up at $env:SVN_DAILY_BUILD$env:BUILD_NAME"" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
         Write-Host ">> Done!."
         
