@@ -199,8 +199,6 @@ jobs:
           $message | Out-File -FilePath $env:GITHUB_ENV -Append
           "`n" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-        shell: bash
-
       - name: use-webhook
         uses: sarisia/actions-status-discord@v1
         with:
