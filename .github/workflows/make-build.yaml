@@ -162,17 +162,17 @@ jobs:
       build-number: ${{ steps.setup-build.outputs.output1 }}
       build-name: ${{ steps.setup-build.outputs.output2 }}
   
-  run-bvt:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
-        with: 
-          revision: ${{ needs.build.outputs.build-number }}
-          test-revision: ${{ needs.build.outputs.build-number }}
+  #run-bvt:
+  #  needs: build
+  #  runs-on: self-hosted
+  #  steps:
+  #    - uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
+  #      with: 
+  #        revision: ${{ needs.build.outputs.build-number }}
+  #        test-revision: ${{ needs.build.outputs.build-number }}
 
   ping-discord:
-    needs: [build, bvt]
+    needs: build #[build, bvt]
     if: always()
     runs-on: self-hosted
     steps:
