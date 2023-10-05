@@ -30,7 +30,7 @@ jobs:
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
-      SVN_URL: ${{ secrets.svn_url }}
+      SVN_URL: ${{ vars.svn_url }}
     steps:
       #DO NOT CHECKOUT GIT
       - name: init-test-variables
@@ -85,4 +85,4 @@ jobs:
           Remove-Item -Path ".\svn-tests" -Recurse -Force
           Write-Host ">> Done!"
         env:
-          SVN_TEST: ${{ secrets.svn_test }}
+          SVN_TEST: ${{ vars.svn_test }}

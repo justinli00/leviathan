@@ -3,7 +3,7 @@ name: make-build
 
 on:
   schedule:
-    - cron: '59 6 * * 2' #runs at 11:59 on Monday (PDT -> UTC)
+    - cron: '59 6 * * *' #runs at 11:59 pm, every day (PDT -> UTC). Weekly builds on "Tuesday morning"
   repository_dispatch:
     types: build
 permissions:
@@ -55,7 +55,7 @@ jobs:
         "BUILD_NAME=BATIOSr$(svn info --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision HEAD --show-item revision)" | Out-File -FilePath $env:GITHUB_ENV -Append
         cd ..
       env:
-        SVN_INSTALLER: ${{ secrets.svn_installer }}
+        SVN_INSTALLER: ${{ vars.svn_installer }}
 
     #build the project from the command line; unity is installed on self-hosted runner
     #- name: make-build
@@ -76,8 +76,8 @@ jobs:
     - name: upload-to-svn
       id: upload-to-svn
       env: 
-        SVN_BUILD: ${{ secrets.SVN_BUILD }}
-        SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
+        SVN_BUILD: ${{ vars.SVN_BUILD }}
+        SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
       run: |
         #update the daily build
         Write-Host ">> Updating daily build."
@@ -163,8 +163,8 @@ jobs:
         env:
           BUILD_NAME: ${{ needs.build.outputs.build-name}}
           BUILD_NUMBER: ${{ needs.build.outputs.build-number}}
-          SVN_BUILD: ${{ secrets.SVN_BUILD }}
-          SVN_DAILY_BUILD: ${{ secrets.SVN_DAILY_BUILD }}
+          SVN_BUILD: ${{ vars.SVN_BUILD }}
+          SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
         run: |
           $message="[REVISION $env:BUILD_NUMBER]\nNew daily build up at: $env:SVN_DAILY_BUILD${{ needs.build.outputs.build-name}}!"
           if ((Get-Date).DayOfWeek -eq "Tuesday")

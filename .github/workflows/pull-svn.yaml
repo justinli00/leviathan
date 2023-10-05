@@ -23,7 +23,7 @@ jobs:
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
       SVN_PASSWORD: ${{ secrets.svn_password }}
-      SVN_URL: ${{ secrets.svn_url }}
+      SVN_URL: ${{ vars.svn_url }}
       TARGET_REVISION: "_"
     runs-on: self-hosted
     steps:
@@ -60,7 +60,7 @@ jobs:
 
     - name: checkout-update-svn
       env:
-        SVN_URL: ${{ secrets.svn_url }}
+        SVN_URL: ${{ vars.svn_url }}
         TESTING_PATH: ${{ vars.testing_path }}
       run: |
         if ( !(Test-Path -Path svn-repo ) )
