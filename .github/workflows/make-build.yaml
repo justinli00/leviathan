@@ -159,8 +159,8 @@ jobs:
     #    Write-Host ">> Done!."
         
     outputs: 
-      build-name: ${{ steps.setup-build.outputs.output1 }}
-      build-number: ${{ steps.setup-build.outputs.output2 }}
+      build-number: ${{ steps.setup-build.outputs.output1 }}
+      build-name: ${{ steps.setup-build.outputs.output2 }}
 
   #TODO -- include weekly build link in discord message
   #TODO -- schedule test for the revision or move the results over if they have been run already 
@@ -178,11 +178,11 @@ jobs:
           SVN_BUILD: ${{ vars.SVN_BUILD }}
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
         run: |
-          $message="[REVISION $env:BUILD_NUMBER]"
-          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME"
+          $message="[REVISION $env:BUILD_NUMBER]`n"
+          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
           if ((Get-Date).DayOfWeek -eq "Tuesday")
           {
-           $message+="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME"
+           $message+="It is also the weekly build, which is at: $env:SVN_BUILD$env:BUILD_NAME`n"
           }
           Write-Host $message
           "BUILD_MESSAGE=$message" | Out-File -FilePath $env:GITHUB_ENV -Append
