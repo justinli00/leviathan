@@ -85,12 +85,14 @@ jobs:
         svn remove .\* --force --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         cd ..
 
-        Write-Host ">> Copying current build and installer to daily build folder"
+        Write-Host ">> Setting up daily build folder"
         New-Item -Path ".\svn-daily-build\$env:BUILD_NAME" -ItemType "Directory"
         New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
         New-Item -Path ".\svn-daily-build\$env:BUILD_NAME\INSTALLER" -ItemType "Directory"
+
+        Write-Host ">> Copying current build and installer to daily build folder"
         Copy-Item -Path (Get-ChildItem -Path .\svn-installer\GAMEDIRECTORY -Exclude "DigiPen_EULA.rtf","icon.ico") -Destination ".\svn-daily-build\$env:BUILD_NAME\GAMEDIRECTORY"
-        Copy-Item -Path (Get-ChildItem -Path .\svn-installer\INSTALLER) -Destination ".\svn-daily-build\$env:BUILD_NAME\INSTALLER"
+        Copy-Item -Path ".\svn-installer\INSTALLER\*" -Destination ".\svn-daily-build\$env:BUILD_NAME\INSTALLER"
         
         Write-Host ">> Committing daily build folder"
         cd svn-daily-build 
