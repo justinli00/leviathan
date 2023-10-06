@@ -168,7 +168,7 @@ jobs:
     
   ping-discord:
     needs: [ build, run-bvt ]
-    if: ${{ always() && needs.build.result == 'success' }}
+    if: always()
     runs-on: self-hosted
     steps:
       #this still gives errors for some reason
@@ -193,7 +193,21 @@ jobs:
           "BUILD_MESSAGE<<&" | Out-File -FilePath $env:GITHUB_ENV -Append
           $message | Out-File -FilePath $env:GITHUB_ENV -Append
           "&" | Out-File -FilePath $env:GITHUB_ENV -Append
-      
+
+      #change the picture to use based on whether it passed or failed
+      - name: pick-picture
+        if: always()
+        run: |
+          Write-Host "${{ needs.build.result }}"
+          if ( ${{ needs.build.result }} == "true" )
+          {
+            "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+          else
+          {
+            "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+      #make the ping
       - name: use-webhook
         if: always()
         uses: sarisia/actions-status-discord@v1
@@ -203,5 +217,6 @@ jobs:
           content: ${{ env.BUILD_MESSAGE }}
           title: "Daily Build"
           nocontext: true
-          image: ${{ secrets.saffron_image_embed }}
+          image: ${{ env.SAFFRON_IMAGE }}
+          avatar_url: ${{ env.SAFFRON_IMAGE }}
         
