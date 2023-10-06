@@ -167,10 +167,11 @@ jobs:
       contents: write
     
   ping-discord:
-    needs: [build, run-bvt]
-    if: always()
+    needs: [ build, run-bvt ]
+    if: ${{ always() && needs.build.result == 'success' }}
     runs-on: self-hosted
     steps:
+      #this still gives errors for some reason
       - name: assemble-build-message
         env:
           BUILD_NAME: ${{ needs.build.outputs.build-name}}
