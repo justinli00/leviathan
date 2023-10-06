@@ -62,7 +62,7 @@ jobs:
       should-build: ${{ steps.check-for-changes.outputs.output1 }}
     
   build:
-    needs: check-for-changes
+    needs: check-project-changes
     if: ${{ needs.build.outputs.should-build }}
     runs-on: self-hosted
     env:
