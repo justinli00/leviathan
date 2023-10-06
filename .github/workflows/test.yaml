@@ -11,7 +11,7 @@ jobs:
       - name: check-for-changes
         id: check-for-changes
         env: 
-          SVN_DAILY_BUILD: ${{ secrets.svn_daily_build }}
+          SVN_DAILY_BUILD: ${{ vars.svn_daily_build }}
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
