@@ -45,7 +45,7 @@ jobs:
     outputs:
       should_build: ${{ steps.check-for-changes.outputs.output1 }}
   depedent-job:
-    needs: check-for-changes
+    needs: check-project-changes
     if: ${{ needs.build.outputs.should_build }}
     runs-on: self-hosted
     steps:
