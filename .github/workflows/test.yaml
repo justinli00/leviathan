@@ -12,10 +12,12 @@ jobs:
         id: check-for-changes
         env: 
           SVN_DAILY_BUILD: ${{ secrets.svn_daily_build }}
+          SVN_USERNAME: ${{ secrets.svn_username }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
           cd svn-repo
           Write-Host ">> Checking if unity project has been modified since last build..."
-          $last_build=($(svn ls $env:SVN_DAILY_BUILD) -replace "[^0-9]" , "")
+          $last_build=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
           $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
           Write-Host $last_build
           Write-Host $head
