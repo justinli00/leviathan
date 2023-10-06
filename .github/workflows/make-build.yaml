@@ -244,6 +244,15 @@ jobs:
           {
             $message="No build was made."
           }
+
+          #make sure that input to status is valid
+          $status=${{ needs.build.result }}
+          if ("$status" -eq "skipped")
+          {
+            $status="Cancelled"
+          }
+          "BUILD_STATUS=$status" | Out-File -FilePath $env:GITHUB_ENV -Append
+
       #change the picture to use based on whether it passed or failed
       - name: pick-picture
         if: always()
@@ -268,7 +277,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.discord_webhook }}
-          status: ${{ needs.build.result }}
+          status: ${{ env.BUILD_RESULT }}
           content: ${{ env.BUILD_MESSAGE }}
           title: "Daily Build"
           nocontext: true
