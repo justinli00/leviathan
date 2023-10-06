@@ -13,6 +13,7 @@ env:
   BUILD_MESSAGE: ""
 
 jobs:
+
   pull-svn:
     uses: ./.github/workflows/pull-svn.yaml
     secrets: inherit
@@ -198,8 +199,7 @@ jobs:
       - name: pick-picture
         if: always()
         run: |
-          Write-Host "${{ needs.build.result }}"
-          if ( ${{ needs.build.result }} == "true" )
+          if ( "${{ needs.build.result }}" == "success" )
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }

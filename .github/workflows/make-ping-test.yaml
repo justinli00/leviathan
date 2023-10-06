@@ -1,0 +1,38 @@
+name: make-build
+
+on:
+  push
+
+env:
+  BUILD_MESSAGE: ""
+
+jobs:
+  ping-discord:
+    if: always()
+    runs-on: self-hosted
+    steps:
+      #change the picture to use based on whether it passed or failed
+      - name: pick-picture
+        if: always()
+        run: |
+          if ( "success" == "success" )
+          {
+            "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+          else
+          {
+            "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+          }
+      #make the ping
+      - name: use-webhook
+        if: always()
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.discord_webhook }}
+          status: "success"
+          content: "Joe mama"
+          title: "Daily Build"
+          nocontext: true
+          image: ${{ env.SAFFRON_IMAGE }}
+          avatar_url: ${{ env.SAFFRON_IMAGE }}
+        
