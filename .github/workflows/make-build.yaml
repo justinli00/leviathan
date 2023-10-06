@@ -246,7 +246,7 @@ jobs:
           }
 
           #make sure that input to status is valid
-          $status=${{ needs.build.result }}
+          $status="${{ needs.build.result }}""
           if ("$status" -eq "skipped")
           {
             $status="Cancelled"
