@@ -1,0 +1,42 @@
+#makes a release with unity
+name: test
+
+on:
+  push
+
+jobs:
+  check-project-changes:
+    runs-on: self-hosted
+    steps:
+      - name: check-for-changes
+        id: check-for-changes
+        env: 
+          SVN_DAILY_BUILD: ${{ secrets.svn_daily_build }}
+        run: |
+          cd svn-repo
+          Write-Host ">> Checking if unity project has been modified since last build..."
+          $last_build=($(svn ls $env:SVN_DAILY_BUILD) -replace "[^0-9]" , "")
+          $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+          
+          #check that HEAD revision contains changes since previous build
+          $should_build = "false"
+          if ($head -ne $last_build)
+          {
+            #check each revision for ANY changes to unity repo
+            for($i = [int]$last_build; $i -le $head; $i++)
+            {
+              $revision_changes = $(svn log -v -r $i --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+              $change_count = ($revision_changes.Split("`n").Count - 1)
+              if ( $change_count )
+              {
+                Write-Host ">> Revision $i contains changes 375_PROJECT."
+                $should_build = "true"
+                break
+              }
+            }
+          }
+
+          #write to output
+          "output1=$should_build" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+    outputs:
+      should_build: ${{ steps.check-for-changes.outputs.output1 }}
