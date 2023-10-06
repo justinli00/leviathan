@@ -15,7 +15,7 @@ jobs:
       - name: pick-picture
         if: always()
         run: |
-          if ( "success" -eq "success" )
+          if ( "failure" -eq "success" )
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
