@@ -201,4 +201,6 @@ jobs:
           status: ${{ needs.build.result }}
           content: ${{ env.BUILD_MESSAGE }}
           title: "Daily Build"
+          nocontext: true
+          image: ${{ secrets.saffron_image_embed }}
         
