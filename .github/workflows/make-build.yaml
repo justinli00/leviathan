@@ -224,7 +224,7 @@ jobs:
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
-          if ( "${{ needs.builds.outputs.build-number }}" -ne " )
+          if ( "${{ needs.builds.outputs.build-number }}" -ne "" )
           {
             $message="[REVISION $env:BUILD_NUMBER]:`n"
             $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
@@ -246,7 +246,7 @@ jobs:
           }
 
           #make sure that input to status is valid
-          $status="${{ needs.build.result }}""
+          $status="${{ needs.build.result }}"
           if ("$status" -eq "skipped")
           {
             $status="Cancelled"
