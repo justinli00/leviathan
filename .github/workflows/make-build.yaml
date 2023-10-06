@@ -224,20 +224,26 @@ jobs:
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
-          $message="[REVISION $env:BUILD_NUMBER]:`n"
-          $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
-          $message+="View the BVT at: $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx`n"
-          if((Get-Date).DayOfWeek -eq "Tuesday")
+          if ( "${{ needs.builds.outputs.build-number }}" -ne "" )
           {
-            Write-Host ">> It is Tuesday my dudes"
-            $message+="After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+            $message="[REVISION $env:BUILD_NUMBER]:`n"
+            $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+            $message+="View the BVT at: $env:SVN_TEST" + "results_$env:BUILD_NUMBER.xlsx`n"
+            if((Get-Date).DayOfWeek -eq "Tuesday")
+            {
+              Write-Host ">> It is Tuesday my dudes"
+              $message+="After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+            }
+            $message+="&" #append the delimiter to the end
+
+            "BUILD_MESSAGE<<&" | Out-File -FilePath $env:GITHUB_ENV -Append
+            $message | Out-File -FilePath $env:GITHUB_ENV -Append
+            "&" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
-          $message+="&" #append the delimiter to the end
-
-          "BUILD_MESSAGE<<&" | Out-File -FilePath $env:GITHUB_ENV -Append
-          $message | Out-File -FilePath $env:GITHUB_ENV -Append
-          "&" | Out-File -FilePath $env:GITHUB_ENV -Append
-
+          else
+          {
+            $message="No build was made."
+          }
       #change the picture to use based on whether it passed or failed
       - name: pick-picture
         if: always()
@@ -255,6 +261,7 @@ jobs:
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
+
       #make the ping
       - name: use-webhook
         if: always()
