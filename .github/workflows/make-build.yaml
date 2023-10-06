@@ -242,7 +242,7 @@ jobs:
           }
           else
           {
-            $message="No build was made."
+            $message="No changes were made to the project since the previous build was made."
           }
 
           #make sure that input to status is valid
