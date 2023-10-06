@@ -17,6 +17,8 @@ jobs:
           Write-Host ">> Checking if unity project has been modified since last build..."
           $last_build=($(svn ls $env:SVN_DAILY_BUILD) -replace "[^0-9]" , "")
           $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+          Write-Host $last_build
+          Write-Host $head
           
           #check that HEAD revision contains changes since previous build
           $should_build = "false"
@@ -40,3 +42,9 @@ jobs:
           "output1=$should_build" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       should_build: ${{ steps.check-for-changes.outputs.output1 }}
+  depedent-job:
+    needs: check-for-changes
+    if: ${{ needs.build.outputs.should_build }}
+    runs-on: self-hosted
+    steps:
+      - run: Write-Host "Get nae naed"
