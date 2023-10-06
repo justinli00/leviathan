@@ -19,15 +19,15 @@ jobs:
           Write-Host ">> Checking if unity project has been modified since last build..."
           $last_build=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
           $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
-          Write-Host $last_build
-          Write-Host $head
+          Write-Host "$last_build"
+          Write-Host "$head"
           
           #check that HEAD revision contains changes since previous build
           $should_build = "false"
           if ($head -ne $last_build)
           {
             #check each revision for ANY changes to unity repo
-            for($i = [int]$last_build; $i -le $head; $i++)
+            for($i = [int]"$last_build"; $i -le [int]"$head"; $i++)
             {
               $revision_changes = $(svn log -v -r $i --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
               $change_count = ($revision_changes.Split("`n").Count - 1)
