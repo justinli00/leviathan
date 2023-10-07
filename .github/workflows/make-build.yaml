@@ -242,7 +242,7 @@ jobs:
           }
           else
           {
-            $message="No changes were made to the project since the previous build was made."
+            "BUILD_MESSAGE='No changes were made to the project since the previous build was made.'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
           #make sure that input to status is valid
@@ -261,7 +261,7 @@ jobs:
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
-          elseif ( '${{ needs.check-project-changes.outputs.should-build }}' -ne "true" )
+          elseif ( "${{ needs.build.result }}" -eq "Skipped" )
           {
             #skipped OR cancelled
             "SAFFRON_IMAGE=${{ secrets.NOT_RUN_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
