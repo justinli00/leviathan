@@ -242,7 +242,7 @@ jobs:
           }
           else
           {
-            "BUILD_MESSAGE=No changes were made to the project since the previous build was made." | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_MESSAGE=No build was made, since there have been no changes made to the project since the previous build." | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
           #make sure that input to status is valid
