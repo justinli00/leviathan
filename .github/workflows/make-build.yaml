@@ -246,14 +246,6 @@ jobs:
             "BUILD_MESSAGE=No build was made, since there have been no changes made to the project since the previous build." | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
-          #make sure that input to status is valid
-          $status="${{ needs.build.result }}"
-          if ("$status" -eq "skipped")
-          {
-            $status="Cancelled"
-          }
-          "BUILD_STATUS=$status" | Out-File -FilePath $env:GITHUB_ENV -Append
-
       #change the picture to use based on whether it passed or failed
       - name: pick-picture
         if: always()
@@ -261,15 +253,18 @@ jobs:
           if ( "${{ needs.build.result }}" -eq "success" )
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='success'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
-          elseif ( "${{ needs.build.result }}" -eq "Skipped" )
+          elseif ( ()"${{ needs.build.result }}" -eq "Skipped") -or ()"${{ needs.build.result }}" -eq "Cancelled") )
           {
             #skipped OR cancelled
             "SAFFRON_IMAGE=${{ secrets.NOT_RUN_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='Cancelled'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
           else
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='failed'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping
