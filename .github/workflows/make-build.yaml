@@ -63,7 +63,7 @@ jobs:
     
   build:
     needs: check-project-changes
-    if: ${{ needs.build.outputs.should-build }}
+    if: ${{ needs.build.outputs.should-build == "true" }}
     runs-on: self-hosted
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
