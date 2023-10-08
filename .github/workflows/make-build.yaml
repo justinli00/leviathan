@@ -255,7 +255,7 @@ jobs:
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
             "BUILD_STATUS='success'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
-          elseif ( ()"${{ needs.build.result }}" -eq "Skipped") -or ()"${{ needs.build.result }}" -eq "Cancelled") )
+          elseif ( ("${{ needs.build.result }}" -eq "Skipped") -or ("${{ needs.build.result }}" -eq "Cancelled") )
           {
             #skipped OR cancelled
             "SAFFRON_IMAGE=${{ secrets.NOT_RUN_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
