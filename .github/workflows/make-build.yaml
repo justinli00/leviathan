@@ -57,13 +57,14 @@ jobs:
           }
 
           #write to output
+          Write-Host "$should_build"
           "output1=$should_build" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       should-build: ${{ steps.check-for-changes.outputs.output1 }}
     
   build:
     needs: check-project-changes
-    if: ${{ needs.build.outputs.should-build == true }}
+    if: ${{ needs.build.outputs.should-build == 'true' }}
     runs-on: self-hosted
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
