@@ -17,6 +17,7 @@ jobs:
       contents: write
   check-project-changes:
     runs-on: self-hosted
+    needs: pull-svn
     steps:
       - name: check-for-changes
         id: check-for-changes
@@ -216,6 +217,7 @@ jobs:
     steps:
       #this still gives errors for some reason
       - name: assemble-build-message
+        continue-on-error: true       #to ignore errors, which always happen
         env:
           BUILD_NAME: ${{ needs.build.outputs.build-name}}
           BUILD_NUMBER: ${{ needs.build.outputs.build-number}}
