@@ -250,10 +250,10 @@ jobs:
       - name: pick-picture
         if: always()
         run: |
-          if ( "${{ needs.build.result }}" -eq "success" )
+          if ( "${{ needs.build.result }}" -eq "Success" )
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
-            "BUILD_STATUS='success'" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='Success'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
           elseif ( ("${{ needs.build.result }}" -eq "Skipped") -or ("${{ needs.build.result }}" -eq "Cancelled") )
           {
@@ -264,7 +264,7 @@ jobs:
           else
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
-            "BUILD_STATUS='failed'" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='Failed'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping
