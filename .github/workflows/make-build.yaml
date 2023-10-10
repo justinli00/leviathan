@@ -250,7 +250,7 @@ jobs:
       - name: pick-picture
         if: always()
         run: |
-          if ( "${{ needs.build.result }}" -eq "Success" )
+          if ( "${{ needs.build.result }}" -eq "Success" ) #powershell -eq for strings is not case-sensitive
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
             "BUILD_STATUS='Success'" | Out-File -FilePath $env:GITHUB_ENV -Append
