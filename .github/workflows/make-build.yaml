@@ -265,6 +265,7 @@ jobs:
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
             "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_MESSAGE='Revision $env:BUILD_NUMBER: Automated build failed.'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping
