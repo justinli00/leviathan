@@ -232,7 +232,7 @@ jobs:
             if((Get-Date).DayOfWeek -eq "Tuesday")
             {
               Write-Host ">> It is Tuesday my dudes"
-              $message+="After today, it can be found at $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
+              $message+="After today, it can be found at $env:SVN_BUILD$env:BUILD_NAME`n"
             }
             $message+="&" #append the delimiter to the end
 
