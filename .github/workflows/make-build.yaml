@@ -279,4 +279,5 @@ jobs:
           nocontext: true
           image: ${{ env.SAFFRON_IMAGE }}
           avatar_url: ${{ env.SAFFRON_IMAGE }}
+          nofail: false   #now that assemble-build-message doesn't show false negative, this will actually indicate result 
         
