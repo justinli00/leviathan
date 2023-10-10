@@ -187,7 +187,7 @@ jobs:
           cd ..
 
           Write-Host ">> Cleaning up weekly build upload."
-          Remove-Item -Path ".\svn-builds" -Recurse -Force
+          Get-ChildItem ".\svn-builds" -Recurse | Remove-Item -Force
         }
         else
         {
@@ -253,7 +253,7 @@ jobs:
           if ( "${{ needs.build.result }}" -eq "Success" ) #powershell -eq for strings is not case-sensitive
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
-            "BUILD_STATUS='Success'" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
           elseif ( ("${{ needs.build.result }}" -eq "Skipped") -or ("${{ needs.build.result }}" -eq "Cancelled") )
           {
@@ -264,7 +264,7 @@ jobs:
           else
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
-            "BUILD_STATUS='Failed'" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping
