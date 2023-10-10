@@ -10,6 +10,8 @@ on:
 permissions:
   contents: write
 
+concurrency: leviathan-runner
+
 jobs:
   check-head:
     runs-on: [self-hosted]
@@ -78,6 +80,12 @@ jobs:
           else
           {
             Write-Host ">> Revision $i did not change 375_PROJECT."
+          }
+
+          if( $revisions_to_test.Length -ge ${{ vars.max_queued_tests }})
+          {
+            Write-Host ">> Queued tests has reached limit of ${{ vars.max_queued_tests }}."
+            break
           }
         }
         cd ..
