@@ -17,6 +17,7 @@ jobs:
       contents: write
   check-project-changes:
     runs-on: self-hosted
+    needs: pull-svn
     steps:
       - name: check-for-changes
         id: check-for-changes
@@ -29,8 +30,6 @@ jobs:
           Write-Host ">> Checking if unity project has been modified since last build..."
           $last_build=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
           $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
-          Write-Host "$last_build"
-          Write-Host "$head"
           
           #check that HEAD revision contains changes since previous build
           $should_build = "false"
@@ -57,13 +56,14 @@ jobs:
           }
 
           #write to output
+          Write-Host "$should_build"
           "output1=$should_build" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
     outputs:
       should-build: ${{ steps.check-for-changes.outputs.output1 }}
     
   build:
     needs: check-project-changes
-    if: ${{ needs.build.outputs.should-build }}
+    if: ${{ needs.check-project-changes.outputs.should-build }}
     runs-on: self-hosted
     env:
       SVN_USERNAME: ${{ secrets.svn_username }}
@@ -187,7 +187,7 @@ jobs:
           cd ..
 
           Write-Host ">> Cleaning up weekly build upload."
-          Remove-Item -Path ".\svn-builds" -Recurse -Force
+          Remove-Item -Recurse -Force -Path ".\svn-builds\*"
         }
         else
         {
@@ -217,6 +217,7 @@ jobs:
     steps:
       #this still gives errors for some reason
       - name: assemble-build-message
+        continue-on-error: true       #to ignore errors, which always happen
         env:
           BUILD_NAME: ${{ needs.build.outputs.build-name}}
           BUILD_NUMBER: ${{ needs.build.outputs.build-number}}
@@ -224,7 +225,7 @@ jobs:
           SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
           SVN_TEST: ${{ vars.SVN_TEST }}
         run: |
-          if ( "${{ needs.builds.outputs.build-number }}" -ne "" )
+          if ( "$env:BUILD_NUMBER" -ne "" )
           {
             $message="[REVISION $env:BUILD_NUMBER]:`n"
             $message+="New daily build up at: $env:SVN_DAILY_BUILD$env:BUILD_NAME`n"
@@ -245,30 +246,26 @@ jobs:
             "BUILD_MESSAGE=No build was made, since there have been no changes made to the project since the previous build." | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
-          #make sure that input to status is valid
-          $status="${{ needs.build.result }}"
-          if ("$status" -eq "skipped")
-          {
-            $status="Cancelled"
-          }
-          "BUILD_STATUS=$status" | Out-File -FilePath $env:GITHUB_ENV -Append
-
       #change the picture to use based on whether it passed or failed
       - name: pick-picture
         if: always()
         run: |
-          if ( "${{ needs.build.result }}" -eq "success" )
+          if ( "${{ needs.build.result }}" -eq "Success" ) #powershell -eq for strings is not case-sensitive
           {
             "SAFFRON_IMAGE=${{ secrets.SUCCESS_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
-          elseif ( "${{ needs.build.result }}" -eq "Skipped" )
+          elseif ( ("${{ needs.build.result }}" -eq "Skipped") -or ("${{ needs.build.result }}" -eq "Cancelled") )
           {
             #skipped OR cancelled
             "SAFFRON_IMAGE=${{ secrets.NOT_RUN_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS='Cancelled'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
           else
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_MESSAGE='Revision $env:BUILD_NUMBER: Automated build failed.'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping
@@ -283,4 +280,5 @@ jobs:
           nocontext: true
           image: ${{ env.SAFFRON_IMAGE }}
           avatar_url: ${{ env.SAFFRON_IMAGE }}
+          nofail: false   #now that assemble-build-message doesn't show false negative, this will actually indicate result 
         
