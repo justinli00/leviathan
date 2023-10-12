@@ -118,13 +118,13 @@ jobs:
         UNITY_PATH: ${{ secrets.unity_path }}
       run: |
         Write-Host ">> Building project."
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64" -Wait
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject" -Wait
         Write-Host ">> Build complete."
 
     - name: make-installer
       run: |
         Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
-        Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
+        Start-Process "D:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
         Remove-Item -Path ".\tempBuild" -Recurse -Force
 
     #upload builds to svn builds folder
