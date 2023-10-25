@@ -118,7 +118,7 @@ jobs:
         UNITY_PATH: ${{ secrets.unity_path }}
       run: |
         Write-Host ">> Building project."
-        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-logFile","$(Get-Location)\buildLog.txt" -Wait
+        Start-Process $env:UNITY_PATH -ArgumentList "-batchMode","-quit","-executeMethod","Builder.BuildProject","-projectPath","svn-repo","-outputPath","tempBuild","-buildTarget","StandaloneWindows64","-logFile","$(Get-Location)\buildLog.txt" -Wait
         Write-Host ">> Build complete."
         Write-Host ">> Build output:"
         cat buildLog.txt
