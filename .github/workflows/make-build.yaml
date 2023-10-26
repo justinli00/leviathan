@@ -28,7 +28,8 @@ jobs:
         run: |
           cd svn-repo
           Write-Host ">> Checking if unity project has been modified since last build..."
-          $last_build=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
+          $last_build_list=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
+          $last_build = $last_build_list.Split(" ") | Select-Object -Last 1
           $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
           
           #check that HEAD revision contains changes since previous build
