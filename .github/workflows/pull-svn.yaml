@@ -77,6 +77,7 @@ jobs:
           svn update --username $env:SVN_USERNAME --password $env:SVN_PASSWORD --revision $env:TARGET_REVISION
           Write-Host ">> Update successful. Resolving any conflicts."
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          svn resolve --accept base --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           Write-Host ">> All conflicts should be resolved. Printing status of all items:"
           svn status --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         }
