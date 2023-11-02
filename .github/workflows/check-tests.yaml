@@ -2,8 +2,9 @@
 name: check-tests
 
 on:
-  schedule:
-    - cron: '0 * * * *' #runs every hour on the dot
+  #until testing is actually used, not really much point in running the tests...
+  #schedule:
+  #  - cron: '0 * * * *' #runs every hour on the dot
   repository_dispatch:
     types: check
 
