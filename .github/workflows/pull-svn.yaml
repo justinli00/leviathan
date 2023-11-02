@@ -79,16 +79,24 @@ jobs:
           svn resolve --accept theirs-full --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
 
           #accept the tree conflicts, if any
-          $status = (svn status --username $env:SVN_USERNAME --password $env:SVN_PASSWORD).Split("`n")
-          for($i = 0; $i -lt $status.Count; $i++) 
-          { 
-            if($status[$i].Contains("     C"))
-            {
-              svn resolve --accept working -R $status[$i].Substring(8) --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+          $status_output = (svn status --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+          if("$status_output" -ne "")
+          {
+            $status = $status_output.Split("`n")
+            for($i = 0; $i -lt $status.Count; $i++) 
+            { 
+              if($status[$i].Contains("     C"))
+              {
+                svn resolve --accept working -R $status[$i].Substring(8) --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
+              }
             }
+
+            Write-Host ">> Reverting any remaining changes."
+            svn revert ".\*" --username $env:SVN_USERNAME --password $env:SVN_PASSWORD 
           }
 
-          Write-Host ">> All conflicts should be resolved. Printing status of all items:"
+
+          Write-Host ">> All conflicts should be resolved. Printing status of all items (should be blank):"
           svn status --username $env:SVN_USERNAME --password $env:SVN_PASSWORD
         }
         Write-Host ">> runner's copy of svn files is now up-to-date."
