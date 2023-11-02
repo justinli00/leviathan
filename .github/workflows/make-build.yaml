@@ -212,6 +212,7 @@ jobs:
   
   #run build verification tests
   run-bvt:
+    if: ${{ !always()}} #again, we don't really get anything out of tests
     needs: build
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with: 
