@@ -3,7 +3,7 @@ name: make-build
 
 on:
   schedule:
-    - cron: '59 6 * * *' #runs at 11:59 pm, every day (PDT -> UTC). Weekly builds on "Tuesday morning"
+    - cron: '59 7 * * *' #runs at 11:59 pm, every day (PST -> UTC). Weekly builds on "Tuesday morning"
   repository_dispatch:
     types: build
 permissions:
