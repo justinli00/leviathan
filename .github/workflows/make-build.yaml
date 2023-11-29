@@ -291,6 +291,6 @@ jobs:
           title: "Daily Build"
           nocontext: true
           image: ${{ env.SAFFRON_IMAGE }}
-          avatar_url: ${{ env.SAFFRON_IMAGE }}
+          avatar_url: ${{ secrets.NOT_RUN_EMBED }}
           nofail: false   #now that assemble-build-message doesn't show false negative, this will actually indicate result 
         
