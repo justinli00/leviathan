@@ -20,7 +20,7 @@ jobs:
           status: "Success"
           content: "change da world / my final message / Goodb ye "
           nocontext: true
-          image: https://i1.sndcdn.com/artworks-000596536556-cwl06b-t500x500.jpg
+          image: https://cdn.discordapp.com/attachments/1040841820801867790/1179214767844511764/image.png?ex=6578f855&is=65668355&hm=3b225e12d3be6a88dc2aedbbaf3b20231ec6428bfe037e035851f7f748aed9a6&
           avatar_url: ${{ env.SAFFRON_IMAGE }}
           nofail: false   #now that assemble-build-message doesn't show false negative, this will actually indicate result 
         
