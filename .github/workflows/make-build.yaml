@@ -3,7 +3,7 @@ name: make-build
 
 on:
   #schedule:
-  #  - cron: '59 7 * * *' #runs at 11:59 pm, every day (PST -> UTC). Weekly builds on "Tuesday morning"
+  #  - cron: '59 7 * * *' #runs at 11:59 pm, every day (PST -> UTC). Weekly builds EOD Monday
   repository_dispatch:
     types: build
 permissions:
@@ -212,7 +212,6 @@ jobs:
   
   #run build verification tests
   run-bvt:
-    if: ${{ !always()}} #again, we don't really get anything out of tests
     needs: build
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with: 
@@ -227,7 +226,7 @@ jobs:
     if: always()
     runs-on: self-hosted
     steps:
-      #this still gives errors for some reason
+      #this still gives errors, even though it's clean
       - name: assemble-build-message
         continue-on-error: true       #to ignore errors, which always happen
         env:
@@ -277,7 +276,7 @@ jobs:
           {
             "SAFFRON_IMAGE=${{ secrets.FAIL_EMBED }}" | Out-File -FilePath $env:GITHUB_ENV -Append
             "BUILD_STATUS=${{ needs.build.result }}" | Out-File -FilePath $env:GITHUB_ENV -Append
-            "BUILD_MESSAGE='Revision $env:BUILD_NUMBER: Automated build failed.'" | Out-File -FilePath $env:GITHUB_ENV -Append
+            "BUILD_MESSAGE='Automated build failed.'" | Out-File -FilePath $env:GITHUB_ENV -Append
           }
 
       #make the ping

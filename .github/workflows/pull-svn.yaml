@@ -16,8 +16,6 @@ on:
 permissions:
   contents: write
 
-#TODO -- watch for failure and run cleanup 
-
 jobs:
   pull-svn-files:
     env:
@@ -28,7 +26,6 @@ jobs:
     runs-on: self-hosted
     steps:
     #DO NOT CHECKOUT GIT
-    #determine which variable to use
     - name: set-revision
       env: 
         MIN_TEST: ${{ vars.min_test }}
