@@ -127,6 +127,13 @@ jobs:
 
     - name: make-installer
       run: |
+        #checkout the installer if you haven't already
+        if ( !(Test-Path -Path svn-installer) )
+        {
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_INSTALLER svn-installer 
+        }
+        
+        #actually make the installer
         Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
         Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
         Remove-Item -Path ".\tempBuild" -Recurse -Force
@@ -184,7 +191,6 @@ jobs:
           New-Item -Path ".\svn-builds" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
 
-          #TODO -- copy previously made files and then clean up properly after in both cases
           Write-Host ">> Moving new build and installer to svn-builds."
           New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
           New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
