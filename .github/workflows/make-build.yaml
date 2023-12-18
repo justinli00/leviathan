@@ -29,7 +29,8 @@ jobs:
           cd svn-repo
           Write-Host ">> Checking if unity project has been modified since last build..."
           $last_build_list=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
-          if ($last_build_list -eq "")
+          Write-Host "lbl:"$last_build_list"..."
+          if ("$last_build_list" -eq "")
           {
             #there should be a better way to exit early... right?
             Write-Host ">> No new changes since last build."
@@ -52,8 +53,6 @@ jobs:
                 Write-Host ">> Checking revision $i."
                 if ( $change_count )
                 {
-                  Write-Host ">> Revision $i contains changes 375_PROJECT."
-                  $should_build = "true"
                   break
                 }
               }
