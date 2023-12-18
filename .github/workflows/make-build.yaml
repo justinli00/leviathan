@@ -132,6 +132,8 @@ jobs:
         Remove-Item -Path ".\buildLog.txt" -Force
 
     - name: make-installer
+      env:
+          SVN_INSTALLER: ${{ vars.svn_installer }}
       run: |
         #checkout the installer if you haven't already
         if ( !(Test-Path -Path svn-installer) )
