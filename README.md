@@ -19,6 +19,14 @@ The last three directories are sparsely checked out in order to upload build and
 
 _Work is being done to store build and test artifacts via Dropbox instead of SVN. This README will be updated accordingly once this feature has been completed._
 
+To run any tests you have written, create a folder in your Unity project called Hooks. The folder structure should look something like this:
+- svn-repo/                 | _The directory containing the Unity project._
+    - _Unity Folders_/      | _The folders containing the assets, packages, project settings, etc. for your project
+    - Hooks/
+        - test_artifacts/
+        - run_tests.exe
+        - hook_settings.json
+
 # Executables
 All of the files in executables were originally stored on the SVN, but were moved here for the sake of visibility. Only run_tests.exe is actually used in any of the workflows. This should be stored in "svn-repo/Hooks/", along with another folder called "test_artifacts". These paths can be modified in run-test.yaml.
 - They were compiled with [pyinstaller](https://pyinstaller.org/en/stable/)
