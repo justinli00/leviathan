@@ -59,7 +59,7 @@ jobs:
         run: |
           "TEST_LOG_NAME=results_$env:TARGET_REVISION.xlsx" | Out-File -FilePath $env:GITHUB_ENV -Append
           cd svn-repo
-          &"$env:RUN_TESTS_PATH" --head_rev $env:TARGET_REVISION
+          Start-Process "$env:RUN_TESTS_PATH" -ArgumentList "--head_rev","$env:TARGET_REVISION" -Wait
           cd ..
 
       #rename the test log and move it into the test log folder
