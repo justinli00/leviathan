@@ -50,8 +50,12 @@ def format_results(results, results_path, results_name):
     df_results = df_results.transpose()
     
     #drop redundant/unused attributes
-    df_results = df_results.drop(['name', 'methodname', 'fullname', 'classname',
-                     'id', 'runstate', 'start-time', 'end-time','label'], axis=1)
+    drop_cols = ['name', 'methodname', 'fullname', 'classname',
+            'id', 'runstate', 'start-time', 'end-time','label']
+    result_cols = df_results.columns
+    for col in result_cols:
+        if col in drop_cols:
+            df_results = df_results.drop([col], axis=1)
     
     #ensure that columns are in the same order
     col_order = {}
