@@ -22,38 +22,44 @@ jobs:
       - name: check-for-changes
         id: check-for-changes
         env: 
-          SVN_DAILY_BUILD: ${{ vars.svn_daily_build }}
+          SVN_DAILY_BUILD: ${{ vars.SVN_DAILY_BUILD }}
           SVN_USERNAME: ${{ secrets.svn_username }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
           cd svn-repo
           Write-Host ">> Checking if unity project has been modified since last build..."
           $last_build_list=($(svn ls $env:SVN_DAILY_BUILD --username $env:SVN_USERNAME --password $env:SVN_PASSWORD) -replace "[^0-9]" , "")
-          $last_build = $last_build_list.Split(" ") | Select-Object -Last 1
-          $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
-          
-          #check that HEAD revision contains changes since previous build
-          $should_build = "false"
-          if ($head -ne $last_build)
+          if ("$last_build_list" -eq "")
           {
-            #check each revision for ANY changes to unity repo
-            Write-Host ">> Checking each revision in the range: [$last_build, $head]."
-            for($i = [int]"$last_build"; $i -le [int]"$head"; $i++)
-            {
-              $revision_changes = $(svn log -v -r $i --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
-              $change_count = ($revision_changes.Split("`n").Count - 1)
-              Write-Host ">> Checking revision $i."
-              if ( $change_count )
-              {
-                Write-Host ">> Revision $i contains changes 375_PROJECT."
-                $should_build = "true"
-                break
-              }
-            }
+            Write-Host ">> No builds recorded."
+            $should_build = "true"
           }
           else
           {
-            Write-Host ">> No new changes since last build."
+            $last_build = $last_build_list.Split(" ") | Select-Object -Last 1
+            $head = $(svn info -r HEAD --show-item revision --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+            
+            #check that HEAD revision contains changes since previous build
+            $should_build = "false"
+            if ($head -ne $last_build)
+            {
+              #check each revision for ANY changes to unity repo
+              Write-Host ">> Checking each revision in the range: [$last_build, $head]."
+              for($i = [int]"$last_build"; $i -le [int]"$head"; $i++)
+              {
+                $revision_changes = $(svn log -v -r $i --username $env:SVN_USERNAME --password $env:SVN_PASSWORD)
+                $change_count = ($revision_changes.Split("`n").Count - 1)
+                Write-Host ">> Checking revision $i."
+                if ( $change_count )
+                {
+                  break
+                }
+              }
+            }
+            else
+            {
+              Write-Host ">> No new changes since last build."
+            }
           }
 
           #write to output
@@ -126,7 +132,16 @@ jobs:
         Remove-Item -Path ".\buildLog.txt" -Force
 
     - name: make-installer
+      env:
+          SVN_INSTALLER: ${{ vars.svn_installer }}
       run: |
+        #checkout the installer if you haven't already
+        if ( !(Test-Path -Path svn-installer) )
+        {
+          svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_INSTALLER svn-installer 
+        }
+        
+        #actually make the installer
         Move-Item -Path(Get-ChildItem -Path ".\tempBuild" -Exclude "*DoNotShip",".svn") -Destination ".\svn-installer\GAMEDIRECTORY"
         Start-Process "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList ".\svn-installer\InstallScript.iss" -Wait
         Remove-Item -Path ".\tempBuild" -Recurse -Force
@@ -184,7 +199,6 @@ jobs:
           New-Item -Path ".\svn-builds" -ItemType "Directory"    
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_BUILD svn-builds --depth empty
 
-          #TODO -- copy previously made files and then clean up properly after in both cases
           Write-Host ">> Moving new build and installer to svn-builds."
           New-Item -Path ".\svn-builds\$env:BUILD_NAME" -ItemType "Directory"
           New-Item -Path ".\svn-builds\$env:BUILD_NAME\GAMEDIRECTORY" -ItemType "Directory"
