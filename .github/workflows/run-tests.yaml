@@ -70,7 +70,7 @@ jobs:
           svn checkout --username $env:SVN_USERNAME --password $env:SVN_PASSWORD $env:SVN_TEST svn-tests --quiet
           
           Write-Host ">> Moving new test log to svn-tests."
-          Rename-Item -Path ".\svn-repo\Hooks\test_artifacts\results_$env:TARGET_REVISION.xlsx" -NewName "$env:TEST_LOG_NAME"
+          #Rename-Item -Path ".\svn-repo\Hooks\test_artifacts\results_$env:TARGET_REVISION.xlsx" -NewName "$env:TEST_LOG_NAME"
           Move-Item -Path ".\svn-repo\Hooks\test_artifacts\$env:TEST_LOG_NAME" -Destination ".\svn-tests" -Force 
 
           Write-Host ">> Committing new test log to svn."
