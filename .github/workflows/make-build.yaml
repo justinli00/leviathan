@@ -227,6 +227,7 @@ jobs:
   #run build verification tests
   run-bvt:
     needs: build
+    if: ${{ vars.run_bvt }}
     uses: justinli00/leviathan/.github/workflows/run-tests.yaml@main
     with: 
       revision: ${{ needs.build.outputs.build-number }}

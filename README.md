@@ -1,9 +1,9 @@
-# leviathan
+## leviathan
 GitHub repository for Leviathan team. Used for managing GHA workflows and more extensive testing, building, and other time-sensitive processes.
 Also contains other tools used in the build/test pipeline.
 
-## Usage
-# Workflows
+# Usage
+## Workflows
 The server is intended to be run on a self-hosted runner. Workflows should check out, update, and delete directories as necessary. That said, make sure that your runner has enough disk space. It may also be helpful to delete the svn-repo folder from time to time to get rid of extraneous metadata files.
 
 The runner structures its directories as follows:
@@ -17,8 +17,6 @@ The runner structures its directories as follows:
 The first two directories, svn-repo and svn-installer, should persist between workflow runs. 
 The last three directories are sparsely checked out in order to upload build and/or test artifacts, and then are promptly deleted.
 
-_Work is being done to store build and test artifacts via Dropbox instead of SVN. This README will be updated accordingly once this feature has been completed._
-
 To run any tests you have written, create a folder in your Unity project called Hooks. The folder structure should look something like this:
 - svn-repo/                 | _The directory containing the Unity project._
     - _Unity Folders_/      | _The folders containing the assets, packages, project settings, etc. for your project
@@ -27,7 +25,7 @@ To run any tests you have written, create a folder in your Unity project called 
         - run_tests.exe
         - hook_settings.json
 
-# Executables
+## Executables
 All of the files in executables were originally stored on the SVN, but were moved here for the sake of visibility. Only run_tests.exe is actually used in any of the workflows. This should be stored in "svn-repo/Hooks/", along with another folder called "test_artifacts". These paths can be modified in run-test.yaml.
 - They were compiled with [pyinstaller](https://pyinstaller.org/en/stable/)
 - For details on usage, use "(executable) --help"
